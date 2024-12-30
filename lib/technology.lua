@@ -51,7 +51,7 @@ function PlanetsLib.technology_icons_moon(moon_icon)
     return icons
 end
 
-function PlanetsLib.cargo_drops_tech_effect(planet_name)
+function PlanetsLib.technology_effect_cargo_drops(planet_name)
     return {
         {
             type = "nothing",
