@@ -1,0 +1,6 @@
+---------------------------------------------------------------------------------------------------
+Version: 1.0.0
+Date: ????
+  Modding:
+    - APIs: PlanetsLib:planet_extend, PlanetsLib.technology_icons_moon, PlanetsLib.cargo_drops_tech_effect, PlanetsLib.technology_icons_planet_cargo_drops
+    - When a technology with name '[planet_name]-cargo-drops' is created, cargo drops to that planet (excepting those with only players or construction robots) will be prevented until that technology is researched.
