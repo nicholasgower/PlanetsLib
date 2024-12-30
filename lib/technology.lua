@@ -1,16 +1,17 @@
----@param starmap_planet_icon string
----@param planet_icon_size number
-function PlanetsLib.technology_icons_planet_cargo_drops(planet_icon)
+local Public = {}
+
+function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
+    icon_size = icon_size or 256
     return {
         {
             icon = "__PlanetsLib__/graphics/icons/cargo-drop-tech-pod.png",
-            icon_size = 520, -- TODO: 512
+            icon_size = icon_size,
             scale = 0.4923,
             shift = { 0, 0 },
             draw_background = true,
         },
         {
-            icon = planet_icon, -- TODO: Rotate 90 with shadow beneath
+            icon = planet_icon,
             icon_size = 256,
             scale = 0.65,
             shift = { -17, 55 },
@@ -34,12 +35,14 @@ function PlanetsLib.technology_icons_planet_cargo_drops(planet_icon)
     }
 end
 
-function PlanetsLib.technology_icons_moon(moon_icon)
+function Public.technology_icons_moon(moon_icon, icon_size)
+    icon_size = icon_size or 256
+
     local icons =
     {
         {
             icon = moon_icon,
-            icon_size = 256,
+            icon_size = icon_size,
         },
         {
             icon = "__PlanetsLib__/graphics/icons/moon-technology-symbol.png",
@@ -51,7 +54,7 @@ function PlanetsLib.technology_icons_moon(moon_icon)
     return icons
 end
 
-function PlanetsLib.technology_effect_cargo_drops(planet_name)
+function Public.technology_effect_cargo_drops(planet_name)
     return {
         {
             type = "nothing",
@@ -61,3 +64,5 @@ function PlanetsLib.technology_effect_cargo_drops(planet_name)
 end
 
 -- TODO: Apply use_icon_overlay_constant to the unlock if the planet is a moon
+
+return Public

@@ -1,17 +1,19 @@
-function PlanetsLib:planet_extend(configs)
+local Public = {}
+
+function Public.planet_extend(configs)
     if not configs[1] then
         configs = { configs }
     end
 
     local planets = {}
     for _, config in ipairs(configs) do
-        PlanetsLib.verify_config_fields(config)
+        Public.verify_config_fields(config)
 
         local planet = {
             label_orientation = config.orbit.label_orientation,
         }
 
-        PlanetsLib.set_position_from_orbit(planet, config.orbit)
+        Public.set_position_from_orbit(planet, config.orbit)
 
         for k, v in pairs(config) do -- This will not include distance, orientation due to validity checks.
             planet[k] = v
@@ -28,7 +30,7 @@ function PlanetsLib:planet_extend(configs)
     return planets
 end
 
-function PlanetsLib.set_position_from_orbit(planet, orbit)
+function Public.set_position_from_orbit(planet, orbit)
     if orbit.parent == "star" then
         planet.distance = orbit.distance
         planet.orientation = orbit.orientation
@@ -55,7 +57,7 @@ function PlanetsLib.set_position_from_orbit(planet, orbit)
     end
 end
 
-function PlanetsLib.verify_config_fields(config)
+function Public.verify_config_fields(config)
     if config.distance then
         error(
             "PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation.")
@@ -80,25 +82,27 @@ function PlanetsLib.verify_config_fields(config)
     end
 end
 
-function PlanetsLib:is_space_location(planet)
+local function is_space_location(planet)
     if not planet then return false end
     return planet.type == "planet" or planet.type == "space-location"
 end
 
 --- Clones music tracks from source_planet to target_planet.
 --- Does not overwrite existing music for target_planet.
-function PlanetsLib:steal_music(source_planet, target_planet)
-    assert(PlanetsLib:is_space_location(source_planet),
-        "PlanetsLib:steal_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype.")
-    assert(PlanetsLib:is_space_location(target_planet),
-        "PlanetsLib:steal_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype.")
+function Public.borrow_music(source_planet, target_planet)
+    assert(is_space_location(source_planet),
+        "PlanetsLib:borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype.")
+    assert(is_space_location(target_planet),
+        "PlanetsLib:borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype.")
 
     for _, music in pairs(data.raw["ambient-sound"]) do
         if music.planet == source_planet.name or (music.track_type == "hero-track" and music.name:find(source_planet.name)) then
-            local new_music = table.deepcopy(music)
+            local new_music = util.table.deepcopy(music)
             new_music.name = music.name .. "-" .. target_planet.name
             new_music.planet = target_planet.name
-            data:extend {new_music}
+            data:extend { new_music }
         end
     end
 end
+
+return Public
