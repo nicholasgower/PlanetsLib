@@ -10,6 +10,7 @@
   "dependencies": [
     "base >= 2.0.0",
     "space-age >= 2.0.0",
+    "? Tiered-Solar-System",
     "(?) Surfaces-Have-Temperature",
     "(?) MT-lib-ex"
   ]
