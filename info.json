@@ -1,11 +1,16 @@
 {
   "name": "PlanetsLib",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "factorio_version": "2.0",
   "title": "PlanetsLib",
   "author": "thesixthroc",
   "contact": "Email: factorio@danielgmartin.com",
   "description": "Code and graphics to help modders creating planets and moons, plus thoughtful standardizations.",
   "homepage": "https://github.com/danielmartin0/PlanetsLib",
-  "dependencies": ["base >= 2.0.0", "space-age >= 2.0.0"]
+  "dependencies": [
+    "base >= 2.0.0",
+    "space-age >= 2.0.0",
+    "(?) Surfaces-Have-Temperature",
+    "(?) MT-lib-ex"
+  ]
 }
