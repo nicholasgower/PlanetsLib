@@ -22,12 +22,15 @@ function Public.tick_10_check_cargo_pods()
 					planet_name = platform.space_location.name
 				end
 
-				local cargo_drops_tech = force.technologies[planet_name .. "-cargo-drops"]
 
-				if cargo_drops_tech and not cargo_drops_tech.researched then
-					local cargo_pods = platform.surface.find_entities_filtered({ type = "cargo-pod" })
+				if planet_name then
+					local cargo_drops_tech = force.technologies[planet_name .. "-cargo-drops"]
 
-					Public.examine_cargo_pods(platform, cargo_pods)
+					if cargo_drops_tech and not cargo_drops_tech.researched then
+						local cargo_pods = platform.surface.find_entities_filtered({ type = "cargo-pod" })
+
+						Public.examine_cargo_pods(platform, cargo_pods)
+					end
 				end
 			end
 		end
