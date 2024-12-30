@@ -16,6 +16,7 @@ This library is fully open-source and will grow over time — feel free to contr
   - `PlanetsLib.technology_icons_moon` is used to create icons for moon discovery.
   - A new row is available in Factoriopedia for moons.
 - New surface condition 'temperature' with default values as follows. They are somewhat milder than astrophysical values so the engineer can more plausibly describe. They are spaced out to enable modded planets to slot in-between.
+-- Helper function `PlanetLib:steal_music(source_planet, target_planet)` to clone music tracks from an existing planet.
 
 | Surface         | Temperature (K) |
 | --------------- | --------------- |
@@ -36,3 +37,4 @@ This library is fully open-source and will grow over time — feel free to contr
 - Art by [Tserup](https://mods.factorio.com/user/Tserup).
 - Contributors will be listed below.
   - [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+  - [notnotmelon](https://mods.factorio.com/user/notnotmelon)
