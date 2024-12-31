@@ -43,4 +43,4 @@ These values are spaced out to enable modded planets to slot in-between.
 
 ## Usage Examples
 
-* See the [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora) mod.
+* For examples of a moon using the cargo drops functionality, see [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora).
