@@ -60,21 +60,23 @@ end
 function Public.verify_config_fields(config)
     if config.distance then
         error(
-            "PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation.")
+            "PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib.")
     end
     if config.orientation then
         error(
-            "PlanetsLib:planet_extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation.")
+            "PlanetsLib:planet_extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib.")
     end
     if config.label_orientation then
         error(
-            "PlanetsLib:planet_extend() - 'label_orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation.")
+            "PlanetsLib:planet_extend() - 'label_orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib.")
     end
     if not config.orbit then
-        error("PlanetsLib:planet_extend() - 'orbit' field is required. See the PlanetsLib documentation.")
+        error(
+            "PlanetsLib:planet_extend() - 'orbit' field is required. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib.")
     end
     if not config.orbit.parent then
-        error("PlanetsLib:planet_extend() - 'orbit.parent' field is required with value e.g. 'star'.")
+        error(
+            "PlanetsLib:planet_extend() - 'orbit.parent' field is required with value, either 'star' or the name of another planet/moon.")
     end
     if not config.planet_type then
         error(
