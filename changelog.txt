@@ -3,6 +3,8 @@ Version: 1.0.5
 Date: ????
   Changes:
     - Extract the unified API into 'api.lua' for clarity.
+  Info:
+    - Syncing of README.md to the mod portal.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.4
 Date: 2024-12-30
