@@ -13,32 +13,23 @@ contribute via pull requests on
 
 ## Contributors
 
--   [Tserup](https://mods.factorio.com/user/Tserup) (art)
--   [thesixthroc](https://mods.factorio.com/user/thesixthroc)
--   [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+* [Tserup](https://mods.factorio.com/user/Tserup) (art)
+* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 
 ## Features
 
--   `PlanetsLib:planet_extend({...` defines the orbit of planets with respect to
-    another body.
--   If a technology `[planet-name]-cargo-drops` is defined, players will be
-    unable to drop cargo (excluding players and construction robots) to that
-    planet before researching that technology. The functionality is implemented
-    automatically. `PlanetsLib.technology_icons_planet_cargo_drops` and
-    `PlanetsLib.technology_effect_cargo_drops` are provided for easy
-    construction of the technology prototype.
--   Extra support for moons:
-    -   `PlanetsLib.technology_icons_moon` is used to create icons for moon
-        discovery.
-    -   A new row is available in Factoriopedia for moons.
--   Helper function `PlanetLib:steal_music(source_planet, target_planet)` to
-    clone music tracks from an existing planet.
-
--   New surface condition 'temperature' with default values as below. They are
-    somewhat milder than astrophysical values so the engineer can more plausibly
-    describe. They are spaced out to enable modded planets to slot in-between.
+* `PlanetsLib:planet_extend({...` defines the orbit of planets with respect to another body.
+* If a technology `[planet-name]-cargo-drops` is defined, players will be unable to drop cargo (excluding players and construction robots) to that planet before researching that technology. The functionality is implemented automatically. `PlanetsLib.technology_icons_planet_cargo_drops` and `PlanetsLib.technology_effect_cargo_drops` are provided for easy construction of the technology prototype.
+* Extra support for moons:
+    * `PlanetsLib.technology_icons_moon` is used to create icons for moon discovery.
+    * A new row is available in Factoriopedia for moons.
+* `PlanetLib:borrow_music(source_planet, target_planet)` clone music tracks from an existing planet.
+* New surface condition 'temperature' with default values as below.
 
 ## Base game planet temperatures
+
+These values are spaced out to enable modded planets to slot in-between.
 
 | Surface         | Temperature (K) |
 | --------------- | --------------- |
@@ -52,4 +43,4 @@ contribute via pull requests on
 
 ## Usage Examples
 
--   See the [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora) mod.
+* See the [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora) mod.
