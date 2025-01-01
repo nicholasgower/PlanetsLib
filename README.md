@@ -6,7 +6,7 @@ Code and graphics to help modders creating planets and moons, plus thoughtful st
 
 This library is fully open-source and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-### Contributors
+Contributors:
 
 -   [Tserup](https://mods.factorio.com/user/Tserup) - Art
 -   [thesixthroc](https://mods.factorio.com/user/thesixthroc)
