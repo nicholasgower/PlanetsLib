@@ -26,6 +26,7 @@ contribute via pull requests on
     * A new row is available in Factoriopedia for moons.
 * `PlanetLib:borrow_music(source_planet, target_planet)` clone music tracks from an existing planet.
 * New surface condition 'temperature' with default values as below.
+* `PlanetLib:set_default_import_location(item_name, planet)
 
 ## Base game planet temperatures
 
