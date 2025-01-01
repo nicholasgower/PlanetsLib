@@ -38,7 +38,7 @@ These values are spaced out to enable modded planets to slot in-between.
 | Fulgora         | 314K            |
 | Gleba           | 298K            |
 | Aquilo          | 258K            |
-| Space Platforms | 268             |
+| Space Platforms | 268K            |
 | Default         | 288K            |
 
 ## Usage Examples
