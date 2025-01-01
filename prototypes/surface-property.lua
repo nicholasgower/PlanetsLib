@@ -1,9 +1,9 @@
 data:extend({
-    {
-        type = "surface-property",
-        name = "temperature",
-        default_value = 288,
-    },
+	{
+		type = "surface-property",
+		name = "temperature",
+		default_value = 288,
+	},
 })
 
 --== Note: ==--

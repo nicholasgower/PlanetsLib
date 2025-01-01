@@ -16,13 +16,13 @@ Contributors:
 
 ### Planet helpers
 
-- `PlanetsLib:planet_extend(config)` - Defines a new planet, and calls data:extend with it. Does not support `distance`, `orientation` and `label_orientation`. Instead, contains `orbit` and `planet_type` as listed below.
-    - `config.planet_type` - String: "planet", "moon", or "star"
+- `PlanetsLib:planet_extend(config)` - Defines a new planet, and calls data:extend with it. Does not support `distance`, `orientation` and `label_orientation`. Instead, contains `orbit` and `planet_kind` as listed below.
     - `config.orbit` - Object containing orbital parameters:
-        - `parent` - String: either "star" for planets in the default solar system, or the name of a parent planet/moon
+        - `parent` - Object containing `name` and `type` fields, corresponding to a parent at data.raw[type][name].
         - `distance` - Number: orbital distance from parent
-        - `orientation` - Number: orbital position (0-1)
-        - `label_orientation` - Number: rotation of planet label
+        - `orientation` - Number: orbital angle from parent (0-1). Orientation is absolute, not relative to the parent's orientation.
+        - `sprite` - Object: Sprite to use for the orbit.
+    - `config.sprite_only` - Boolean (optional): If true, the prototype will be removed in data-final-fixes and replaced by a sprite on the starmap. This is used for data.raw["space-location"].star internally.
     - Any other valid planet prototype fields
     - Note:
         - Can accept a single config object or an array of configs
