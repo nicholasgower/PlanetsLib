@@ -13,3 +13,8 @@ PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_dr
 PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 
 PlanetsLib.borrow_music = planet.borrow_music
+
+--- This function sets `default_import_location` based on an item name and planet.
+--- `default_import_location` is used by the space platform GUI to
+--- define the default planet where an item will be imported from.
+PlanetsLib.set_default_import_location = planet.set_default_import_location

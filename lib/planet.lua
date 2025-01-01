@@ -107,9 +107,6 @@ function Public.borrow_music(source_planet, target_planet)
     end
 end
 
---- This function sets `default_import_location` based on an item name and planet.
---- `default_import_location` is used by the space platform GUI to
---- define the default planet where an item will be imported from.
 function Public.set_default_import_location(item_name, planet)
     for item_prototype in pairs(defines.prototypes.item) do
         local item = (data.raw[item_prototype] or {})[item_name]
