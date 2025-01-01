@@ -29,20 +29,10 @@ function Public.update_starmap_layers(planet)
 	if orbit.sprite then
 		if orbit.sprite.layers then
 			for _, layer in pairs(orbit.sprite.layers) do
-				layer = util.table.deepcopy(layer)
-				layer.shift = {
-					(layer.shift and layer.shift[1] or 0) + parent_x,
-					(layer.shift and layer.shift[2] or 0) + parent_y,
-				}
-				table.insert(starmap_layers, layer)
+				Public.update_starmap_from_sprite(layer, parent_x, parent_y)
 			end
 		else
-			local sprite = util.table.deepcopy(orbit.sprite)
-			sprite.shift = {
-				(sprite.shift and sprite.shift[1] or 0) + parent_x,
-				(sprite.shift and sprite.shift[2] or 0) + parent_y,
-			}
-			table.insert(starmap_layers, sprite)
+			Public.update_starmap_from_sprite(orbit.sprite, parent_x, parent_y)
 		end
 	end
 
@@ -56,6 +46,15 @@ function Public.update_starmap_layers(planet)
 			shift = { parent_x + x, parent_y + y },
 		})
 	end
+end
+
+function Public.update_starmap_from_sprite(sprite, x, y)
+	local sprite_copy = util.table.deepcopy(sprite)
+	sprite_copy.shift = {
+		(sprite_copy.shift and sprite_copy.shift[1] or 0) + x,
+		(sprite_copy.shift and sprite_copy.shift[2] or 0) + y,
+	}
+	table.insert(starmap_layers, sprite_copy)
 end
 
 for _, planet in pairs(data.raw["planet"]) do
