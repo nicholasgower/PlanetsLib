@@ -14,9 +14,7 @@ This library is fully open-source and will grow over time — feel free to contr
 
 ## API Reference
 
-### Planet Configuration
-
-The following functions are available for planet configuration:
+### Planet helpers
 
 - `PlanetsLib:planet_extend(config)` - Defines a new planet, and calls data:extend with it. Does not support `distance`, `orientation` and `label_orientation`. Instead, contains `orbit` and `planet_type` as listed below.
     - `config.planet_type` - String: "planet", "moon", or "star"
@@ -51,9 +49,9 @@ Special functionality for implementing moons:
 -   `PlanetsLib.technology_icons_moon` - Creates standardized icons for moon discovery
 -   A new Factoriopedia row below planets with subgroup `satellites`.
 
-### Surface Temperature System
+### Surface Temperature
 
-The library implements a standardized temperature system for planetary surfaces. Default temperatures (in Kelvin):
+The library implements a temperature surface condition for planetary surfaces. Default temperatures (in Kelvin):
 
 | Surface         | Temperature |
 | --------------- | ----------- |
@@ -65,4 +63,4 @@ The library implements a standardized temperature system for planetary surfaces.
 | Space Platforms | 268K        |
 | Default         | 288K        |
 
-These values are intentionally spaced to allow modded planets to fit between them.
+These values are spaced to allow modded planets to fit between them.
