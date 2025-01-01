@@ -1,19 +1,19 @@
 {
-  "name": "PlanetsLib",
-  "version": "1.0.8",
-  "factorio_version": "2.0",
-  "title": "PlanetsLib",
-  "author": "thesixthroc",
-  "description": "Code and graphics to help modders creating planets and moons, plus thoughtful standardizations.",
-  "homepage": "https://github.com/danielmartin0/PlanetsLib",
-  "dependencies": [
-    "base >= 2.0.0",
-    "space-age >= 2.0.0",
-    "? Tiered-Solar-System",
-    "(?) Surfaces-Have-Temperature"
-  ],
-  "package": {
-    "sync_portal_details": true,
-    "readme": "readme.md"
-  }
+    "name": "PlanetsLib",
+    "version": "1.0.8",
+    "factorio_version": "2.0",
+    "title": "PlanetsLib",
+    "author": "thesixthroc",
+    "description": "Code and graphics to help modders creating planets and moons, plus thoughtful standardizations.",
+    "homepage": "https://github.com/danielmartin0/PlanetsLib",
+    "dependencies": [
+        "base >= 2.0.0",
+        "space-age >= 2.0.0",
+        "? Tiered-Solar-System",
+        "(?) Surfaces-Have-Temperature"
+    ],
+    "package": {
+        "sync_portal_details": true,
+        "readme": "readme.md"
+    }
 }

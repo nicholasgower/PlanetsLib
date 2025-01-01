@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.8
 Date: ????
-  Changes:
+  Bugfixes:
+    - Fixed items in cargo pod drops being allowed if they were not associated to an entity in Factorio.
 ---------------------------------------------------------------------------------------------------
 Version: 1.0.7
 Date: 2024-12-31

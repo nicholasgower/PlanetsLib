@@ -49,7 +49,7 @@ function Public.examine_cargo_pods(platform, cargo_pods)
 			for _, item in pairs(pod_contents) do
 				local entity = prototypes.entity[item.name]
 
-				if entity and entity.type ~= "construction-robot" then
+				if (not entity) or (entity and entity.type ~= "construction-robot") then
 					only_construction_robots_or_players = false
 				end
 			end
