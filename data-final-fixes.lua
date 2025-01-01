@@ -28,3 +28,23 @@ for _, p in pairs(data.raw["space-location"]) do
 		data.raw["space-location"][p.name] = nil
 	end
 end
+
+local gas_list = { "oxygen", "nitrogen", "carbon-dioxide", "argon" }
+local enforce_percentage = settings.startup["PlanetsLib-enforce-gas-percentage"].value --Whether code should assert that combined gas contents add up to less than 100%.
+
+for _, p in pairs(data.raw.planet) do
+	if enforce_percentage then
+		local gas_content = 0
+		for _, gas in pairs(gas_list) do
+			if p.surface_properties[gas] then
+				gas_content = gas_content + p.surface_properties[gas]
+			end
+		end
+		assert(
+			gas_content <= 100,
+			"Combined gas contents of planet "
+				.. p.name
+				.. ' exceed 100%. To override this assertion, add \'data.raw["bool-setting"]["PlanetsLib-enforce-gas-percentage"].forced_value = false\' to data-updates.lua.'
+		)
+	end
+end
