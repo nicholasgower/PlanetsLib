@@ -16,3 +16,4 @@ data.raw.planet["fulgora"].surface_properties.temperature = 314
 data.raw.planet["gleba"].surface_properties.temperature = 298
 data.raw.planet["aquilo"].surface_properties.temperature = 258
 require("surface-property.temperature")
+require("surface-property.atmosphere")
