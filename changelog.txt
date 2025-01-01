@@ -4,7 +4,7 @@ Date: ????
   Changes:
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.0
-Date: ????
+Date: 2025-01-01
   Changes:
     - API for planets switched from 'planet_type' to 'sprite_only'. This is now simply a boolean that determines whether the prototype should be removed in data-final-fixes and replaced by a sprite on the starmap. With this change, PlanetsLib now supports extra solar systems, binary systems, etc.
     - Form of 'parent' within 'orbit' changed to an object with 'type' and 'name' fields, rather than just a name.
