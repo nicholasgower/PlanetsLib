@@ -4,13 +4,7 @@
 
 Code and graphics to help modders creating planets, moons and other systems, plus standardizations (to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature)).
 
-This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
-
-Contributors:
-
-* [Tserup](https://mods.factorio.com/user/Tserup) - Art
-* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
-* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+Breaking changes in this mod will be accompanied with bumps to a higher major version.
 
 ## API Reference
 
@@ -64,3 +58,15 @@ The library implements a temperature surface condition for planetary surfaces. D
 | Default         | 288K        |
 
 These values are spaced to allow modded planets to fit between them.
+
+## Credits
+
+This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
+
+Contributors:
+
+* [Tserup](https://mods.factorio.com/user/Tserup) - Art
+* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+
+Special credit goes to [MidnightTigger](https://mods.factorio.com/user/Midnighttigger) for inspiring the structure of this mod with [MidnightTigger's Library](https://mods.factorio.com/mod/MT-lib).
