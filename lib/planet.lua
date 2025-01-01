@@ -29,34 +29,40 @@ function Public.planet_extend(configs)
 	return planets
 end
 
-function Public.verify_config_fields(config)
-	if config.distance then
-		error(
-			"PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib."
-		)
-	end
-	if config.orientation then
-		error(
-			"PlanetsLib:planet_extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib."
-		)
-	end
-	if not config.orbit then
-		error(
-			"PlanetsLib:planet_extend() - 'orbit' field is required. See the PlanetsLib documentation at https://github.com/danielmartin0/PlanetsLib."
-		)
-	end
-	if not config.orbit.parent then
-		error(
-			"PlanetsLib:planet_extend() - 'orbit.parent' field is required with value, either 'star' or the name of another planet/moon."
-		)
-	end
-end
-
 local function is_space_location(planet)
 	if not planet then
 		return false
 	end
 	return planet.type == "planet" or planet.type == "space-location"
+end
+
+function Public.verify_config_fields(config)
+	if not is_space_location(config.orbit.parent) then
+		error(
+			"PlanetsLib:planet_extend() - 'orbit.parent' must be a space location. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+
+	if config.distance then
+		error(
+			"PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+	if config.orientation then
+		error(
+			"PlanetsLib:planet_extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+	if not config.orbit then
+		error(
+			"PlanetsLib:planet_extend() - 'orbit' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+	if not config.orbit.parent then
+		error(
+			"PlanetsLib:planet_extend() - 'orbit.parent' field is required with an object containing 'type' and 'name' fields. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
 end
 
 --- Clones music tracks from source_planet to target_planet.

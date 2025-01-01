@@ -2,7 +2,7 @@
 Version: 1.1.2
 Date: ????
   Changes:
-    - 
+    - is_space_location check enforced in planet_extend.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.1
 Date: 2025-01-01
