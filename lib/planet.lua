@@ -93,9 +93,9 @@ end
 --- Does not overwrite existing music for target_planet.
 function Public.borrow_music(source_planet, target_planet)
     assert(is_space_location(source_planet),
-        "PlanetsLib:borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype.")
+        "PlanetsLib.borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype.")
     assert(is_space_location(target_planet),
-        "PlanetsLib:borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype.")
+        "PlanetsLib.borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype.")
 
     for _, music in pairs(data.raw["ambient-sound"]) do
         if music.planet == source_planet.name or (music.track_type == "hero-track" and music.name:find(source_planet.name)) then
@@ -116,7 +116,7 @@ function Public.set_default_import_location(item_name, planet)
         end
     end
 
-    error("PlanetsLib:set_default_import_location() - Item not found: " .. item_name, 2)
+    error("PlanetsLib.set_default_import_location() - Item not found: " .. item_name, 2)
 end
 
 return Public

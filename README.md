@@ -1,47 +1,68 @@
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge)](https://discord.gg/VuVhYUBbWE)[![Ko-Fi](https://img.shields.io/badge/Ko%E2%80%93Fi-ff5e5b?style=for-the-badge)](https://ko-fi.com/thesixthroc)
+[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge)](https://discord.gg/VuVhYUBbWE)
 
 # PlanetsLib
 
-Code and graphics to help modders creating planets and moons, plus thoughtful
-standardizations to avoid mod proliferations (such as
-[Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature))
-each time we want to standardize something.
+Code and graphics to help modders creating planets and moons, plus thoughtful standardizations (to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature)).
 
-This library is fully open-source and will grow over time — feel free to
-contribute via pull requests on
-[Github](https://github.com/danielmartin0/PlanetsLib).
+This library is fully open-source and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-## Contributors
+### Contributors
 
-* [Tserup](https://mods.factorio.com/user/Tserup) (art)
-* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
-* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+-   [Tserup](https://mods.factorio.com/user/Tserup) - Art
+-   [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+-   [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 
-## Features
+## API Reference
 
-* `PlanetsLib:planet_extend({...` defines the orbit of planets with respect to another body.
-* If a technology `[planet-name]-cargo-drops` is defined, players will be unable to drop cargo (excluding players and construction robots) to that planet before researching that technology. The functionality is implemented automatically. `PlanetsLib.technology_icons_planet_cargo_drops` and `PlanetsLib.technology_effect_cargo_drops` are provided for easy construction of the technology prototype.
-* Extra support for moons:
-    * `PlanetsLib.technology_icons_moon` is used to create icons for moon discovery.
-    * A new row is available in Factoriopedia for moons.
-* `PlanetLib:borrow_music(source_planet, target_planet)` clone music tracks from an existing planet.
-* New surface condition 'temperature' with default values as below.
-* `PlanetLib:set_default_import_location(item_name, planet)
+### Planet Configuration
 
-## Base game planet temperatures
+The following functions are available for planet configuration:
 
-These values are spaced out to enable modded planets to slot in-between.
+- `PlanetsLib:planet_extend(config)` - Defines a new planet, and calls data:extend with it. Does not support `distance`, `orientation` and `label_orientation`. Instead, contains `orbit` and `planet_type` as listed below.
+    - `config.planet_type` - String: "planet", "moon", or "star"
+    - `config.orbit` - Object containing orbital parameters:
+        - `parent` - String: either "star" for planets in the default solar system, or the name of a parent planet/moon
+        - `distance` - Number: orbital distance from parent
+        - `orientation` - Number: orbital position (0-1)
+        - `label_orientation` - Number: rotation of planet label
+    - Any other valid planet prototype fields
+    - Note:
+        - Can accept a single config object or an array of configs
+        - Moons are automatically assigned to "satellites" subgroup in Factoriopedia
+        - Returns array of created planet prototypes
+- `PlanetsLib:borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.
+- `PlanetsLib:set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 
-| Surface         | Temperature (K) |
-| --------------- | --------------- |
-| Nauvis          | 288K            |
-| Vulcanus        | 332K            |
-| Fulgora         | 314K            |
-| Gleba           | 298K            |
-| Aquilo          | 258K            |
-| Space Platforms | 268K            |
-| Default         | 288K            |
+### Cargo Drop System
 
-## Usage Examples
+The library provides automatic cargo drop restriction functionality. To implement:
 
-* For examples of a moon using the cargo drops functionality, see [Cerys](https://mods.factorio.com/mod/Cerys-Moon-of-Fulgora).
+1. Define a technology with name pattern: `[planet-name]-cargo-drops`
+2. Use the provided helper functions:
+    - `PlanetsLib.technology_icons_planet_cargo_drops`
+    - `PlanetsLib.technology_effect_cargo_drops`
+
+Players will be unable to drop cargo (excluding players and construction robots) to that planet before researching the technology.
+
+### Moon Support
+
+Special functionality for implementing moons:
+
+-   `PlanetsLib.technology_icons_moon` - Creates standardized icons for moon discovery
+-   A new Factoriopedia row below planets with subgroup `satellites`.
+
+### Surface Temperature System
+
+The library implements a standardized temperature system for planetary surfaces. Default temperatures (in Kelvin):
+
+| Surface         | Temperature |
+| --------------- | ----------- |
+| Nauvis          | 288K        |
+| Vulcanus        | 332K        |
+| Fulgora         | 314K        |
+| Gleba           | 298K        |
+| Aquilo          | 258K        |
+| Space Platforms | 268K        |
+| Default         | 288K        |
+
+These values are intentionally spaced to allow modded planets to fit between them.
