@@ -4,7 +4,7 @@
     "factorio_version": "2.0",
     "title": "PlanetsLib",
     "author": "thesixthroc",
-    "description": "Code and graphics to help modders creating planets and moons, plus thoughtful standardizations.",
+    "description": "Code and graphics to help modders creating planets, moons and other systems, plus standardizations.",
     "homepage": "https://github.com/danielmartin0/PlanetsLib",
     "dependencies": ["base >= 2.0.0", "space-age >= 2.0.0"],
     "package": {
