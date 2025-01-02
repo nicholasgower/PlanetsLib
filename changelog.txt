@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.8
 Date: ????
-  Changes:
+  Locale:
+    - Added Chinese localization.
+  Bugfixes:
+    - Fixed solar system edge not having an orbit sprite.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.7
 Date: 2025-01-02
