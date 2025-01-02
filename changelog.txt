@@ -2,6 +2,8 @@
 Version: 1.1.6
 Date: ????
   Changes:
+    - Surface conditions for gas composition.
+    - New surface conditions are now off by default, unless requested by a mod.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.5
 Date: 2025-01-02
