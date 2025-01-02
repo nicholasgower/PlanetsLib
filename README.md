@@ -2,7 +2,7 @@
 
 # PlanetsLib
 
-Code and graphics to help modders creating planets, moons and other systems, plus standardizations (to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature)). This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
+Code and graphics to help modders creating planets, moons and other systems. Standardizations are included to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature). This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
 Breaking changes in this mod will be accompanied with bumps to a higher major version.
 
