@@ -1,10 +1,10 @@
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VuVhYUBbWE)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge\&logo=discord\&logoColor=white)](https://discord.gg/VuVhYUBbWE)
 
 # PlanetsLib
 
 Code and graphics to help modders creating planets, moons and other systems. Standardizations are included to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature). This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-This mod is not yet 'stable'. When it becomes stable, breaking changes will be accompanied with bumps to a higher major version.
+When breaking changes are made to features used by live mods, the major version of Planetslib will be bumped.
 
 ## API Reference
 
@@ -29,9 +29,9 @@ This mod is not yet 'stable'. When it becomes stable, breaking changes will be a
 The library provides automatic cargo drop restriction functionality. To implement:
 
 * Define a technology with name pattern: `[planet-name]-cargo-drops`
-    * Use the provided helper functions:
-    * `PlanetsLib.technology_icons_planet_cargo_drops`
-    * `PlanetsLib.technology_effect_cargo_drops`
+  * Use the provided helper functions:
+  * `PlanetsLib.technology_icons_planet_cargo_drops`
+  * `PlanetsLib.technology_effect_cargo_drops`
 
 Players will be unable to drop cargo (excluding players and construction robots) to that planet before researching the technology.
 
