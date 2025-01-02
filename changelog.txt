@@ -2,6 +2,7 @@
 Version: 1.1.4
 Date: ????
   Changes:
+    - Fixed crash when space locations are added later than data.lua.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
 Date: 2025-01-02
