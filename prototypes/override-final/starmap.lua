@@ -5,6 +5,9 @@ local starmap_layers = {}
 
 function Public.update_starmap_layers(planet)
 	local orbit = planet.orbit
+	if not orbit then
+		return
+	end
 
 	local x = orbit.distance * 32 * math.sin(orbit.orientation * 2 * math.pi)
 	local y = -orbit.distance * 32 * math.cos(orbit.orientation * 2 * math.pi)

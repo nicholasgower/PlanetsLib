@@ -1,11 +1,12 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.5
 Date: ????
-  Changes:
+  Bugfixes:
+    - Bail when updating the starmap for a planet without an 'orbit' field.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.4
 Date: 2025-01-02
-  Changes:
+  Bugfixes:
     - Fixed crash when space locations are added later than data.lua.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.3
