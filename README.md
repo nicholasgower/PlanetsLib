@@ -1,4 +1,4 @@
-[![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge)](https://discord.gg/VuVhYUBbWE)
+[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VuVhYUBbWE)
 
 # PlanetsLib
 
