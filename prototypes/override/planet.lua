@@ -56,3 +56,8 @@ data.raw["planet"]["aquilo"].orbit.sprite = {
 	filename = "__PlanetsLib__/graphics/orbits/orbit_aquilo.png",
 	size = 2240,
 }
+data.raw["space-location"]["solar-system-edge"].orbit.sprite = {
+	type = "sprite",
+	filename = "__PlanetsLib__/graphics/orbits/orbit_solar-system-edge.png",
+	size = 3200,
+}
