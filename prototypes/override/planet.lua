@@ -1,25 +1,33 @@
 for _, planet in pairs(data.raw["planet"]) do
 	if not planet.orbit then
 		planet.orbit = {
-			distance = planet.distance,
-			orientation = planet.orientation,
 			parent = {
 				type = "space-location",
 				name = "star",
 			},
 		}
 	end
+	if not planet.orbit.distance then
+		planet.orbit.distance = planet.distance
+	end
+	if not planet.orbit.orientation then
+		planet.orbit.orientation = planet.orientation
+	end
 end
 for _, location in pairs(data.raw["space-location"]) do
 	if not location.orbit then
 		location.orbit = {
-			distance = location.distance,
-			orientation = location.orientation,
 			parent = {
 				type = "space-location",
 				name = "star",
 			},
 		}
+	end
+	if not location.orbit.distance then
+		location.orbit.distance = location.distance
+	end
+	if not location.orbit.orientation then
+		location.orbit.orientation = location.orientation
 	end
 end
 

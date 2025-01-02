@@ -2,6 +2,7 @@
 Version: 1.1.3
 Date: ????
   Changes:
+    - Compatibility with mods that set the 'orbit' field of planets and space locations to other objects.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.2
 Date: 2025-01-01
