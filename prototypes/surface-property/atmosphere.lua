@@ -1,4 +1,3 @@
-local planet_list = { "space-platform", "nauvis", "vulcanus", "fulgora", "gleba", "aquilo" }
 if settings.startup["PlanetsLib-enable-oxygen"].value == true then
 	data:extend({
 		{

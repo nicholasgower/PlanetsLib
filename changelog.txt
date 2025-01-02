@@ -2,6 +2,7 @@
 Version: 1.1.9
 Date: ????
   Changes:
+    - Compatibility with mods that update the positions of planets of other mods.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.8
 Date: 2025-01-02

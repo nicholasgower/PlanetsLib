@@ -4,7 +4,7 @@
 
 Code and graphics to help modders creating planets, moons and other systems. Standardizations are included to avoid proliferations of mods like [Surfaces Have Temperature](https://mods.factorio.com/mod/Surfaces-Have-Temperature). This library is a community project and will grow over time — feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-Breaking changes in this mod will be accompanied with bumps to a higher major version.
+This mod is not yet 'stable'. When it becomes stable, breaking changes will be accompanied with bumps to a higher major version.
 
 ## API Reference
 
@@ -38,7 +38,7 @@ Players will be unable to drop cargo (excluding players and construction robots)
 ### Support for moons
 
 * `PlanetsLib.technology_icons_moon` - Standardized icon for moon discovery technology
-* `subgroup=satellites`, a Factoriopedia rown below planets.
+* `subgroup=satellites`, a Factoriopedia row below planets.
 
 ### Surface conditions
 
