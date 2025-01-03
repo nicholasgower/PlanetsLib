@@ -10,7 +10,7 @@ When breaking changes are made to features used by live mods, the major version 
 
 ### Planet helpers
 
-* `PlanetsLib:planet_extend(config)` - Defines a new planet. This includes a call to data:extend. Does not support `distance` or `orientation` - instead, contains `orbit` as listed below.
+* `PlanetsLib:extend(config)` - Defines a new planet. This includes a call to data:extend. Does not support `distance` or `orientation` - instead, contains `orbit` as listed below.
     * `config.orbit` - Object containing orbital parameters:
         * `parent` - Object containing `name` and `type` fields, corresponding to a parent at `data.raw\[type]\[name]`.
         * `distance` - Number: orbital distance from parent
