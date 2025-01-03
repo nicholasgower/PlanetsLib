@@ -1,7 +1,7 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
 
-function PlanetsLib:planet_extend(configs)
+function PlanetsLib:extend(configs)
 	local planets = planet.planet_extend(configs)
 
 	data:extend(planets)

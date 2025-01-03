@@ -2,6 +2,7 @@
 Version: 1.1.11
 Date: ????
   Changes:
+    - Switched API from PlanetsLib:planet_extend to PlanetsLib:extend.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.10
 Date: 2025-01-02
