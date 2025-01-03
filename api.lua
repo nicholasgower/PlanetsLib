@@ -7,6 +7,7 @@ function PlanetsLib:extend(configs)
 	data:extend(planets)
 	return planets
 end
+-- PlanetsLib.planet_extend = planet.planet_extend
 
 PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_planet_cargo_drops
 PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops
