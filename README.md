@@ -2,7 +2,7 @@
 
 # PlanetsLib
 
-Code and graphics to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib). There is a channel dedicated to the library on roc's [Discord](https://discord.gg/VuVhYUBbWE).
+Code and graphics to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
 When breaking changes are made to features used by live mods, the major version of Planetslib will be bumped.
 
@@ -10,7 +10,7 @@ When breaking changes are made to features used by live mods, the major version 
 
 ### Planet helpers
 
-* `PlanetsLib:extend(config)` - Defines a new planet. This includes a call to data:extend. Does not support `distance` or `orientation` - instead, contains `orbit` as listed below.
+* `PlanetsLib:extend(config)` - A wrapper for data:extend that only accepts `planet` and `space-location` definitions. Throws an error if passed `distance` or `orientation`. Instead takes the fields listed below.
     * `config.orbit` - Object containing orbital parameters:
         * `parent` - Object containing `name` and `type` fields, corresponding to a parent at `data.raw\[type]\[name]`.
         * `distance` - Number: orbital distance from parent
