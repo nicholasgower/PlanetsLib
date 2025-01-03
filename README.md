@@ -10,13 +10,13 @@ When breaking changes are made to features used by live mods, the major version 
 
 ### Planet helpers
 
-* `PlanetsLib:extend(config)` - A wrapper for data:extend that only accepts `planet` and `space-location` definitions. Throws an error if passed `distance` or `orientation`. Instead takes the fields listed below.
-    * `config.orbit` - Object containing orbital parameters:
+* `PlanetsLib:extend(config)` - A wrapper for data:extend that only accepts `planet` and `space-location` definitions. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
+    * `orbit` - Object containing orbital parameters:
         * `parent` - Object containing `name` and `type` fields, corresponding to a parent at `data.raw\[type]\[name]`.
         * `distance` - Number: orbital distance from parent
         * `orientation` - Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
         * `sprite` - Object: Sprite for the orbit, centered on its parent.
-    * `config.sprite_only` - Boolean (optional): If true, the prototype will be removed in `data-final-fixes` and replaced by a sprite on the starmap. This is used for the central star (`data.raw\["space-location"].star`) internally.
+    * `sprite_only` - Boolean (optional): If true, the prototype will be removed in `data-final-fixes` and replaced by a sprite on the starmap. This is used for the central star (`data.raw\["space-location"].star`) internally.
     * Any other valid planet prototype fields
     * Notes:
         * Can accept a single config object or an array of configs
@@ -27,19 +27,19 @@ When breaking changes are made to features used by live mods, the major version 
 
 ### Planet Cargo Drops Technology
 
-The library provides automatic cargo drop restriction functionality. To implement:
+The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
 
 * Define a technology with name pattern: `[planet-name]-cargo-drops`
     * Use the provided helper functions:
     * `PlanetsLib.technology_icons_planet_cargo_drops`
     * `PlanetsLib.technology_effect_cargo_drops`
 
-Players will be unable to drop cargo (excluding players and construction robots) to that planet before researching the technology.
+Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
 
 ### Support for moons
 
-* `PlanetsLib.technology_icons_moon` - Standardized icon for moon discovery technology
-* `subgroup=satellites`, a Factoriopedia row below planets.
+* `PlanetsLib.technology_icons_moon` - Standardized icon for moon discovery technology.
+* `subgroup=satellites` - A new Factoriopedia row for satellites (below the planets row).
 
 ### Surface conditions
 
