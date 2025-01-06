@@ -2,9 +2,20 @@
 
 # PlanetsLib
 
-Code and graphics to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
+Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-When breaking changes are made to features used by live mods, the major version of Planetslib will be bumped.
+We will try to avoid breaking changes. When breaking changes need to be made to features used by live mods, the major version of Planetslib will be bumped.
+
+## Credits
+
+Contributors:
+
+* [Tserup](https://mods.factorio.com/user/Tserup) - Art
+* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+* [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
+* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+
+*Note from thesixthroc*: I would like help maintaining this mod. Please check on Discord if you'd like to help.
 
 ## API Reference
 
@@ -17,7 +28,7 @@ When breaking changes are made to features used by live mods, the major version 
     * `orientation` - Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
     * `sprite` - Object: Sprite for the orbit, centered on its parent.
   * `sprite_only` - Boolean (optional): If true, the prototype will be removed in `data-final-fixes` and replaced by a sprite on the starmap. This is used for the central star (`data.raw\["space-location"].star`) internally.
-  * Any other valid `planet` (or `space-location`) prototype fields
+  * Any other valid planet or space-location prototype fields
   * Notes:
     * Can accept a single config object or an array of configs
     * Returns array of created planet prototypes
@@ -44,12 +55,3 @@ Players will be unable to drop cargo (excluding players and construction robots)
 ### Surface conditions
 
 Documentation pending.
-
-## Credits
-
-Contributors:
-
-* [Tserup](https://mods.factorio.com/user/Tserup) - Art
-* [thesixthroc](https://mods.factorio.com/user/thesixthroc)
-* [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
-* [notnotmelon](https://mods.factorio.com/user/notnotmelon)
