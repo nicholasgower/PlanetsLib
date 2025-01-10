@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.13
 Date: ????
-  Changes:
+  Graphics:
+    - Reinstated orbit images files in case people find them helpful.
+    - Compressed the image files.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.12
 Date: 2025-01-03
