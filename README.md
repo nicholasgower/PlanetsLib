@@ -4,7 +4,7 @@
 
 Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-We will try to avoid breaking changes. When breaking changes need to be made to features used by live mods, the major version of Planetslib will be bumped.
+We try to avoid breaking changes. If breaking changes occur, the major version of Planetslib will be bumped (unless the feature is unused.)
 
 ## Credits
 
@@ -15,15 +15,13 @@ Contributors:
 * [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
 * [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 
-*Note from thesixthroc*: I would like help maintaining this mod. Please check on Discord if you'd like to help.
-
 ## API Reference
 
 ### Planet helpers
 
 * `PlanetsLib:extend(config)` - A wrapper for data:extend that only accepts `planet` and `space-location` definitions. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
   * `orbit` - Object containing orbital parameters:
-    * `parent` - Object containing `name` and `type` fields, corresponding to a parent at `data.raw\[type]\[name]`.
+    * `parent` - Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. The regular planets have `type = "space-location"` and `name = "star"`.
     * `distance` - Number: orbital distance from parent
     * `orientation` - Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
     * `sprite` - Object: Sprite for the orbit, centered on its parent.
