@@ -32,7 +32,7 @@ Contributors:
     * Further notes on `PlanetsLib:extend`:
         * Should not be called in `data-final-fixes`.
         * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
-* `PlanetsLib:update(config)` — For updating a planet or space location. Like `PlanetsLib:extend`, it can accept the field `orbit`, which will cause the `orbit`, `distance` and `orientation` fields of the prototype to be updated. Should not be called in `data-final-fixes`.
+* `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
 * `PlanetsLib:borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.
 * `PlanetsLib:set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 
