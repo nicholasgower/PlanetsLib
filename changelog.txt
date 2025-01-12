@@ -1,11 +1,13 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.15
 Date: ????
-  Changes:
+  Info:
+    - Changelog fix.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.14
 Date: 2025-01-12
-  Changes:
+  Features:
+    - Support for all combinations of `starmap_icon`, `starmap_icons` and `sprite_only`. Previously, if `sprite_only` was true, `starmap_icons` was never read and it was impossible to hide the sprite by setting both to nil.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.13
 Date: 2025-01-10
