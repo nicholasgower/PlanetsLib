@@ -30,7 +30,7 @@ Contributors:
     * Notes:
         * Can accept a single config object or an array of configs
         * Returns array of created planet prototypes
-        * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) for a usage example.
+        * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
 * `PlanetsLib:borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.
 * `PlanetsLib:set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 
