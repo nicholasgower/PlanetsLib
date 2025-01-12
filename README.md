@@ -10,8 +10,8 @@ We try to avoid breaking changes. In the unlikely event breaking changes occur, 
 
 Contributors:
 
-* [Tserup](https://mods.factorio.com/user/Tserup) (art)
 * [thesixthroc](https://mods.factorio.com/user/thesixthroc)
+* [Tserup](https://mods.factorio.com/user/Tserup) (art)
 * [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
 * [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 
