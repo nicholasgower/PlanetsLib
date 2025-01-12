@@ -19,7 +19,7 @@ Contributors:
 
 ### Planet helpers
 
-* `PlanetsLib:extend(config)` — A wrapper for `data:extend`. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
+* `PlanetsLib:extend(config)` — A wrapper/replacement for `data:extend`. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
     * `orbit` — Object containing orbital parameters:
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
@@ -30,8 +30,9 @@ Contributors:
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields
     * Further notes on `PlanetsLib:extend`:
-        * Returns an array of created planet prototypes.
+        * Should not be called in `data-final-fixes`.
         * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
+* `PlanetsLib:update(config)` — For updating a planet or space location. Like `PlanetsLib:extend`, it can accept the field `orbit`, which will cause the `orbit`, `distance` and `orientation` fields of the prototype to be updated. Should not be called in `data-final-fixes`.
 * `PlanetsLib:borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.
 * `PlanetsLib:set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 

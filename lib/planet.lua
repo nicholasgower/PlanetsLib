@@ -2,66 +2,100 @@ local orbits = require("lib.orbits")
 
 local Public = {}
 
-function Public.planet_extend(configs)
-	if not configs[1] then
-		configs = { configs }
+function Public.extend(config)
+	Public.verify_extend_fields(config)
+
+	local planet = {}
+
+	local distance, orientation = orbits.get_absolute_polar_position_from_orbit(config.orbit)
+
+	planet.distance = distance
+	planet.orientation = orientation
+
+	for k, v in pairs(config) do -- This will not include distance, orientation due to validity checks.
+		planet[k] = v
 	end
 
-	local planets = {}
-	for _, config in ipairs(configs) do
-		Public.verify_config_fields(config)
-
-		local distance, orientation = orbits.get_absolute_polar_position_from_orbit(config.orbit)
-
-		local planet = {
-			distance = distance,
-			orientation = orientation,
-		}
-
-		for k, v in pairs(config) do -- This will not include distance, orientation due to validity checks.
-			planet[k] = v
-		end
-
-		table.insert(planets, planet)
-	end
-
-	data:extend(planets)
-	return planets
+	data:extend({ planet })
 end
 
-local function is_space_location(planet)
+function Public.is_space_location(planet)
 	if not planet then
 		return false
 	end
 	return planet.type == "planet" or planet.type == "space-location"
 end
 
-function Public.verify_config_fields(config)
-	if not is_space_location(config.orbit.parent) then
+function Public.verify_extend_fields(config)
+	if not Public.is_space_location(config.orbit.parent) then
 		error(
-			"PlanetsLib:planet_extend() - 'orbit.parent' must be a space location. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+			"PlanetsLib:extend() - 'orbit.parent' must be a space location. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
 	end
 
 	if config.distance then
 		error(
-			"PlanetsLib:planet_extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+			"PlanetsLib:extend() - 'distance' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
 	end
 	if config.orientation then
 		error(
-			"PlanetsLib:planet_extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+			"PlanetsLib:extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
 	end
 	if not config.orbit then
 		error(
-			"PlanetsLib:planet_extend() - 'orbit' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+			"PlanetsLib:extend() - 'orbit' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
 	end
 	if not config.orbit.parent then
 		error(
-			"PlanetsLib:planet_extend() - 'orbit.parent' field is required with an object containing 'type' and 'name' fields. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+			"PlanetsLib:extend() - 'orbit.parent' field is required with an object containing 'type' and 'name' fields. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
+	end
+end
+
+function Public.update(config)
+	Public.verify_update_fields(config)
+
+	for k, v in pairs(config) do
+		data.raw[config.type][config.name][k] = v
+
+		if k == "orbit" then
+			local distance, orientation = orbits.get_absolute_polar_position_from_orbit(v)
+
+			data.raw[config.type][config.name].distance = distance
+			data.raw[config.type][config.name].orientation = orientation
+		end
+	end
+end
+
+function Public.verify_update_fields(config)
+	if not Public.is_space_location(config) then
+		error(
+			"PlanetsLib:update() - type='planet' or type='space-location' is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+
+	if config.orbit and not Public.is_space_location(config.orbit.parent) then
+		error(
+			"PlanetsLib:update() - 'orbit.parent' must be a space location. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+
+	if config.distance then
+		error(
+			"PlanetsLib:update() - update 'orbit' instead of 'distance'. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+	if config.orientation then
+		error(
+			"PlanetsLib:update() - update 'orbit' instead of 'orientation'. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+
+	if not data.raw[config.type][config.name] then
+		error("PlanetsLib:update() - " .. config.type .. " not found: " .. config.name)
 	end
 end
 
@@ -69,11 +103,11 @@ end
 --- Does not overwrite existing music for target_planet.
 function Public.borrow_music(source_planet, target_planet)
 	assert(
-		is_space_location(source_planet),
+		Public.is_space_location(source_planet),
 		"PlanetsLib.borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype."
 	)
 	assert(
-		is_space_location(target_planet),
+		Public.is_space_location(target_planet),
 		"PlanetsLib.borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype."
 	)
 

@@ -1,13 +1,29 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
 
-function PlanetsLib:extend(configs)
-	local planets = planet.planet_extend(configs)
+function PlanetsLib:extend(configOrConfigs)
+	local configs = util.table.deepcopy(configOrConfigs)
 
-	data:extend(planets)
-	return planets
+	if not configs[1] then
+		configs = { configs }
+	end
+
+	for _, config in ipairs(configs) do
+		planet.extend(config)
+	end
 end
--- PlanetsLib.planet_extend = planet.planet_extend
+
+function PlanetsLib:update(configOrConfigs)
+	local configs = util.table.deepcopy(configOrConfigs)
+
+	if not configs[1] then
+		configs = { configs }
+	end
+
+	for _, config in ipairs(configs) do
+		planet.update(config)
+	end
+end
 
 PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_planet_cargo_drops
 PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops
