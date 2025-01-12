@@ -1,7 +1,19 @@
+local lib=require("lib.lib")
+local ps = require("lib.planet-str")
 require("prototypes.override-final.starmap")
 
-for _, p in pairs(data.raw.planet) do
 local planets=data.raw.planet
+
+--Set planet string for every planet based on planet name.
+for _, planet in pairs(planets) do
+	if planet["surface_properties"]["planet-str"] == nil then --Other mods can override planet strings, this is a last-resort planet str generator.
+		local truncated_name=string.sub(planet.name, 1, 8) --Planet strings can only be 8 characters or less.
+		ps.set_planet_str(planet,truncated_name)
+	end
+    
+end
+
+for _, p in pairs(planets) do
 	if p.sprite_only then
 		planets[p.name] = nil
 	end
