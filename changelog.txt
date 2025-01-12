@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.16
-Date: ????
+Date: 2025-01-12
   Changes:
     - New API PlanetsLib:update to update existing planets or space location prototypes. Passing an `orbit` field will also update the `distance` and `orientation` fields of the prototype.
 ---------------------------------------------------------------------------------------------------
