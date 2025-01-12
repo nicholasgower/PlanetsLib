@@ -1,8 +1,9 @@
 require("prototypes.override-final.starmap")
 
 for _, p in pairs(data.raw.planet) do
+local planets=data.raw.planet
 	if p.sprite_only then
-		data.raw.planet[p.name] = nil
+		planets[p.name] = nil
 	end
 end
 for _, p in pairs(data.raw["space-location"]) do
@@ -14,7 +15,7 @@ end
 local gas_list = { "oxygen", "nitrogen", "carbon-dioxide", "argon" }
 local enforce_percentage = settings.startup["PlanetsLib-enforce-gas-percentage"].value --Whether code should assert that combined gas contents add up to less than 100%.
 
-for _, p in pairs(data.raw.planet) do
+for _, p in pairs(planets) do
 	if p.surface_properties and enforce_percentage then
 		local gas_content = 0
 		for _, gas in pairs(gas_list) do
