@@ -19,16 +19,16 @@ Contributors:
 
 ### Planet helpers
 
-* `PlanetsLib:extend(config)` — A wrapper for data:extend that only accepts `planet` and `space-location` definitions. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
-    * `type` — `planet` or `space-location`
+* `PlanetsLib:extend(config)` — A wrapper for `data:extend`. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
+    * `type` — `"planet"` or `"space-location"`
     * `orbit` — Object containing orbital parameters:
-        * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. The regular planets have `type = "space-location"` and `name = "star"`.
+        * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
         * `distance` — Number: orbital distance from parent
         * `orientation` — Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
         * `sprite` — Object: Sprite for the orbit, centered on its parent
-    * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by a sprite on the starmap (`starmap_icon`, `starmap_icon_size` and `magnitude` are required fields on the prototype in this case). This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
+    * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by a sprite on the starmap (unless neither `starmap_icon` nor `starmap_icons` are defined, in which case nothing will show). This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields
-    * Notes:
+    * Further notes on `PlanetsLib:extend`:
         * PlanetsLib:extend can accept a single config object or an array of configs. It returns array of created planet prototypes.
         * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
 * `PlanetsLib:borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.

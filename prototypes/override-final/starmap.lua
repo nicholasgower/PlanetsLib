@@ -6,16 +6,28 @@ local starmap_layers = {}
 -- Orbits help us construct the system. In data-final-fixes, it's now better to rely on the game variables (distance and orientation) for compatibility with other mods.
 
 function Public.update_starmap_layers(planet)
-	if planet.sprite_only then
+	if planet.sprite_only and (planet.starmap_icon or planet.starmap_icons) then
+		local magnitude = planet.magnitude or 1
+
 		local x = planet.distance * 32 * math.sin(planet.orientation * 2 * math.pi)
 		local y = -planet.distance * 32 * math.cos(planet.orientation * 2 * math.pi)
 
-		table.insert(starmap_layers, {
-			filename = planet.starmap_icon,
-			size = planet.starmap_icon_size,
-			scale = (planet.magnitude * 32) / planet.starmap_icon_size,
-			shift = { x, y },
-		})
+		if planet.starmap_icons then
+			for _, sprite in pairs(planet.starmap_icons) do
+				local scaled_sprite = util.table.deepcopy(sprite)
+				scaled_sprite.scale = scaled_sprite.scale * (magnitude * 32)
+
+				Public.update_starmap_from_sprite(sprite, { x = x, y = y })
+			end
+		elseif planet.starmap_icon then
+			local icon_size = planet.starmap_icon_size or 64
+
+			Public.update_starmap_from_sprite({
+				filename = planet.starmap_icon,
+				size = icon_size,
+				scale = (magnitude * 32) / icon_size,
+			}, { x = x, y = y })
+		end
 	end
 
 	if planet.orbit and planet.orbit.sprite then
@@ -42,10 +54,10 @@ function Public.update_starmap_layers(planet)
 
 		if orbit.sprite.layers then
 			for _, layer in pairs(orbit.sprite.layers) do
-				Public.update_starmap_from_sprite(layer, parent_x, parent_y)
+				Public.update_starmap_from_sprite(layer, { x = parent_x, y = parent_y })
 			end
 		else
-			Public.update_starmap_from_sprite(orbit.sprite, parent_x, parent_y)
+			Public.update_starmap_from_sprite(orbit.sprite, { x = parent_x, y = parent_y })
 		end
 
 		return { should_disable_default_orbit_sprite = true }
@@ -54,12 +66,37 @@ function Public.update_starmap_layers(planet)
 	return { should_disable_default_orbit_sprite = false }
 end
 
-function Public.update_starmap_from_sprite(sprite, dx, dy)
+function Public.update_starmap_from_sprite(sprite, extra_displacement)
 	local sprite_copy = util.table.deepcopy(sprite)
+
+	local shift_x = 0
+	local shift_y = 0
+
+	if sprite_copy.shift then
+		if sprite_copy.shift.x then
+			shift_x = shift_x + sprite_copy.shift.x
+			shift_y = shift_y + sprite_copy.shift.y
+		else
+			shift_x = shift_x + sprite_copy.shift[1]
+			shift_y = shift_y + sprite_copy.shift[2]
+		end
+	end
+
+	if extra_displacement then
+		if extra_displacement.x and extra_displacement.y then
+			shift_x = shift_x + extra_displacement.x
+			shift_y = shift_y + extra_displacement.y
+		else
+			shift_x = shift_x + extra_displacement[1]
+			shift_y = shift_y + extra_displacement[2]
+		end
+	end
+
 	sprite_copy.shift = {
-		(sprite_copy.shift and sprite_copy.shift[1] or 0) + dx,
-		(sprite_copy.shift and sprite_copy.shift[2] or 0) + dy,
+		shift_x,
+		shift_y,
 	}
+
 	table.insert(starmap_layers, sprite_copy)
 end
 
