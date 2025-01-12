@@ -10,14 +10,18 @@ data:extend{
       --If two planets share the first 8 characters, this can cause issues, but that is unlikely to happen.
         type="surface-property",
         name="planet-str",
-        hidden=true,
+        hidden=true, --This line does nothing. The locale is what determines if surface properties are hidden or not.
+        hidden_in_factoriopedia=true,
         default_value=0, --Strings can't be stored in surface properties, so we need a script to convert strings into doubles.
+        order="zz"
     },
     {
       type="surface-property",
         name="parent-body",
-        hidden=true,
+        hidden=true, --This line does nothing. The locale is what determines if surface properties are hidden or not.
+        hidden_in_factoriopedia=true,
         default_value=0, --Strings can't be stored in surface properties, so we need a script to convert strings into doubles.
+        order="zzz"
     }
 }
 
