@@ -2,6 +2,7 @@
 Version: 1.1.17
 Date: ????
   Changes:
+    - Better error handling for `PlanetsLib:update`.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.16
 Date: 2025-01-12

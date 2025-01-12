@@ -71,7 +71,13 @@ function Public.update(config)
 end
 
 function Public.verify_update_fields(config)
-	if not Public.is_space_location(config) then
+	if not config.name then
+		error(
+			"PlanetsLib:update() - 'name' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+
+	if (not config.type) or (not Public.is_space_location(config)) then
 		error(
 			"PlanetsLib:update() - type='planet' or type='space-location' is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
