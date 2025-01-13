@@ -1,5 +1,6 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
+local ps = require("lib.planet-str")
 
 function PlanetsLib:extend(configOrConfigs)
 	local configs = util.table.deepcopy(configOrConfigs)
@@ -30,6 +31,22 @@ PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_dr
 PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 
 PlanetsLib.borrow_music = planet.borrow_music
+
+PlanetsLib.planet_str=ps
+
+function PlanetsLib.exact_value(property,value) -- Returns a surface condition locking the acceptable range of values to exactly one.
+	return{
+        property = property,
+        min = value,
+        max = value,
+    }
+end
+
+function PlanetsLib.restrict_to_surface(planet) -- Returns a surface condition restricting prototype to the provided planet.
+	return PlanetsLib.exact_value("planet-str",PlanetsLib.planet_str.get_planet_str_double(planet))
+end
+
+
 
 --- This function sets `default_import_location` based on an item name and planet.
 --- `default_import_location` is used by the space platform GUI to
