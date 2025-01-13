@@ -46,4 +46,12 @@ function Public.get_absolute_polar_position_from_orbit(orbit)
 	return distance, orientation
 end
 
+function Public.get_rectangular_position(distance, orientation)
+	if distance == 0 then
+		return 0, 0
+	else
+		return distance * math.sin(orientation * 2 * math.pi), -distance * math.cos(orientation * 2 * math.pi)
+	end
+end
+
 return Public
