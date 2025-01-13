@@ -2,7 +2,9 @@
 
 ## Significant
 
-- @danielmartin0: Add screenshots of planets other than Cerys
-- @danielmartin0: Support mods moving existing planets by updating their orbit.
+- @danielmartin0: Settings for the rotation of planets. By default, they should probably face their parent body. 'Off' should display the image exactly. They should also be able to be rotated to face another arbitrary body.
+- @danielmartin0: Support for 'starmap_icons' field.
 
-## Minor detail
+## Minor
+
+- Provide more screenshots for the mod portal.

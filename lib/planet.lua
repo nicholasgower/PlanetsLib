@@ -35,6 +35,7 @@ function Public.is_space_location(planet)
 	return planet.type == "planet" or planet.type == "space-location"
 end
 
+-- TODO: Add checks to ensure the structure of orbit is correct.
 function Public.verify_extend_fields(config)
 	if not Public.is_space_location(config.orbit.parent) then
 		error(
@@ -79,6 +80,7 @@ function Public.update(config)
 	end
 end
 
+-- TODO: Add checks to ensure the structure of orbit is correct.
 function Public.verify_update_fields(config)
 	if not config.name then
 		error(
