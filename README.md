@@ -47,7 +47,6 @@ The library provides automatic functionality to restrict cargo drops on your pla
 
 Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
 
-### Support for moons
 
 * `PlanetsLib.technology_icons_moon` — Standardized icon for moon discovery technology.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
