@@ -63,5 +63,6 @@ Documentation pending.
 
 ## Further notes for contributors
 
-* Feel free to make use of the file `todo.md`.
+* TEST YOUR CHANGES. I would like to make releases with minimal testing of new features. You will break a lot of games if you don't do this.
 * I'm currently publishing releases of this mod manually. In your pull requests, I ask you list your changes in changelog.txt to be included in the next release. Please also update README.md adding sections for your new functionality (even with only 'Documentation pending.') and adding yourself to the contributors list above.
+* Feel free to make use of the file `todo.md`.
