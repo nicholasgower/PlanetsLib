@@ -157,6 +157,8 @@ for _, location in pairs(ordered_locations) do
 	end
 end
 
-data.raw["utility-sprites"]["default"].starmap_star = { layers = starmap_layers }
+if #starmap_layers > 0 then
+	data.raw["utility-sprites"]["default"].starmap_star = { layers = starmap_layers }
+end
 
 return Public

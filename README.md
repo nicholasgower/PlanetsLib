@@ -121,7 +121,6 @@ The following conditions are hidden but always enabled.
 
 ## Further notes for contributors
 
-* Please TEST YOUR CHANGES. I would like release versions with minimal testing of new features on my behalf. You might break a lot of games if you don't do this.
-* I'm currently publishing releases of this mod manually. In your pull requests, I ask you list your changes in changelog.txt to be included in the next release. Please also update README.md adding sections for your new functionality (even with only 'Documentation pending.') and adding yourself to the contributors list above.
-* Feel free to make use of the file `todo.md`.
-
+* Please TEST YOUR CHANGES. thesixthroc would like to release versions with minimal testing of new features on their part. You might break a lot of games if you don't do this.
+* We're currently publishing releases of this mod manually. In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending.') and add yourself to the contributors list.
+* Feel free to use the file `todo.md`.
