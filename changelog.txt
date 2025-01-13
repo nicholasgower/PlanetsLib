@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.20
-Date: ????
+Date: 2025-01-13
   Features:
     - The drawn starmap is now layered by a topological sort on the orbit structure.
     - Support for missing 'orientation' fields when the 'distance' is 0.
