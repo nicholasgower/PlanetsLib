@@ -2,7 +2,7 @@
 local lib={}
 
 --Encodes string to double
-function lib.encode_string(str) 
+function lib.encode_string_to_double(str) 
     assert(#str <= 8, "String length exceeds 8 characters; cannot encode.")
     
     local result = 0
@@ -18,7 +18,7 @@ function lib.encode_string(str)
 end
 
 -- Decodes a double back into a string
-function lib.decode_string(num)
+function lib.decode_double_to_string(num)
     local result = {}
     local max_bytes = 8 -- Decode up to 8 bytes
     
