@@ -1,6 +1,5 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
-local ps = require("lib.planet-str")
 
 function PlanetsLib:extend(configOrConfigs)
 	local configs = util.table.deepcopy(configOrConfigs)
@@ -32,7 +31,7 @@ PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 
 PlanetsLib.borrow_music = planet.borrow_music
 
-PlanetsLib.planet_str=ps
+PlanetsLib.planet_str=require("lib.planet-str")
 
 function PlanetsLib.exact_value(property,value) -- Returns a surface condition locking the acceptable range of values to exactly one.
 	return{

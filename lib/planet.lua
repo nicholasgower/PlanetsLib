@@ -19,7 +19,6 @@ function Public.extend(config)
 	
 	if planet.orbit.parent then --Adds encoded parent body to surface properties.
 		if planet.orbit.parent.type == "planet" then
-			planet["surface_properties"]["parent-body"]=1
 			if data.raw["planet"][config.orbit.parent.name] then
 				planet["surface_properties"]["parent-body"]=data.raw["planet"][config.orbit.parent.name]["surface_properties"]["planet-str"]
 			end
