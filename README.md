@@ -61,6 +61,7 @@ Players will be unable to drop cargo (excluding players and construction robots)
 
 Documentation pending.
 
-## Final notes
+## Further notes for contributors
 
-* Modders should feel free to make use of the file `todo.md`.
+* Feel free to make use of the file `todo.md`.
+* I'm currently publishing releases of this mod manually. In your pull requests, I ask you list your changes in changelog.txt to be included in the next release. Please also update README.md adding sections for your new functionality (even with only 'Documentation pending.') and adding yourself to the contributors list above.
