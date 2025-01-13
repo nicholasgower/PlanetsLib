@@ -59,7 +59,7 @@ for _, planet in pairs(planets) do
 		assert(
 			gas_content <= 100,
 			"Combined gas contents of planet "
-				.. p.name
+				.. planet.name
 				.. ' exceed 100%. To override this assertion, add \'data.raw["bool-setting"]["PlanetsLib-enforce-gas-percentage"].forced_value = false\' to settings-updates.lua.'
 		)
 	end
