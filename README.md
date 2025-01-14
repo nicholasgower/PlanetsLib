@@ -53,12 +53,12 @@ The library provides automatic functionality to restrict cargo drops on your pla
 
 Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
 
-## Support for moons
+### Support for moons
 
 * `PlanetsLib.technology_icons_moon` — Standardized icon for moon discovery technology.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
 
-### Description templates
+#### Description templates
 
 PlanetsLib provides a set of localisation templates for moons and planets to provide standardization between mods on how the relationships between planets and moons are described.
 
@@ -70,21 +70,21 @@ planet-description-two-moons=__1__\nOrbited by __2__ and __3__.
 planet-description-three-moons=__1__\nOrbited by __2__, __3__, and __4__.
 ```
 
-### Description examples
+##### Examples
 ```
 data.raw["planet"]["muluna"].localised_description={"planetslib-templates.moon-description",{"space-location-description.muluna"},"[planet=nauvis]"}
 data.raw["planet"]["nauvis"].localised_description={"planetslib-templates.planet-description-one-moon",{"space-location-description.nauvis"},"[planet=muluna]"}
 data.raw["planet"]["nauvis"].localised_description={"planetslib-templates.planet-description-two-moons",{"space-location-description.nauvis"},"[planet=muluna]","[planet=lignumis]"}
 ```
 
-## Surface conditions
+### Surface conditions
 
-### Surface condition helpers
+#### Surface condition helpers
 
 * `PlanetsLib.restrict_to_surface(planet)` : Returns surface condition restricting an entity to the provided planet(See `planet-str`).
 * `PlanetsLib.exact_value(property,value)` : Returns surface condition that requires the planet's `property` equal `value`.
 
-#### Example
+##### Example
 ```
 local muluna = data.raw["planet"]["muluna"]
 anorthite_crushing.surface_conditions ={
@@ -93,7 +93,7 @@ anorthite_crushing.surface_conditions ={
     PlanetsLib.restrict_to_surface(muluna), -- Explicitly locks recipe to Muluna. This condition is hidden in-game.
 }
 ```
-### New conditions
+#### New conditions
 
 PlanetsLib includes a wide variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua:
 
@@ -101,7 +101,7 @@ PlanetsLib includes a wide variety of surface conditions, all of which are eithe
 
 Example: `data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
 
-### New conditions with quantity format
+##### New conditions with quantity format
 * `temperature`: __n__ K
 * Atmospheric Gases
   * `oxygen`: __n__%
@@ -109,7 +109,7 @@ Example: `data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = tr
   * `carbon-dioxide`: __n__%
   * `argon`: __n__%
 
-### Hidden conditions
+##### Hidden conditions
 
 The following conditions are hidden but always enabled. 
 
