@@ -116,7 +116,7 @@ The following conditions are hidden but always enabled.
   * `PlanetsLib.planet_str.set_planet_str(planet)` : Sets the planet string of a planet. This is done automatically for all planets, but these default strings can be overidden. If two planets share the first 8 character names, they will have the same planet string, so one of them should be manually changed to a different string if the modder doesn't want conditions to apply to both planets.
   * `PlanetsLib.planet_str.get_planet_str(planet) -> str` : Returns the planet string of a planet, decoded from double to string. Not used very often in practice.
   * `PlanetsLib.planet_str.get_planet_str_double(planet)` : Returns the planet string of a planet as a double. If the planet string has not been set yet, it will return the planet string that the planet will have by the end of data-final-fixes.lua. This function is used internally when setting the surface conditions of a recipe or entity.
-* `parent-body` - A planet-str referencing the planet's parent planet. Used by moons to indicate their parent body. Automatically defined when a body's parent is defined as a planet.
+* `parent-planet-str` - A planet-str referencing the planet's parent planet. Used by moons to indicate their parent body. Automatically defined when a body's parent is defined as a planet.
 
 ## Further notes for contributors
 

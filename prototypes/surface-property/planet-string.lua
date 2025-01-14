@@ -13,15 +13,15 @@ data:extend{
         hidden=true, --This line does nothing. The locale is what determines if surface properties are hidden or not.
         hidden_in_factoriopedia=true,
         default_value=0, --Strings can't be stored in surface properties, so we need a script to convert strings into doubles.
-        order="zz"
+        order="zzz"
     },
     {
       type="surface-property",
-        name="parent-body",
+        name="parent-planet-str",
         hidden=true, --This line does nothing. The locale is what determines if surface properties are hidden or not.
         hidden_in_factoriopedia=true,
         default_value=0, --Strings can't be stored in surface properties, so we need a script to convert strings into doubles.
-        order="zzz"
+        order="zzzz"
     }
 }
 
