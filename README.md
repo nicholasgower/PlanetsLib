@@ -81,8 +81,7 @@ data.raw["planet"]["nauvis"].localised_description={"planetslib-templates.planet
 
 #### Surface condition helpers
 
-* `PlanetsLib.restrict_to_surface(planet)` : Returns surface condition restricting an entity to the provided planet(See `planet-str`).
-* `PlanetsLib.exact_value(property,value)` : Returns surface condition that requires the planet's `property` equal `value`.
+* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the provided planet(See `planet-str`).
 
 ##### Example
 ```

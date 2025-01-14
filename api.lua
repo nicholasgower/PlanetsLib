@@ -1,5 +1,6 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
+local surface_conditions = require("lib.surface_conditions")
 
 function PlanetsLib:extend(configOrConfigs)
 	local configs = util.table.deepcopy(configOrConfigs)
@@ -44,6 +45,7 @@ end
 function PlanetsLib.restrict_to_surface(planet) -- Returns a surface condition restricting prototype to the provided planet.
 	return PlanetsLib.exact_value("planet-str",PlanetsLib.planet_str.get_planet_str_double(planet))
 end
+PlanetsLib.surface_conditions=surface_conditions
 
 
 
