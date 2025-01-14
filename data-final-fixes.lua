@@ -1,6 +1,5 @@
 local lib=require("lib.lib")
 local ps = require("lib.planet-str")
-require("prototypes.override-final.starmap")
 
 local planets=data.raw.planet
 
