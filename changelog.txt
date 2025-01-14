@@ -6,8 +6,9 @@ Date: ????
     - PlanetsLib.restrict_to_surface(planet):  Returns a surface condition restricting a prototype to the provided planet.
     - Added hidden surface conditions "planet-str" and "parent-body". Each planet-str is by default based on the planet's internal name, and is expected to be unique. Moons have their parent body value set to their parent body's planet-str.
     - Added functions to set and get planet-str values.
-  Documentation:
+  Info:
     - Added documentation for enabling optional surface conditions, in addition to everything else in this update.
+    - Fixed incorrect API documentation for borrow_music and set_default_import_location.
   Locale:
     - Added set of description templates to standardize how the relationships between planets are moons are described.
 
