@@ -4,7 +4,7 @@
 
 Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
 
-We try to avoid breaking changes. In the unlikely event breaking changes occur, the major version of Planetslib will be bumped (unless the feature is unused.)
+We try to avoid breaking changes. In the event breaking changes must occur, the major version of Planetslib will be bumped (unless the feature is unused.)
 
 ## Credits
 
@@ -71,12 +71,10 @@ Documentation pending.
 
 ### Surface conditions
 
-PlanetsLib includes a wide variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua:
+PlanetsLib includes a wide variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua (using 'oxygen' as an example):
 
-`data.raw["bool-setting"]["PlanetsLib-enable-[PROPERTY]"].forced_value = true`
-
-Example: `data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
+`data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
 
 #### Per-planet surface conditions
 
-* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the given planet(See `planet-str`). Accepts both planet names and planet objects.
+* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the given planet. Accepts both planet names and planet objects. This surface condition is almost completely hidden in the UI with the exception of messages like "X can't be crafted on this surface. The  is too low."
