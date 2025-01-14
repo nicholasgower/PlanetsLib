@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.22
-Date: ????
+Date: 2025-01-14
   Features:
     - PlanetsLib.exact_value(property,value):  Returns a surface condition locking the acceptable range of values to one.
     - PlanetsLib.restrict_to_surface(planet):  Returns a surface condition restricting a prototype to the provided planet.
