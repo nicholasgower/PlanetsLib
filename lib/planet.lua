@@ -37,6 +37,16 @@ end
 
 -- TODO: Add checks to ensure the structure of orbit is correct.
 function Public.verify_extend_fields(config)
+	if not Public.is_space_location(config) then
+		error(
+			"PlanetsLib:extend() - extend only takes a planet or space-location prototype. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
+	if not config.orbit then
+		error(
+			"PlanetsLib:extend() - 'orbit' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
+		)
+	end
 	if not Public.is_space_location(config.orbit.parent) then
 		error(
 			"PlanetsLib:extend() - 'orbit.parent' must be a space location. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
@@ -51,11 +61,6 @@ function Public.verify_extend_fields(config)
 	if config.orientation then
 		error(
 			"PlanetsLib:extend() - 'orientation' should be specified in the 'orbit' field. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
-		)
-	end
-	if not config.orbit then
-		error(
-			"PlanetsLib:extend() - 'orbit' field is required. See the PlanetsLib documentation at https://mods.factorio.com/mod/PlanetsLib."
 		)
 	end
 	if not config.orbit.parent then
