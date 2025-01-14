@@ -1,15 +1,15 @@
 local lib=require("lib.lib")
 
-local ps={}
+local Public={}
 
-function ps.set_planet_str(planet,planet_str) --Sets planet-str surface property of planet, encoding 8-byte/8-character string into double.
+function Public.set_planet_str(planet,planet_str) --Sets planet-str surface property of planet, encoding 8-byte/8-character string into double.
     assert(#planet_str <= 8, "Superplanet length exceeds 8 characters; cannot encode.")
     assert(planet["surface_properties"],tostring(planet) .. " has no surface properties")
     planet["surface_properties"]["planet-str"]=lib.encode_string_to_double(planet_str)
 
 end
 
-function ps.get_planet_str(planet) --Gets planet-str surface property of planet, decoding 8-byte double into string.
+function Public.get_planet_str(planet) --Gets planet-str surface property of planet, decoding 8-byte double into string.
     if planet["surface_properties"]["planet-str"] ~= nil then --If planet_str is defined, then return existing str 
         return lib.decode_double_to_string(planet["surface_properties"]["planet-str"])
     else 
@@ -18,7 +18,7 @@ function ps.get_planet_str(planet) --Gets planet-str surface property of planet,
     
 end
 
-function ps.get_planet_str_double(planet) --Gets planet-str surface property of planet, returning raw value.
+function Public.get_planet_str_double(planet) --Gets planet-str surface property of planet, returning raw value.
     if planet["surface_properties"]["planet-str"] ~= nil then --If planet_str is defined, then return existing str 
         return planet["surface_properties"]["planet-str"]
     else 
@@ -28,4 +28,4 @@ function ps.get_planet_str_double(planet) --Gets planet-str surface property of 
     
 end
 
-return ps
+return Public
