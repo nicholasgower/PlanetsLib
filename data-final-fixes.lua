@@ -1,15 +1,14 @@
-local lib=require("lib.lib")
+local lib = require("lib.lib")
 local ps = require("lib.planet-str")
 
-local planets=data.raw.planet
+local planets = data.raw.planet
 
 --Set planet string for every planet based on planet name.
 for _, planet in pairs(planets) do
-	if planet["surface_properties"]["planet-str"] == nil then --Other mods can override planet strings, this is a last-resort planet string generator.
-		local truncated_name=string.sub(planet.name, 1, 8) --Planet strings can only be 8 characters or less.
-		ps.set_planet_str(planet,truncated_name)
+	if planet["surface_properties"] and planet["surface_properties"]["planet-str"] == nil then --Other mods can override planet strings, this is a last-resort planet string generator.
+		local truncated_name = string.sub(planet.name, 1, 8) --Planet strings can only be 8 characters or less.
+		ps.set_planet_str(planet, truncated_name)
 	end
-    
 end
 
 for _, type in pairs({ "space-location", "planet" }) do

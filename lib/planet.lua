@@ -16,11 +16,13 @@ function Public.extend(config)
 	for k, v in pairs(config) do -- This will not include distance, orientation due to validity checks.
 		planet[k] = v
 	end
-	
+
 	if planet.orbit.parent then --Adds encoded parent body to surface properties.
 		if planet.orbit.parent.type == "planet" then
 			if data.raw["planet"][config.orbit.parent.name] then
-				planet["surface_properties"]["parent-planet-str"]=data.raw["planet"][config.orbit.parent.name]["surface_properties"]["planet-str"]
+				planet["surface_properties"] = planet["surface_properties"] or {}
+				planet["surface_properties"]["parent-planet-str"] =
+					data.raw["planet"][config.orbit.parent.name]["surface_properties"]["planet-str"]
 			end
 		end
 	end
