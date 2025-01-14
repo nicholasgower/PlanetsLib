@@ -2,14 +2,22 @@ local lib=require("lib.lib")
 
 local Public={}
 
-function Public.set_planet_str(planet,planet_str) --Sets planet-str surface property of planet, encoding 8-byte/8-character string into double.
+function Public.set_planet_str(planet,planet_str) --Sets planet-str surface property of planet, encoding 8-byte/8-character string into double. Accepts both planet names(If planet in data.raw) and planet objects.
+    if type(planet) == "string" then
+        assert(data.raw["planet"][planet],"Planet \'"..planet.." doesn't exist.")
+        planet = data.raw["planet"][planet]
+    end
     assert(#planet_str <= 8, "Superplanet length exceeds 8 characters; cannot encode.")
     assert(planet["surface_properties"],tostring(planet) .. " has no surface properties")
     planet["surface_properties"]["planet-str"]=lib.encode_string_to_double(planet_str)
 
 end
 
-function Public.get_planet_str(planet) --Gets planet-str surface property of planet, decoding 8-byte double into string.
+function Public.get_planet_str(planet) --Gets planet-str surface property of planet, decoding 8-byte double into string. Accepts both planet names(If planet in data.raw) and planet objects.
+    if type(planet) == "string" then
+        assert(data.raw["planet"][planet],"Planet \'"..planet.." doesn't exist.")
+        planet = data.raw["planet"][planet]
+    end
     if planet["surface_properties"]["planet-str"] ~= nil then --If planet_str is defined, then return existing str 
         return lib.decode_double_to_string(planet["surface_properties"]["planet-str"])
     else 
@@ -18,8 +26,12 @@ function Public.get_planet_str(planet) --Gets planet-str surface property of pla
     
 end
 
-function Public.get_planet_str_double(planet) --Gets planet-str surface property of planet, returning raw value.
-    if planet["surface_properties"]["planet-str"] ~= nil then --If planet_str is defined, then return existing str 
+function Public.get_planet_str_double(planet) --Gets planet-str surface property of planet, returning raw value. Accepts both planet names(If planet in data.raw) and planet objects.
+    if type(planet) == "string" then
+        assert(data.raw["planet"][planet],"Planet \'"..planet.." doesn't exist.")
+        planet = data.raw["planet"][planet]
+    end
+    if planet["surface_properties"] and planet["surface_properties"]["planet-str"] ~= nil then --If planet_str is defined, then return existing str 
         return planet["surface_properties"]["planet-str"]
     else 
         return lib.encode_string_to_double(planet.name)
