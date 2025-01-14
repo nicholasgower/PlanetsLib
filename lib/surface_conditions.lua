@@ -9,7 +9,7 @@ end
 local Public = {}
 
 function Public.restrict_to_surface(planet) -- Returns a surface condition restricting prototype to the provided planet.
-	return PlanetsLib.exact_value("planet-str",PlanetsLib.planet_str.get_planet_str_double(planet))
+	return exact_value("planet-str",PlanetsLib.planet_str.get_planet_str_double(planet))
 end
 
 return Public
