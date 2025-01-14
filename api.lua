@@ -1,5 +1,7 @@
 local technology = require("lib.technology")
 local planet = require("lib.planet")
+local planet_str = require("lib.planet-str")
+local surface_conditions = require("lib.surface_conditions")
 
 function PlanetsLib:extend(configOrConfigs)
 	local configs = util.table.deepcopy(configOrConfigs)
@@ -30,6 +32,12 @@ PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_dr
 PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 
 PlanetsLib.borrow_music = planet.borrow_music
+
+PlanetsLib.planet_str=planet_str
+
+PlanetsLib.surface_conditions=surface_conditions
+
+
 
 --- This function sets `default_import_location` based on an item name and planet.
 --- `default_import_location` is used by the space platform GUI to

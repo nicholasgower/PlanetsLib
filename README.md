@@ -14,6 +14,7 @@ Contributors:
 * [Tserup](https://mods.factorio.com/user/Tserup) (art)
 * [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
 * [notnotmelon](https://mods.factorio.com/user/notnotmelon)
+* [MeteorSwarm](https://mods.factorio.com/user/MeteorSwarm)
 
 ## API Reference
 
@@ -57,9 +58,65 @@ Players will be unable to drop cargo (excluding players and construction robots)
 * `PlanetsLib.technology_icons_moon` — Standardized icon for moon discovery technology.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
 
+#### Description templates
+
+PlanetsLib provides a set of localisation templates for moons and planets to provide standardization between mods on how the relationships between planets and moons are described.
+
+```
+[planetslib-templates] 
+moon-description=__1__\nOrbiting __2__.
+planet-description-one-moon=__1__\nOrbited by __2__.
+planet-description-two-moons=__1__\nOrbited by __2__ and __3__.
+planet-description-three-moons=__1__\nOrbited by __2__, __3__, and __4__.
+```
+
+##### Examples
+```
+data.raw["planet"]["muluna"].localised_description={"planetslib-templates.moon-description",{"space-location-description.muluna"},"[planet=nauvis]"}
+data.raw["planet"]["nauvis"].localised_description={"planetslib-templates.planet-description-one-moon",{"space-location-description.nauvis"},"[planet=muluna]"}
+data.raw["planet"]["nauvis"].localised_description={"planetslib-templates.planet-description-two-moons",{"space-location-description.nauvis"},"[planet=muluna]","[planet=lignumis]"}
+```
+
 ### Surface conditions
 
-Documentation pending.
+#### Surface condition helpers
+
+* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the given planet(See `planet-str`). Accepts both planet names and planet objects.
+
+##### Example
+```
+local muluna = data.raw["planet"]["muluna"]
+anorthite_crushing.surface_conditions ={
+    -- Add more surface conditions here
+    PlanetsLib.exact_value("oxygen",0), -- Requires exactly 0% oxygen.
+    PlanetsLib.restrict_to_surface(muluna), -- Explicitly locks recipe to Muluna. This condition is hidden in-game.
+}
+```
+#### New conditions
+
+PlanetsLib includes a wide variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua:
+
+`data.raw["bool-setting"]["PlanetsLib-enable-[PROPERTY]"].forced_value = true`
+
+Example: `data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
+
+##### New conditions with quantity format
+* `temperature`: __n__ K
+* Atmospheric Gases
+  * `oxygen`: __n__%
+  * `nitrogen`: __n__%
+  * `carbon-dioxide`: __n__%
+  * `argon`: __n__%
+
+##### Hidden conditions
+
+The following conditions are hidden but always enabled. 
+
+* `planet-str` - A string (<=8 characters) encoded as a double and stored in a planet's surface properties. Setting this from a string can be inconvenient, so the following functions are included to help modders encode strings into a planet's properties, then decode the resulting double back into a string. Every planet should have a unique planet-str to have the intended effect, but this is not required. If two in-engine planets are intended to be different surfaces on the same planet, they can be given the same planet-str. Restricting a recipe to a particular planet-str makes it possible to explicitly restrict recipes and buildings to a single planet. In most situations, mods other than PlanetsLib will not need to use these functions.
+  * `PlanetsLib.planet_str.set_planet_str(planet) <- str` : Sets the planet string of a planet. This is done automatically for all planets, but these default strings can be overidden. If two planets share the first 8 character names, they will have the same planet string, so one of them should be manually changed to a different string if the modder doesn't want conditions to apply to both planets.
+  * `PlanetsLib.planet_str.get_planet_str(planet) -> str` : Returns the planet string of a planet, decoded from double to string. Not used very often in practice.
+  * `PlanetsLib.planet_str.get_planet_str_double(planet) -> double` : Returns the planet string of a planet as a double. If the planet string has not been set yet, it will return the planet string that the planet will have by the end of data-final-fixes.lua. This function is used internally when setting the surface conditions of a recipe or entity.
+* `parent-planet-str` - A planet-str referencing the planet's parent planet. Used by moons to indicate their parent body. Automatically defined when a body's parent is defined as a planet.
 
 ## Further notes for contributors
 

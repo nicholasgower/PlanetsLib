@@ -36,7 +36,7 @@ if settings.startup["PlanetsLib-enable-nitrogen"].value == true then
 	data.raw.planet["vulcanus"].surface_properties.nitrogen = 3
 	data.raw.planet["fulgora"].surface_properties.nitrogen = 18
 	data.raw.planet["gleba"].surface_properties.nitrogen = 35
-	data.raw.planet["aquilo"].surface_properties.nitrogen = 94
+	data.raw.planet["aquilo"].surface_properties.nitrogen = 84
 end
 
 if settings.startup["PlanetsLib-enable-carbon-dioxide"].value == true then
