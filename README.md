@@ -47,17 +47,16 @@ Planet prototypes and space location prototypes can be defined using the followi
 
 The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
 
-* Define a technology with name pattern: `[planet-name]-cargo-drops`
-    * Use the provided helper functions:
+* Define a technology with name pattern: `[planet-name]-cargo-drops`.
+    * PlanetsLib detects this technology by name. Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
+    * You can make use of the provided helper functions:
         * `PlanetsLib.technology_icons_planet_cargo_drops`
         * `PlanetsLib.technology_effect_cargo_drops`
     * Don't forget to add a locale key for your new technology.
 
-Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
-
 ### Support for moons
 
-* `PlanetsLib.technology_icons_moon` — Standardized icon for moon discovery technology.
+* `PlanetsLib.technology_icons_moon` — Icon to be used in moon discovery technologies.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
 
 ### Description templates
@@ -72,7 +71,7 @@ PlanetsLib includes a wide variety of surface conditions, all of which are eithe
 
 #### Per-planet surface conditions
 
-* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the given planet. Accepts both planet names and planet objects. This surface condition is almost completely hidden in the UI with the exception of messages like "X can't be crafted on this surface. The  is too low."
+* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns a surface condition restricting an entity to the given planet. Accepts both planet names and planet objects. This surface condition is almost completely hidden in the UI with the exception of messages like "X can't be crafted on this surface. The  is too low."
 
 ### Other helper functions
 
