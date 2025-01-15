@@ -1,4 +1,7 @@
-from lib.orbit_graphic_generator import generate_circle
+from lib.orbit_graphic_generator import generate_orbit
 
-generate_circle(radius=2240, thickness=0.5, width=1, resolution=4480, output_file="orbit-aquilo.png")
-generate_circle(radius=128, thickness=1, width=1, resolution=512, output_file="orbit-muluna.png")
+#To generate orbit sprites, use the generate_orbit function in the following format:
+#generate_orbit(distance, output_file, mod_name)
+generate_orbit(10, "orbit-vulcanus.png","PlanetsLib")
+generate_orbit(1.6, "orbit-muluna.png","planet-muluna")
+
