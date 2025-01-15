@@ -45,7 +45,6 @@ Planet prototypes and space location prototypes can be defined using the followi
 
 ### Other planet helpers
 
-* `PlanetsLib.borrow_music(source_planet, target_planet)` - Clones music tracks from an existing planet to a new one.
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 
 ### Planet Cargo Drops technology
