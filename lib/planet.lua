@@ -141,7 +141,7 @@ function Public.borrow_music(source_planet, target_planet)
 		then
 			music.name = music.name .. "-" .. target_planet.name
 			music.planet = target_planet.name
-			data:extend {music}
+			data:extend({ music })
 		end
 	end
 end

@@ -31,6 +31,8 @@ PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_pla
 PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops
 PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 
+PlanetsLib.borrow_music = planet.borrow_music
+
 PlanetsLib.planet_str = planet_str
 
 PlanetsLib.surface_conditions = surface_conditions
