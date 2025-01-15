@@ -43,10 +43,6 @@ Planet prototypes and space location prototypes can be defined using the followi
         * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
 * `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
 
-### Other planet helpers
-
-* `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
-
 ### Planet Cargo Drops technology
 
 The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
@@ -64,7 +60,7 @@ Players will be unable to drop cargo (excluding players and construction robots)
 * `PlanetsLib.technology_icons_moon` — Standardized icon for moon discovery technology.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
 
-#### Description templates
+### Description templates
 
 Documentation pending.
 
@@ -77,3 +73,7 @@ PlanetsLib includes a wide variety of surface conditions, all of which are eithe
 #### Per-planet surface conditions
 
 * `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns surface condition restricting an entity to the given planet. Accepts both planet names and planet objects. This surface condition is almost completely hidden in the UI with the exception of messages like "X can't be crafted on this surface. The  is too low."
+
+### Other helper functions
+
+* `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
