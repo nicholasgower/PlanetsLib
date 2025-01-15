@@ -5,7 +5,7 @@ import math
 
 def generate_orbit(distance, output_file, mod_name):
     """Outputs an orbit sprite for a planet based on its distance, and prints a block of lua code that imports \
-        the sprite with correct scaling and sprite siz
+        the sprite with correct scaling and sprite size. The scaling will be at 0.25, a scaling that results in sprites that are crisp on all displays.
 
     distance: The planet's distance from its parent body.
     output_file: The name of the resulting image file, with file format.
