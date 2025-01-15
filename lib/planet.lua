@@ -139,10 +139,9 @@ function Public.borrow_music(source_planet, target_planet)
  			music.planet == source_planet.name
  			or (music.track_type == "hero-track" and music.name:find(source_planet.name))
  		then
- 			local new_music = util.table.deepcopy(music)
- 			new_music.name = music.name .. "-" .. target_planet.name
- 			new_music.planet = target_planet.name
- 			data:extend({ new_music })
+            music.name = music.name .. "-" .. target_planet.name
+            music.planet = target_planet.name
+            data:extend {music}
  		end
  	end
 end
