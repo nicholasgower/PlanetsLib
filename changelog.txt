@@ -2,6 +2,9 @@
 Version: 1.1.27
 Date: ????
   Changes:
+    - Updated the orbit image generation script.
+  Locale:
+    - Description update.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.26
 Date: 2025-01-15
