@@ -1,8 +1,8 @@
-[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VuVhYUBbWE)
+[![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)](https://github.com/danielmartin0/PlanetsLib)[![Discord](https://img.shields.io/badge/Discord-%235865F2.svg?style=for-the-badge&logo=discord&logoColor=white)](https://discord.gg/VuVhYUBbWE)
 
 # PlanetsLib
 
-Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Feel free to contribute via pull requests on [Github](https://github.com/danielmartin0/PlanetsLib).
+Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. For feature requests, please open an [issue](https://github.com/danielmartin0/PlanetsLib/issues) on [GitHub](https://github.com/danielmartin0/PlanetsLib) or submit a pull request to contribute.
 
 We try to avoid breaking changes. In the event breaking changes must occur, the major version of Planetslib will be bumped (unless the feature is unused.)
 
@@ -34,7 +34,7 @@ Planet prototypes and space location prototypes can be defined using the followi
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
         * `distance` — Number: orbital distance from parent
         * `orientation` — Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
-        * `sprite` — Object: Sprite for the orbit, centered on its parent(See "Python helper scripts")
+        * `sprite` — Object (optional): Sprite for the planet’s orbit, centered on its parent.
     * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless neither `starmap_icon`, `starmap_icons` nor an orbit sprite are defined, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields
