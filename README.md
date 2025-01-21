@@ -76,6 +76,7 @@ PlanetsLib includes a wide variety of surface conditions, all of which are eithe
 ### Other helper functions
 
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
+* `PlanetsLib.borrow_music(source_planet, target_planet)` - Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
 
 ### Python helper scripts
 
