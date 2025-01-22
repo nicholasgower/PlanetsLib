@@ -29,8 +29,8 @@ end
 
 PlanetsLib.technology_icons_moon = technology.technology_icons_moon
 PlanetsLib.cargo_drops_technology_base = technology.cargo_drops_technology_base
-PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_planet_cargo_drops -- TODO: Deprecate eventually
-PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops -- TODO: Deprecate eventually
+PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_planet_cargo_drops -- TODO: Remove from API
+PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops -- TODO: Remove soon
 
 PlanetsLib.borrow_music = planet.borrow_music
 

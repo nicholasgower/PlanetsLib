@@ -24,15 +24,11 @@ function Public.tick_10_check_cargo_pods()
 
 				if planet_name then
 					local cargo_drops_tech = force.technologies["planetslib-" .. planet_name .. "-cargo-drops"]
-					local cargo_drops_tech_legacy = force.technologies[planet_name .. "-cargo-drops"]
 
-					if
-						(cargo_drops_tech and not cargo_drops_tech.researched)
-						or (cargo_drops_tech_legacy and not cargo_drops_tech_legacy.researched)
-					then
+					if cargo_drops_tech and not cargo_drops_tech.researched then
 						local cargo_pods = platform.surface.find_entities_filtered({ type = "cargo-pod" })
 
-						Public.examine_cargo_pods(platform, cargo_pods)
+						Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 					end
 				end
 			end
@@ -42,7 +38,7 @@ end
 
 script.on_nth_tick(10, Public.tick_10_check_cargo_pods)
 
-function Public.examine_cargo_pods(platform, cargo_pods)
+function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 	for _, pod in pairs(cargo_pods) do
 		if pod and pod.valid and not storage.planets_lib.cargo_pods_seen_on_platforms[pod.unit_number] then
 			local pod_contents = pod.get_inventory(defines.inventory.cargo_unit).get_contents()
@@ -72,13 +68,13 @@ function Public.examine_cargo_pods(platform, cargo_pods)
 			}
 
 			if launched_from_platform and not only_construction_robots_or_players then
-				Public.destroy_pod_on_platform(pod, platform)
+				Public.destroy_pod_on_platform(pod, platform, planet_name)
 			end
 		end
 	end
 end
 
-function Public.destroy_pod_on_platform(pod, platform)
+function Public.destroy_pod_on_platform(pod, platform, planet_name)
 	local hub = platform.hub
 	if hub and hub.valid then
 		local pod_inventory = pod.get_inventory(defines.inventory.cargo_unit)
@@ -106,7 +102,7 @@ function Public.destroy_pod_on_platform(pod, platform)
 				player.print({
 					"planetslib.cargo-pod-canceled",
 					"[space-platform=" .. platform.index .. "]",
-					"[technology=cerys-cargo-drops]",
+					"[technology=" .. "planetslib-" .. planet_name .. "-cargo-drops" .. "]",
 				}, { color = warn_color })
 
 				storage.planets_lib.cargo_pod_canceled_whisper_ticks[whisper_hash] = game.tick
