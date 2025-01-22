@@ -47,12 +47,11 @@ Planet prototypes and space location prototypes can be defined using the followi
 
 The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
 
-* Define a technology with name pattern: `[planet-name]-cargo-drops`.
+* Use the helper function `PlanetsLib.cargo_drops_technology_base(planet, planet_technology_icon, planet_technology_icon_size)` to create a base technology prototype.
+    * This will create a technology with name pattern: `planetslib-[planet-name]-cargo-drops`
     * PlanetsLib detects this technology by name. Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
-    * You can make use of the provided helper functions:
-        * `PlanetsLib.technology_icons_planet_cargo_drops`
-        * `PlanetsLib.technology_effect_cargo_drops`
-    * Don't forget to add a locale key for your new technology.
+    * Only the fields `type`, `name`, `localised_name`, `localised_description`, `effects`, `icons` will be defined, so you will need to add `unit` (or `research_trigger`) and prerequisites.
+    * A locale entry for this technology is automatically generated, but you are free to override it.
 
 ### Support for moons
 
