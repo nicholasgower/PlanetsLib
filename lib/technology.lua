@@ -12,14 +12,12 @@ function Public.cargo_drops_technology_base(planet, planet_technology_icon, plan
 	end
 
 	return {
-		{
-			type = "technology",
-			name = "planetslib-" .. planet .. "-cargo-drops",
-			localised_name = { "", { "technology-name.cargo-drops", { "space-location-name." .. planet } } },
-			localised_description = { "technology-description.cargo-drops", { "space-location-name." .. planet } },
-			effects = Public.technology_effect_cargo_drops(planet),
-			icons = Public.technology_icons_planet_cargo_drops(planet_technology_icon, planet_technology_icon_size),
-		},
+		type = "technology",
+		name = "planetslib-" .. planet .. "-cargo-drops",
+		localised_name = { "", { "technology-name.cargo-drops", { "space-location-name." .. planet } } },
+		localised_description = { "technology-description.cargo-drops", { "space-location-name." .. planet } },
+		effects = Public.technology_effect_cargo_drops(planet),
+		icons = Public.technology_icons_planet_cargo_drops(planet_technology_icon, planet_technology_icon_size),
 	}
 end
 
