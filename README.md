@@ -4,8 +4,6 @@
 
 Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Contributors are welcome to open a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) on Github. For feature requests, please open an [issue](https://github.com/danielmartin0/PlanetsLib/issues).
 
-We try to avoid breaking changes. In the event breaking changes must occur, the major version of Planetslib will be bumped (unless the feature is unused.)
-
 ## Credits
 
 Contributors:
@@ -19,7 +17,7 @@ Contributors:
 ## Notes for contributors
 
 * We're currently publishing releases of this mod manually. In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
-* Please TEST YOUR CHANGES (with multiple planet mods installed). thesixthroc would like to release versions with minimal testing of new features on their part. You might break a lot of games if you don't do this.
+* You must test your changes, ideally with multiple planet installed.
 * Feel free to use the file `todo.md`.
 
 ## API Reference
