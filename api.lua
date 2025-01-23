@@ -35,10 +35,12 @@ PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_dr
 PlanetsLib.borrow_music = planet.borrow_music
 
 PlanetsLib.planet_str = planet_str
-PlanetsLib.surface_conditions = surface_conditions
 
 PlanetsLib.restrict_surface_conditions = surface_conditions.restrict_surface_conditions
 PlanetsLib.relax_surface_conditions = surface_conditions.relax_surface_conditions
+PlanetsLib.restrict_to_planet = surface_conditions.restrict_to_planet
+
+PlanetsLib.surface_conditions = surface_conditions
 
 --- This function sets `default_import_location` based on an item name and planet.
 --- `default_import_location` is used by the space platform GUI to

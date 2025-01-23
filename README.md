@@ -62,13 +62,28 @@ Documentation pending.
 
 ### Surface conditions
 
-PlanetsLib includes a wide variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua (using 'oxygen' as an example):
+#### Restricting and relaxing conditions
+
+Typically, when planet mods want to add a surface condition, what they are trying to do is restrict or relax the range of values for which that recipe or entity is allowed.
+
+For example, Space Age recyclers have a maximum magnetic field of 99. If mod A wants to allow recyclers to be built up to 120, whilst mod B wants to allow them up to 150, compatibility issues can arise if mod A acts last and overrides mod B's change (which it ought to have been perfectly happy with). Instead mod A should modify existing surface conditions only if necessary.
+
+Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided, used like so:
+
+* `relax_surface_conditions(data.raw.recipe["recycler"], {property = "magnetic-field", max = 120})`
+* `restrict_surface_conditions(data.raw.recipe["boiler"], {{property = "pressure", min = 10}})`
+
+NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
+
+#### New surface conditions
+
+PlanetsLib includes a variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua (using 'oxygen' as an example):
 
 `data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
 
-#### Per-planet surface conditions
+#### Per-planet restrictions
 
-* `PlanetsLib.surface_conditions.restrict_to_surface(planet)`: Returns a surface condition restricting an entity to the given planet. Accepts both planet names and planet objects. This surface condition is almost completely hidden in the UI with the exception of messages like "X can't be crafted on this surface. The  is too low."
+* `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)`: Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
 
 ### Other helper functions
 

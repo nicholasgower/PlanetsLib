@@ -75,6 +75,22 @@ function Public.relax_surface_conditions(recipe_or_entity, conditions)
 	recipe_or_entity.surface_conditions = surface_conditions
 end
 
+function Public.restrict_to_planet(recipe_or_entity, planet)
+	local surface_conditions = recipe_or_entity.surface_conditions
+			and util.table.deepcopy(recipe_or_entity.surface_conditions)
+		or {}
+
+	local condition_value = PlanetsLib.planet_str.get_planet_str_double(planet)
+
+	table.insert(surface_conditions, {
+		property = "planet-str",
+		min = condition_value,
+		max = condition_value,
+	})
+
+	recipe_or_entity.surface_conditions = surface_conditions
+end
+
 local function exact_value(property, value) -- Returns a surface condition locking the acceptable range of values to exactly one.
 	return {
 		property = property,
