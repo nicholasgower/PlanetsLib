@@ -17,7 +17,8 @@ Contributors:
 ## Notes for contributors
 
 * We're currently publishing releases of this mod manually. In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
-* You must test your changes, ideally with multiple planet installed.
+* You must test your changes, ideally with multiple planets installed.
+* We aim to avoid any breaking changes.
 * Feel free to use the file `todo.md`.
 
 ## API Reference
