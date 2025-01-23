@@ -71,7 +71,7 @@ For example, Space Age recyclers have a maximum magnetic field of 99. If mod A w
 Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided, used like so:
 
 * `relax_surface_conditions(data.raw.recipe["recycler"], {property = "magnetic-field", max = 120})`
-* `restrict_surface_conditions(data.raw.recipe["boiler"], {{property = "pressure", min = 10}})`
+* `restrict_surface_conditions(data.raw.recipe["boiler"], {property = "pressure", min = 10})`
 
 NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
 
