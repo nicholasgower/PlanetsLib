@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.32
+Version: 1.2.0
 Date: ????
   Changes:
     - New APIs: restrict_surface_conditions, relax_surface_conditions and restrict_to_planet.
