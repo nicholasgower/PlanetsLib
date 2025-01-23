@@ -91,6 +91,8 @@ function Public.restrict_to_planet(recipe_or_entity, planet)
 	recipe_or_entity.surface_conditions = surface_conditions
 end
 
+--== Older APIs: ==--
+
 local function exact_value(property, value) -- Returns a surface condition locking the acceptable range of values to exactly one.
 	return {
 		property = property,
