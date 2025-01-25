@@ -8,7 +8,7 @@ data:extend({
 		starmap_icon_size = 512,
 		distance = 0,
 		orientation = 0,
-		magnitude = 10,
+		magnitude = 8,
 		sprite_only = true,
 	},
 })

@@ -2,6 +2,7 @@
 Version: 1.1.34
 Date: ????
   Changes:
+    - Fixed the size of the sun being slightly increased whilst PlanetsLib is installed.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.33
 Date: 2025-01-24
