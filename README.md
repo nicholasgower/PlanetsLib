@@ -2,7 +2,7 @@
 
 # PlanetsLib
 
-Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Contributors are welcome to open a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) on Github. For feature requests, please open an [issue](https://github.com/danielmartin0/PlanetsLib/issues).
+Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Anyone is welcome to open a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) on Github. For feature requests, please open an [issue](https://github.com/danielmartin0/PlanetsLib/issues).
 
 ## Credits
 
