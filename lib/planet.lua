@@ -135,10 +135,7 @@ function Public.borrow_music(source_planet, target_planet)
 	)
 
 	for _, music in pairs(table.deepcopy(data.raw["ambient-sound"])) do
-		if
-			music.planet == source_planet.name
-			or (music.track_type == "hero-track" and music.name:find(source_planet.name))
-		then
+		if music.planet == source_planet.name then
 			music.name = music.name .. "-" .. target_planet.name
 			music.planet = target_planet.name
 			data:extend({ music })
