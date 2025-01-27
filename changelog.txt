@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.35
-Date: ????
+Date: 2025-01-27
   Changes:
     - borrow_music no longer copies hero tracks unless the `planet` field matches the source planet, matching the same behavior as other tracks.
 ---------------------------------------------------------------------------------------------------
