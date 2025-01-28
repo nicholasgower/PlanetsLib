@@ -85,6 +85,8 @@ table.sort(inputs, function (left, right)
 end)
 
 lab.inputs = inputs
+-- the biolab should have all of these by default
+data.raw["lab"]["biolab"].include_all_lab_science = true
 
 for index, new_lab in pairs(data.raw["lab"]) do
 
