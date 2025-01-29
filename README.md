@@ -13,6 +13,7 @@ Contributors:
 * [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
 * [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 * [MeteorSwarm](https://mods.factorio.com/user/MeteorSwarm)
+* [Frontrider](https://mods.factorio.com/user/Frontrider)
 
 ## Notes for contributors
 
