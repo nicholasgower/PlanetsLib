@@ -2,7 +2,7 @@
 Version: 1.1.36
 Date: ????
   Changes:
-    - New APIs for science ordering in labs.
+    - New APIs for management of science inputs in labs.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.35
 Date: 2025-01-27
