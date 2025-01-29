@@ -1,4 +1,4 @@
-local lib = require("lib.lib")
+require("prototypes.override-final.science")
 local ps = require("lib.planet-str")
 
 local planets = data.raw.planet
@@ -60,53 +60,5 @@ for _, planet in pairs(planets) do
 				.. planet.name
 				.. ' exceed 100%. To override this assertion, add \'data.raw["bool-setting"]["PlanetsLib-enforce-gas-percentage"].forced_value = false\' to settings-updates.lua.'
 		)
-	end
-end
-
--- fix ordering of science packs in the vanilla lab to match the pack's order string.
-
-local lab = data.raw["lab"]["lab"]
-
-local inputs = lab.inputs
-
-
-table.sort(inputs, function (left, right)
-	local left_order = data.raw["tool"][left].order
-	local right_order = data.raw["tool"][right].order
-
-	if left_order == nil then
-		left_order = data.raw["tool"][left].name
-	end
-	if right_order == nil then
-		right_order = data.raw["tool"][right].name
-	end
-	
-    return left_order < right_order
-end)
-
-lab.inputs = inputs
--- the biolab should have all of these by default
-data.raw["lab"]["biolab"].include_all_lab_science = true
-
-for index, new_lab in pairs(data.raw["lab"]) do
-
-	if  lab["include_all_lab_science"] == true then
-		new_lab.inputs = inputs
-	elseif lab["sort_sciences"] == true then
-		local local_inputs = lab.inputs
-		table.sort(local_inputs, function (left, right)
-			local left_order = data.raw["tool"][left].order
-			local right_order = data.raw["tool"][right].order
-		
-			if left_order == nil then
-				left_order = data.raw["tool"][left].name
-			end
-			if right_order == nil then
-				right_order = data.raw["tool"][right].name
-			end
-			
-			return left_order < right_order
-		end)	
-		lab.inputs = local_inputs
 	end
 end

@@ -1,33 +1,35 @@
-local Public={}
+local Public = {}
 
 --Encodes string to double
-function Public.encode_string_to_double(str) 
-    assert(#str <= 8, "String length exceeds 8 characters; cannot encode.")
-    
-    local result = 0
-    local length = #str
-    local max_bytes = 8 -- We can encode up to 8 bytes in a double precision floating point
-    
-    for i = 1, length do
-        local byte = string.byte(str, i)
-        result = result + byte * (256 ^ (i - 1))
-    end
-    
-    return result
+function Public.encode_string_to_double(str)
+	assert(#str <= 8, "String length exceeds 8 characters; cannot encode.")
+
+	local result = 0
+	local length = #str
+	local max_bytes = 8 -- We can encode up to 8 bytes in a double precision floating point
+
+	for i = 1, length do
+		local byte = string.byte(str, i)
+		result = result + byte * (256 ^ (i - 1))
+	end
+
+	return result
 end
 
 -- Decodes a double back into a string
 function Public.decode_double_to_string(num)
-    local result = {}
-    local max_bytes = 8 -- Decode up to 8 bytes
-    
-    for i = 0, max_bytes - 1 do
-        local byte = math.floor(num / (256 ^ i)) % 256
-        if byte == 0 then break end -- Null terminator or end of meaningful bytes
-        table.insert(result, string.char(byte))
-    end
-    
-    return table.concat(result)
+	local result = {}
+	local max_bytes = 8 -- Decode up to 8 bytes
+
+	for i = 0, max_bytes - 1 do
+		local byte = math.floor(num / (256 ^ i)) % 256
+		if byte == 0 then
+			break
+		end -- Null terminator or end of meaningful bytes
+		table.insert(result, string.char(byte))
+	end
+
+	return table.concat(result)
 end
 
 function Public.merge(old, new)
@@ -61,5 +63,32 @@ Public.find = function(tbl, f, ...)
 	return nil
 end
 
-return Public
+function Public.contains(table, value)
+	for _, v in pairs(table) do
+		if v == value then
+			return true
+		end
+	end
+	return false
+end
 
+function Public.sorted_by_order_and_name(table)
+	table = util.table.deepcopy(table)
+
+	table.sort(table, function(left, right)
+		local left_order = data.raw["tool"][left].order
+		local right_order = data.raw["tool"][right].order
+
+		if left_order == nil then
+			left_order = data.raw["tool"][left].name
+		end
+		if right_order == nil then
+			right_order = data.raw["tool"][right].name
+		end
+
+		return left_order < right_order
+	end)
+	return table
+end
+
+return Public
