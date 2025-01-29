@@ -9,15 +9,15 @@ lab.inputs = base_inputs
 data.raw["lab"]["biolab"].include_all_lab_science = true
 
 for _, new_lab in pairs(data.raw["lab"]) do
-	if lab["include_all_lab_science"] == true then
+	if new_lab["include_all_lab_science"] == true then
 		for _, input in pairs(base_inputs) do
 			if not lib.contains(new_lab.inputs, input) then
 				table.insert(new_lab.inputs, input)
 			end
 		end
 		new_lab.inputs = lib.sorted_by_order_and_name(new_lab.inputs)
-	elseif lab["sort_sciences"] == true then
-		local local_inputs = lab.inputs
+	elseif new_lab["sort_sciences"] == true then
+		local local_inputs = new_lab.inputs
 		new_lab.inputs = lib.sorted_by_order_and_name(local_inputs)
 	end
 end
