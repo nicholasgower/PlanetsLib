@@ -34,7 +34,7 @@ function Public.decode_double_to_string(num)
 	return table.concat(result)
 end
 
-function Public.sorted_by_order_and_name(table)
+function Public.sorted_by_order_or_name(table)
 	table = util.table.deepcopy(table)
 
 	Public.sort(table, function(left, right)
