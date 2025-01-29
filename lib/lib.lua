@@ -1,5 +1,7 @@
 local Public = {}
 
+--== Factorio-specific functions ==--
+
 --Encodes string to double
 function Public.encode_string_to_double(str)
 	assert(#str <= 8, "String length exceeds 8 characters; cannot encode.")
@@ -31,6 +33,27 @@ function Public.decode_double_to_string(num)
 
 	return table.concat(result)
 end
+
+function Public.sorted_by_order_and_name(table)
+	table = util.table.deepcopy(table)
+
+	Public.sort(table, function(left, right)
+		local left_order = data.raw["tool"][left].order
+		local right_order = data.raw["tool"][right].order
+
+		if left_order == nil then
+			left_order = data.raw["tool"][left].name
+		end
+		if right_order == nil then
+			right_order = data.raw["tool"][right].name
+		end
+
+		return left_order < right_order
+	end)
+	return table
+end
+
+--== General helper functions ==--
 
 function Public.merge(old, new)
 	old = util.table.deepcopy(old)
@@ -72,23 +95,16 @@ function Public.contains(table, value)
 	return false
 end
 
-function Public.sorted_by_order_and_name(table)
-	table = util.table.deepcopy(table)
-
-	table.sort(table, function(left, right)
-		local left_order = data.raw["tool"][left].order
-		local right_order = data.raw["tool"][right].order
-
-		if left_order == nil then
-			left_order = data.raw["tool"][left].name
+function Public.sort(arr, compare_fn)
+	local n = #arr
+	for i = 1, n do
+		for j = 1, n - i do
+			if compare_fn(arr[j + 1], arr[j]) then
+				arr[j], arr[j + 1] = arr[j + 1], arr[j]
+			end
 		end
-		if right_order == nil then
-			right_order = data.raw["tool"][right].name
-		end
-
-		return left_order < right_order
-	end)
-	return table
+	end
+	return arr
 end
 
 return Public
