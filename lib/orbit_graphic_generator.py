@@ -15,8 +15,9 @@ def generate_orbit(distance, output_file, mod_name):
     """
 
     width=1
-    resolution=512*distance/2
     thickness = 3
+    resolution=512*distance/2+thickness
+    
     radius=distance*64
     resolution_old=resolution
     resolution=resolution/3.696

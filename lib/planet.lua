@@ -155,4 +155,21 @@ function Public.set_default_import_location(item_name, planet)
 	error("PlanetsLib.set_default_import_location() - Item not found: " .. item_name, 2)
 end
 
+function Public.technology_icon_constant_planet(technology_icon, size)
+	local icons =
+	{
+	  {
+		icon = technology_icon,
+		icon_size = size,
+	  },
+	  {
+		icon = "__core__/graphics/icons/technology/constants/constant-planet.png",
+		icon_size = 128,
+		scale = 0.5,
+		shift = {50, 50}
+	  }
+	}
+	return icons
+end
+
 return Public
