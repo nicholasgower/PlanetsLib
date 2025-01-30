@@ -95,7 +95,7 @@ You can also have PlanetsLib add all sciences from the vanilla lab to your own m
 
 ### Technology
 
-Setting `as_endgame_technology` on any technologies will set the `ingredients` inside the `unit` block to contain all science packs from the base lab.
+Setting `as_endgame_technology` on any technology to true will update the `ingredients` inside the `unit` block to contain all science packs from the base lab. Will also retain the sorting from the labs.
 
 ### Other helper functions
 
