@@ -33,6 +33,8 @@ PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_pla
 PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_drops -- TODO: Remove soon
 
 PlanetsLib.borrow_music = planet.borrow_music
+PlanetsLib.technology_icon_constant_planet = planet.technology_icon_constant_planet
+
 
 PlanetsLib.planet_str = planet_str
 
