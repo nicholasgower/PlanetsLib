@@ -85,4 +85,15 @@ end
 
 -- TODO: Apply use_icon_overlay_constant to the unlock if the planet is a moon
 
+-- This function makes the technology use all sciences in the base lab.
+-- Compatibility for technologies after prometheum science.
+function Public.set_science_packs_from_lab(technology,lab) 
+	local inputs = lab.inputs
+	local ingredients = {}
+	for key, value in pairs(inputs) do
+		table.insert(ingredients,{value,1})
+	end
+	technology.unit.ingredients = ingredients
+end
+
 return Public
