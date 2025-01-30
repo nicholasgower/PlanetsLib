@@ -50,8 +50,6 @@ end
 -- We DO NOT check if the technology is actually coming after promethium science, because there may be some nesting!
 local all_tech = data.raw["technology"]
 
---promethium is automatically set as an endgame technology, so it will always have all science packs.
-data.raw["technology"]["promethium-science-pack"]["as_endgame_technology"] = true
 
 for key, value in pairs(all_tech) do
 	if value["as_endgame_technology"] == true then

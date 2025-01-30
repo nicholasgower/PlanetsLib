@@ -97,6 +97,8 @@ You can also have PlanetsLib add all sciences from the vanilla lab to your own m
 
 Setting `as_endgame_technology` on any technology to true will update the `ingredients` inside the `unit` block to contain all science packs from the base lab. Will also retain the sorting from the labs.
 
+This is set on the promethium science research by default, you can turn it off in `data-updates`.
+
 ### Other helper functions
 
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
