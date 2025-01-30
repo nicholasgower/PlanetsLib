@@ -93,6 +93,10 @@ Unlike in Factoriopedia, science packs in labs aren't ordered by the `order` fie
 
 You can also have PlanetsLib add all sciences from the vanilla lab to your own modded lab in `data-final-fixes` by setting the field `include_all_base_lab_science` to `true` on your lab's prototype.
 
+### Technology
+
+Setting `as_endgame_technology` on any technologies will set the `ingredients` inside the `unit` block to contain all science packs from the base lab.
+
 ### Other helper functions
 
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
