@@ -34,25 +34,6 @@ function Public.decode_double_to_string(num)
 	return table.concat(result)
 end
 
-function Public.sorted_by_order_or_name(table)
-	table = util.table.deepcopy(table)
-
-	Public.sort(table, function(left, right)
-		local left_order = data.raw["tool"][left].order
-		local right_order = data.raw["tool"][right].order
-
-		if left_order == nil then
-			left_order = data.raw["tool"][left].name
-		end
-		if right_order == nil then
-			right_order = data.raw["tool"][right].name
-		end
-
-		return left_order < right_order
-	end)
-	return table
-end
-
 --== General helper functions ==--
 
 function Public.merge(old, new)
