@@ -2,6 +2,7 @@
 Version: 1.1.38
 Date: ????
   Changes:
+    - New helper: PlanetsLib.technology_icon_constant_planet.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.37
 Date: 2025-01-30
