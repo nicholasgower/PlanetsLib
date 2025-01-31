@@ -97,7 +97,7 @@ You can also have PlanetsLib add all sciences from the vanilla lab to your own m
 
 #### Technologies
 
-Setting `give_all_packs_in_vanilla_lab` on any technology to true will ensure the technology contains all science packs present in the base lab. This is useful for defining new endgame technologies.
+Setting `ensure_all_packs_from_vanilla_lab` on any technology to true will ensure the technology contains all science packs present in the base lab. This is useful for defining new endgame technologies.
 
 By default, PlanetsLib sets this field to `true` on the promethium science pack technology.
 

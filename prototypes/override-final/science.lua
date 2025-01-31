@@ -53,11 +53,11 @@ if data.raw["lab"]["lab"] then
 	--== Setting science packs in endgame technologies
 
 	if data.raw["technology"]["promethium-science-pack"] then
-		data.raw["technology"]["promethium-science-pack"]["give_all_packs_in_vanilla_lab"] = true
+		data.raw["technology"]["promethium-science-pack"]["ensure_all_packs_from_vanilla_lab"] = true
 	end
 
 	for _, value in pairs(data.raw["technology"]) do
-		if value["give_all_packs_in_vanilla_lab"] == true then
+		if value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true then
 			tech.set_science_packs_from_lab(value, vanilla_lab)
 		end
 	end

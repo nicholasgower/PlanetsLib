@@ -2,10 +2,12 @@
 Version: 1.1.41
 Date: ????
   Changes:
+    - Rename give_all_packs_in_vanilla_lab to ensure_all_packs_from_vanilla_lab.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.40
 Date: 2025-01-31
   Changes:
+    - New API: give_all_packs_in_vanilla_lab.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.39
 Date: 2025-01-31
