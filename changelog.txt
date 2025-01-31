@@ -2,6 +2,7 @@
 Version: 1.1.39
 Date: ????
   Changes:
+    - Improve error message for specifying an orbit with a parent that doesn't exist.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.38
 Date: 2025-01-31

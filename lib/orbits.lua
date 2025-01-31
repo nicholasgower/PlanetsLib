@@ -14,6 +14,8 @@ function Public.get_absolute_polar_position_from_orbit(orbit)
 
 	local parent_data = data.raw[parent.type][parent.name]
 
+	assert(parent_data, string.format("%s with name '%s' not found", parent.type, parent.name))
+
 	local parent_distance = parent_data.distance
 	local parent_orientation = parent_data.orientation
 
