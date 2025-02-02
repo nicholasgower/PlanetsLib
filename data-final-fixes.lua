@@ -11,28 +11,6 @@ for _, planet in pairs(planets) do
 	end
 end
 
-for _, type in pairs({ "space-location", "planet" }) do
-	for _, location in pairs(data.raw[type]) do
-		if
-			not (
-				location.orbit
-				and location.orbit.parent
-				and location.orbit.distance
-				and (location.orbit.orientation or location.orbit.distance == 0)
-			)
-		then
-			location.orbit = {
-				parent = {
-					type = "space-location",
-					name = "star",
-				},
-				distance = location.distance,
-				orientation = location.orientation,
-			}
-		end
-	end
-end
-
 require("prototypes.override-final.starmap")
 
 for _, type in pairs({ "space-location", "planet" }) do
