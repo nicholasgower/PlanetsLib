@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.0
-Date: ????
+Date: 2025-02-02
   Changes:
     - Mods are now able to move child locations simply by updating the position of the parent location. In data-final-fixes PlanetsLib now detects whether a location prototype's orbit object no longer matches the prototype's position and orientation fields, and if so, it applies the same positional shift to all that location's orbit children.
 ---------------------------------------------------------------------------------------------------
