@@ -1,7 +1,8 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.1.43
+Version: 1.2.0
 Date: ????
   Changes:
+    - Mods are now able to move child locations simply by updating the position of the parent location. In data-final-fixes PlanetsLib now detects whether a location prototype's orbit object no longer matches the prototype's position and orientation fields, and if so, it applies the same positional shift to all that location's orbit children.
 ---------------------------------------------------------------------------------------------------
 Version: 1.1.42
 Date: 2025-02-02
@@ -55,8 +56,8 @@ Date: 2025-01-24
   Locale:
     - Japanese added.
 ---------------------------------------------------------------------------------------------------
-Version: 1.2.0
-Date: ????
+Version: 1.1.32
+Date: 2025-01-23
   Changes:
     - New APIs: restrict_surface_conditions, relax_surface_conditions and restrict_to_planet.
 ---------------------------------------------------------------------------------------------------

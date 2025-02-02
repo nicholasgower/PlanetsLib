@@ -1,4 +1,5 @@
 require("prototypes.override-final.science")
+require("prototypes.override-final.update-positions")
 local ps = require("lib.planet-str")
 
 local planets = data.raw.planet
