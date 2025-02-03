@@ -18,7 +18,7 @@ Contributors:
 ## Notes for contributors
 
 * In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
-* You must test your changes, ideally with multiple planets installed.
+* You MUST test your changes, ideally with multiple planets installed.
 * We aim to avoid any breaking changes.
 * Feel free to use the file `todo.md`.
 
@@ -26,7 +26,7 @@ Contributors:
 
 ### Planet definitions
 
-Planet prototypes and space location prototypes can be defined using the following API. The 'distance' and 'orientation' of the prototypes will be calculated automatically from the orbit hierarchy, as will the layering of the sprites on the starmap.
+PlanetsLib provides an API to define planet prototypes in orbit around another location. Advantages over the vanilla API include that its position may be easier to specify, its sprite is on a higher layer than the parent's sprites, and that if the parent body is moved by another mod your planet will move with it.
 
 * `PlanetsLib:extend(config)` — A wrapper/replacement for `data:extend`. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
