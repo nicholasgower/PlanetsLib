@@ -40,6 +40,7 @@ Planet prototypes and space location prototypes can be defined using the followi
     * Other valid `planet` or `space-location` prototype fields
     * Further notes on `PlanetsLib:extend`:
         * Should not be called in `data-final-fixes`.
+        * If, after your definition, the your planet is moved by another mod adjusting the `distance` and `orientation` on its prototype (leaving its orbit intact), PlanetsLib will notice the disrespancy between these fields and in `data-final-fixes` will move all of your planet's children to the new location.
         * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
 * `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
 
