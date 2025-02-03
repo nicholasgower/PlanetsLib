@@ -54,7 +54,6 @@ The library provides automatic functionality to restrict cargo drops on your pla
 
 ### Support for moons
 
-* `PlanetsLib.technology_icons_moon` — Icon to be used in moon discovery technologies.
 * `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
 
 ### Description templates
@@ -104,6 +103,8 @@ By default, PlanetsLib sets this field to `true` on the promethium science pack 
 
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 * `PlanetsLib.borrow_music(source_planet, target_planet)` - Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
+* `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
+* `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 
 ### Python helper scripts
 

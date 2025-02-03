@@ -65,7 +65,7 @@ function Public.technology_effect_cargo_drops(planet_name)
 	}
 end
 
-function Public.technology_icons_moon(moon_icon, icon_size)
+function Public.technology_icon_moon(moon_icon, icon_size)
 	icon_size = icon_size or 256
 
 	local icons = {
@@ -75,6 +75,25 @@ function Public.technology_icons_moon(moon_icon, icon_size)
 		},
 		{
 			icon = "__PlanetsLib__/graphics/icons/moon-technology-symbol.png",
+			icon_size = 128,
+			scale = 0.5,
+			shift = { 50, 50 },
+		},
+	}
+	return icons
+end
+
+-- The same as util.technology_icon_constant_planet from the vanilla library, but allows any icon size.
+function Public.technology_icon_planet(planet_icon, icon_size)
+	icon_size = icon_size or 256
+
+	local icons = {
+		{
+			icon = planet_icon,
+			icon_size = icon_size,
+		},
+		{
+			icon = "__core__/graphics/icons/technology/constants/constant-planet.png",
 			icon_size = 128,
 			scale = 0.5,
 			shift = { 50, 50 },
