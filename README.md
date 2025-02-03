@@ -34,7 +34,7 @@ PlanetsLib provides an API to define planet prototypes in orbit around another l
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
         * `distance` — Number: orbital distance from parent
         * `orientation` — Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
-        * `sprite` — Object (optional): Sprite for the planet’s orbit, centered on its parent.
+        * `sprite` — Object (optional): Sprite for the planet’s orbit. This will be centered on, and underneath, the parent's sprite.
     * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless neither `starmap_icon`, `starmap_icons` nor an orbit sprite are defined, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields
