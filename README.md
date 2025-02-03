@@ -22,9 +22,7 @@ Contributors:
 * We aim to avoid any breaking changes.
 * Feel free to use the file `todo.md`.
 
-## API Reference
-
-### Planet definitions
+## Planet definitions
 
 PlanetsLib provides an API to define planet prototypes in orbit around another location. Its additional features over the vanilla API are that its relative position is easier to specify, its sprites are on a higher layer than the parent's sprites, and that if the parent body is moved by another mod your planet will move with it.
 
@@ -42,7 +40,7 @@ PlanetsLib provides an API to define planet prototypes in orbit around another l
 
 See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of `PlanetsLib:extend`. The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the `distance` and `orientation` of the parent and the parent's `orbit`.
 
-### Planet Cargo Drops technology
+## Planet Cargo Drops technology
 
 The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
 
@@ -52,17 +50,7 @@ The library provides automatic functionality to restrict cargo drops on your pla
     * Only the fields `type`, `name`, `localised_name`, `localised_description`, `effects`, `icons` will be defined, so you will need to add `unit` (or `research_trigger`) and prerequisites.
     * A locale entry for this technology is automatically generated, but you are free to override it.
 
-### Subgroups
-
-Subgroups are rows in Factoriopedia. It is anticipated that dependencies of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
-
-* `satellites` — A new Factoriopedia row for satellites (below the planets row).
-
-### Description templates
-
-Documentation pending.
-
-### Surface conditions
+## Surface conditions
 
 #### New surface conditions
 
@@ -87,7 +75,7 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 
 * `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)`: Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
 
-### Science adjustments
+## Science adjustments
 
 #### Labs
 
@@ -101,13 +89,25 @@ Setting `ensure_all_packs_from_vanilla_lab` on any technology to true will ensur
 
 By default, PlanetsLib sets this field to `true` on the promethium science pack technology.
 
-### Other helper functions
+## Subgroups
+
+Subgroups are rows in Factoriopedia. It is anticipated that dependencies of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
+
+* `satellites` — A new Factoriopedia row for satellites (below the planets row).
+
+## Description templates
+
+Documentation pending.
+
+## Other
+
+#### Assorted functions
 
 * `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
 * `PlanetsLib.borrow_music(source_planet, target_planet)` - Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 
-### Python helper scripts
+#### Python helper scripts
 
 * `lib/orbit_graphic_generator.py`: contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible, even on 4K displays.
