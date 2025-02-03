@@ -37,11 +37,10 @@ PlanetsLib provides an API to define planet prototypes in orbit around another l
         * `sprite` — Object (optional): Sprite for the planet’s orbit. This will be centered on, and underneath, the parent's sprite.
     * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
-    * Other valid `planet` or `space-location` prototype fields
-    * Further notes on `PlanetsLib:extend`:
-        * The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the `distance` and `orientation` of the parent and the parent's `orbit`.
-        * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
+    * Other valid `planet` or `space-location` prototype fields.
 * `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
+
+See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of PlanetsLib:extend. The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the `distance` and `orientation` of the parent and the parent's `orbit`.
 
 ### Planet Cargo Drops technology
 
