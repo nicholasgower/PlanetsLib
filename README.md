@@ -52,9 +52,11 @@ The library provides automatic functionality to restrict cargo drops on your pla
     * Only the fields `type`, `name`, `localised_name`, `localised_description`, `effects`, `icons` will be defined, so you will need to add `unit` (or `research_trigger`) and prerequisites.
     * A locale entry for this technology is automatically generated, but you are free to override it.
 
-### Support for moons
+### Subgroups
 
-* `subgroup=satellites` — A new Factoriopedia row for satellites (below the planets row).
+Subgroups are rows in Factoriopedia. It is anticipated that dependencies of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
+
+* `satellites` — A new Factoriopedia row for satellites (below the planets row).
 
 ### Description templates
 
