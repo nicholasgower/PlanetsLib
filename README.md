@@ -16,7 +16,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 #### Notes for contributors
 
 * In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
-* You MUST test your changes, ideally with multiple planets installed.
+* Contributions MUST be tested before a PR is made, ideally with multiple planets installed.
 * We aim to avoid any breaking changes.
 * Feel free to use the file `todo.md`.
 
