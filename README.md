@@ -40,7 +40,7 @@ PlanetsLib provides an API to define planet prototypes in orbit around another l
     * Other valid `planet` or `space-location` prototype fields.
 * `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
 
-See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of PlanetsLib:extend. The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the `distance` and `orientation` of the parent and the parent's `orbit`.
+See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of `PlanetsLib:extend`. The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the `distance` and `orientation` of the parent and the parent's `orbit`.
 
 ### Planet Cargo Drops technology
 
@@ -63,6 +63,12 @@ Documentation pending.
 
 ### Surface conditions
 
+#### New surface conditions
+
+PlanetsLib includes a variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua (using 'oxygen' as an example):
+
+`data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
+
 #### Restricting and relaxing conditions
 
 Typically, when planet mods want to add a surface condition, what they are trying to do is restrict or relax the range of values for which that recipe or entity is allowed.
@@ -75,12 +81,6 @@ Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided,
 * `restrict_surface_conditions(data.raw.recipe["boiler"], {property = "pressure", min = 10})`
 
 NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
-
-#### New surface conditions
-
-PlanetsLib includes a variety of surface conditions, all of which are either hidden or disabled by default. To enable a surface condition, modders must add the following line to settings-updates.lua (using 'oxygen' as an example):
-
-`data.raw["bool-setting"]["PlanetsLib-enable-oxygen"].forced_value = true`
 
 #### Per-planet restrictions
 
