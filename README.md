@@ -4,9 +4,7 @@
 
 Code, graphics and conventions to help modders creating planets, moons and other systems. This library is a community project and will grow over time. Anyone is welcome to open a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) on Github. For feature requests, please open an [issue](https://github.com/danielmartin0/PlanetsLib/issues).
 
-## Credits
-
-Contributors:
+## Contributors
 
 * [thesixthroc](https://mods.factorio.com/user/thesixthroc)
 * [Tserup](https://mods.factorio.com/user/Tserup) (art)
@@ -15,7 +13,7 @@ Contributors:
 * [MeteorSwarm](https://mods.factorio.com/user/MeteorSwarm)
 * [Frontrider](https://mods.factorio.com/user/Frontrider)
 
-## Notes for contributors
+#### Notes for contributors
 
 * In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
 * You MUST test your changes, ideally with multiple planets installed.
