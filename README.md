@@ -26,7 +26,7 @@ Contributors:
 
 ### Planet definitions
 
-PlanetsLib provides an API to define planet prototypes in orbit around another location. Advantages over the vanilla API include that its position may be easier to specify, its sprite is on a higher layer than the parent's sprites, and that if the parent body is moved by another mod your planet will move with it.
+PlanetsLib provides an API to define planet prototypes in orbit around another location. Its additional features over the vanilla API are that its relative position is easier to specify, its sprites are on a higher layer than the parent's sprites, and that if the parent body is moved by another mod your planet will move with it.
 
 * `PlanetsLib:extend(config)` — A wrapper/replacement for `data:extend`. Throws an error if passed `distance` or `orientation`. It instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
