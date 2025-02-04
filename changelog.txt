@@ -2,6 +2,7 @@
 Version: 1.2.3
 Date: ????
   Changes:
+    - Fixed bug in which promethium science tech required promethium to research it.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.2
 Date: 2025-02-03
