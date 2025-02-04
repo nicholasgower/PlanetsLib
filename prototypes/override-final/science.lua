@@ -56,6 +56,10 @@ if data.raw["lab"]["lab"] then
 		data.raw["technology"]["promethium-science-pack"]["ensure_all_packs_from_vanilla_lab"] = true
 	end
 
+	if data.raw["technology"]["research-productivity"] then
+		data.raw["technology"]["research-productivity"]["ensure_all_packs_from_vanilla_lab"] = true
+	end
+
 	for _, value in pairs(data.raw["technology"]) do
 		if value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true then
 			tech.set_science_packs_from_lab(value, vanilla_lab)
