@@ -93,7 +93,7 @@ By default, PlanetsLib sets this field to `true` on the promethium science pack 
 
 Subgroups are rows in Factoriopedia. It is anticipated that dependencies of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
 
-* `satellites` — A new Factoriopedia row for satellites (below the planets row).
+* `satellites` — A new Factoriopedia row for satellites (below the planets row). Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections).
 
 ## Description templates
 
