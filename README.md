@@ -30,10 +30,10 @@ Its additional features over the vanilla API are that relative positions are eas
     * `type` — `"planet"` or `"space-location"`
     * `orbit` — Object containing orbital parameters:
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
-        * `distance` — Number: orbital distance from parent
-        * `orientation` — Number: orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
-        * `sprite` — Object (optional): Sprite for the planet’s orbit. This will be centered on, and underneath, the parent's sprite.
-    * `sprite_only` — Boolean (optional): If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
+        * `distance` — Number — orbital distance from parent
+        * `orientation` — Number — orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
+        * `sprite` — Object (optional) — Sprite for the planet’s orbit. This will be centered on, and underneath, the parent's sprite.
+    * `sprite_only` — Boolean (optional) — If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields.
 * `PlanetsLib:update(config)` — The same as `PlanetsLib:extend`, except it updates a pre-existing planet or space location (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Should not be called in `data-final-fixes`.
@@ -73,7 +73,7 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 
 #### Per-planet restrictions
 
-* `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)`: Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
+* `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)` — Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
 
 ## Science adjustments
 
@@ -103,11 +103,11 @@ Documentation pending.
 
 #### Assorted functions
 
-* `PlanetsLib.set_default_import_location(item_name, planet)` - Sets the default import location for an item on a planet.
-* `PlanetsLib.borrow_music(source_planet, target_planet)` - Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
+* `PlanetsLib.set_default_import_location(item_name, planet)` — Sets the default import location for an item on a planet.
+* `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 
 #### Python helper scripts
 
-* `lib/orbit_graphic_generator.py`: contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible, even on 4K displays.
+* `lib/orbit_graphic_generator.py` — contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible, even on 4K displays.
