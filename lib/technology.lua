@@ -26,8 +26,8 @@ function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
 	return {
 		{
 			icon = "__PlanetsLib__/graphics/icons/cargo-drop-tech-pod.png",
-			icon_size = 520,
-			scale = 0.4923,
+			icon_size = 256,
+			scale = 1,
 			shift = { 0, 0 },
 			draw_background = true,
 		},
@@ -40,16 +40,16 @@ function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
 		},
 		{
 			icon = "__PlanetsLib__/graphics/icons/cargo-drop-tech-shadow.png",
-			icon_size = 520,
-			scale = 0.4923,
+			icon_size = 256,
+			scale = 1,
 			shift = { 0, 0 },
 			tint = { r = 0, g = 0, b = 0, a = 0.5 },
 			draw_background = true,
 		},
 		{
 			icon = "__PlanetsLib__/graphics/icons/cargo-drop-tech-pod.png",
-			icon_size = 520,
-			scale = 0.4923,
+			icon_size = 256,
+			scale = 1,
 			shift = { 0, 0 },
 			draw_background = true,
 		},
@@ -120,17 +120,15 @@ function Public.set_science_packs_from_lab(technology, lab)
 		existing_packs[pack[1]] = true
 	end
 
-
 	for _, value in pairs(inputs) do --For input in lab inputs
 		local to_insert = true
 		for _, effect in pairs(technology.effects) do --Check if this technology unlocks a science pack. If yes, don't make this technology require that pack.
-			
-			if (effect.type == "unlock-recipe" and effect.recipe == value) then
+			if effect.type == "unlock-recipe" and effect.recipe == value then
 				to_insert = false
 				break
-			end	
+			end
 		end
-		for key,pack in pairs(existing_packs) do
+		for key, pack in pairs(existing_packs) do
 			if key == value then
 				to_insert = false
 				break
