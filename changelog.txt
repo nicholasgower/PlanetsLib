@@ -2,6 +2,7 @@
 Version: 1.2.6
 Date: ????
   Changes:
+    - No longer write 'Space Locations' in the remote view planet GUI. Space locations isn't technically correct here.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.5
 Date: 2025-02-05
