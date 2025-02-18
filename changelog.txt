@@ -2,6 +2,7 @@
 Version: 1.2.7
 Date: ????
   Changes:
+    - Hidden optional dependency added for Cosmic Social Distancing.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.6
 Date: 2025-02-07
