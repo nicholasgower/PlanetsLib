@@ -95,10 +95,6 @@ Subgroups are rows in Factoriopedia. It is anticipated that dependencies of Plan
 
 * `satellites` — A new Factoriopedia row for satellites (below the planets row). Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections).
 
-## Description templates
-
-Documentation pending.
-
 ## Other
 
 #### Assorted functions
@@ -107,6 +103,10 @@ Documentation pending.
 * `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
+
+#### Assorted graphics
+
+* `PlanetsLib/graphics/icons/research-progress-product.png` — an iconographic science pack icon intended for items used exclusively as ResearchProgressProducts, since mods using a common icon might help players understand the mechanic.
 
 #### Python helper scripts
 
