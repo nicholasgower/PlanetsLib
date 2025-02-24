@@ -106,7 +106,7 @@ Subgroups are rows in Factoriopedia. It is anticipated that dependencies of Plan
 
 #### Assorted graphics
 
-* `PlanetsLib/graphics/icons/research-progress-product.png` — an iconographic science pack icon intended for items used exclusively as ResearchProgressProducts, since mods using a common icon might help players understand the mechanic.
+* `__PlanetsLib__/graphics/icons/research-progress-product.png` — an iconographic science pack icon intended for items used exclusively as ResearchProgressProducts, since mods using a common icon might help players understand the mechanic.
 
 #### Python helper scripts
 
