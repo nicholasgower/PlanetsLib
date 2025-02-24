@@ -2,6 +2,7 @@
 Version: 1.2.9
 Date: ????
   Changes:
+    - Added an icon intended to represent item and recipes used only in ResearchProgressProducts.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.8
 Date: 2025-02-18
