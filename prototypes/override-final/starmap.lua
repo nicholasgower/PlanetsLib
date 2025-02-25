@@ -3,7 +3,7 @@ local orbits = require("lib.orbits")
 local Public = {}
 local starmap_layers = {}
 
--- Orbits help us construct the system. In data-final-fixes, it's now better to rely on the game variables (distance and orientation) for the position of each space location, for compatibility with other mods.
+-- Orbits help us construct the system. In data-final-fixes, it's now better to rely on the game variables (distance and orientation) for the position of each space location for compatibility reasons.
 
 function Public.update_starmap_layers(planet)
 	if planet.sprite_only and (planet.starmap_icon or planet.starmap_icons) then
