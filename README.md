@@ -38,7 +38,9 @@ The reasons one may choose to use it over a plain `data:extend` are that you can
     * Other valid `planet` or `space-location` prototype fields.
 * `PlanetsLib:update(configs)` — The same as `PlanetsLib:extend`, except it updates pre-existing planets and space locations (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Any fields not passed will be left unchanged. Should not be called in `data-final-fixes`.
 
-See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of `PlanetsLib:extend`. The aforementioned feature for 'detecting the parent has moved' works by noticing discrepancies between the parent's `distance` and `orientation` and the parent's `orbit`.
+The `distance` and `orientation` fields on the prototype will be generated automatically. These are actually still treated as authoritative by PlanetsLib, except that if PlanetsLib sees the `distance`/`orientation` of one of your planet's parents has been moved relative to its `orbit` specification, it will assume the intercepting mod author wanted to move all of that planet's children too and PlanetsLib will update their locations.
+
+See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of `PlanetsLib:extend`.
 
 ## Planet Cargo Drops technology
 
