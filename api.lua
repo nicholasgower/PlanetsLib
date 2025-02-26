@@ -1,3 +1,4 @@
+local util = require("util")
 local technology = require("lib.technology")
 local planet = require("lib.planet")
 local planet_str = require("lib.planet-str")
