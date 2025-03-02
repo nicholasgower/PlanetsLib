@@ -98,6 +98,7 @@ Subgroups are rows in Factoriopedia. It is anticipated that dependents of Planet
 * `satellites` — A new Factoriopedia row for satellites (below the planets row). Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections).
 
 ## Assorted helpers
+
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 
@@ -108,6 +109,10 @@ Subgroups are rows in Factoriopedia. It is anticipated that dependents of Planet
 #### Python helper scripts
 
 * `lib/orbit_graphic_generator.py` — contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible, even on 4K displays.
+
+#### Description templates
+
+Documentation pending.
 
 ---
 
