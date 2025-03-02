@@ -15,16 +15,17 @@ Code, graphics and conventions to help modders creating planets, moons and other
 
 #### Notes for contributors
 
-* In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update README.md to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
+* In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update `README.md` to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
 * Contributions MUST be tested before a PR is made, ideally with multiple planets installed.
 * We aim to avoid any breaking changes.
+    * If an API is removed from the documentation, that does not mean it is no longer supported.
 * Feel free to use the file `todo.md`.
 
 ## Planet definitions
 
 PlanetsLib provides an API to define planets and space locations.
 
-The reasons one may choose to use it over a plain `data:extend` are that you can specify positions with respect to a parent body, so if the parent body is moved by another mod your planet will move with it. Its starmap sprite will be on a higher layer than the parent's, and a sprite for the orbit can be supplied as well.
+The reasons one may choose to use it over a plain `data:extend` are that you can specify positions with respect to a parent body. If the parent body is moved by another mod your planet will move with it. A sprite for the orbit can also be supplied.
 
 * `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Should not be called in `data-final-fixes`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
@@ -32,15 +33,14 @@ The reasons one may choose to use it over a plain `data:extend` are that you can
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
         * `distance` — Number — orbital distance from parent
         * `orientation` — Number — orbital angle from parent (0-1). Note that orientation is absolute, not relative to the parent's orientation.
-        * `sprite` — Object (optional) — Sprite for the planet’s orbit. This will be centered on, and underneath, the parent's sprite.
+        * `sprite` — Object (optional) — Sprite for the planet’s orbit. This will be centered on the parent's location.
     * `sprite_only` — Boolean (optional) — If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Other valid `planet` or `space-location` prototype fields.
-* `PlanetsLib:update(configs)` — The same as `PlanetsLib:extend`, except it updates pre-existing planets and space locations (identified by the passed `type` and `name` fields) using the parameters passed. If the `orbit` field is passed, the `distance` and `orientation` fields on the prototype will be updated appropriately. Any fields not passed will be left unchanged. Should not be called in `data-final-fixes`.
+    * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
+* `PlanetsLib:update(configs)` — A simple helper that can be used to update the positions of pre-existing space locations, as identified by the passed `type` and `name` fields. Any other fields passed will be updated on the prototype, and if the `orbit` field is passed the `distance` and `orientation` fields on the prototype will also be updated. Any fields not passed will be left unchanged. Should not be called in `data-final-fixes`.
 
 The `distance` and `orientation` fields on the prototype will be generated automatically. These are actually still treated as authoritative by PlanetsLib, and will determine its final location. The exception is if PlanetsLib sees the `distance`/`orientation` of one of your planet's parents has been moved relative to its `orbit` specification. In that case it will treat whatever mod intercepted the positions as intending to move all of that planet's children too, so PlanetsLib will update their locations appropriately.
-
-See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples of `PlanetsLib:extend`.
 
 ## Planet Cargo Drops technology
 
@@ -93,16 +93,11 @@ By default, PlanetsLib sets this field to `true` on the promethium science pack 
 
 ## Subgroups
 
-Subgroups are rows in Factoriopedia. It is anticipated that dependencies of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
+Subgroups are rows in Factoriopedia. It is anticipated that dependents of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
 
 * `satellites` — A new Factoriopedia row for satellites (below the planets row). Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections).
 
-## Other
-
-#### Assorted functions
-
-* `PlanetsLib.set_default_import_location(item_name, planet)` — Sets the default import location for an item on a planet.
-* `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
+## Assorted helpers
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 
