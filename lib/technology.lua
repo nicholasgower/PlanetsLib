@@ -65,7 +65,6 @@ function Public.technology_effect_cargo_drops(planet_name)
 	}
 end
 
-
 function Public.technology_icon_moon(moon_icon, icon_size)
 	icon_size = icon_size or 256
 	local icons = util.technology_icon_constant_planet(moon_icon)
@@ -130,22 +129,20 @@ function Public.set_science_packs_from_lab(technology, lab)
 		existing_packs[pack[1]] = true
 	end
 
-	for _, value in pairs(inputs) do --For input in lab inputs
-		local to_insert = true
-		for _, effect in pairs(technology.effects) do --Check if this technology unlocks a science pack. If yes, don't make this technology require that pack.
-			if effect.type == "unlock-recipe" and effect.recipe == value then
-				to_insert = false
-				break
+	for _, value in pairs(inputs) do
+		if not existing_packs[value] then
+			local to_insert = true
+			for _, effect in pairs(technology.effects) do --Check if this technology unlocks a science pack. If yes, don't make this technology require that pack.
+				if effect.type == "unlock-recipe" and effect.recipe == value then
+					to_insert = false
+					break
+				end
 			end
-		end
-		for key, pack in pairs(existing_packs) do
-			if key == value then
-				to_insert = false
-				break
+
+			if to_insert then
+				table.insert(technology.unit.ingredients, { value, 1 })
+				existing_packs[value] = true
 			end
-		end
-		if to_insert then
-			table.insert(technology.unit.ingredients, { value, 1 }) --Inserts science pack.
 		end
 	end
 end
