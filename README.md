@@ -95,12 +95,15 @@ By default, PlanetsLib sets this field to `true` on the promethium science pack 
 
 Subgroups are rows in Factoriopedia. It is anticipated that dependents of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
 
-* `satellites` — A new Factoriopedia row for satellites (below the planets row). Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections).
+* `satellites` — A new Factoriopedia row for satellites (below the planets row).
+    * Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections) and [Cosmic Social Distancing](https://mods.factorio.com/mod/Cosmic-Social-Distancing).
 
 ## Assorted helpers
 
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
+* `PlanetsLib.set_default_import_location(item_name, planet)` — Sets the default import location for an item on a planet.
+* `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` to `target_planet`. Does not overwrite existing music for `target_planet`.
 
 #### Assorted graphics
 
