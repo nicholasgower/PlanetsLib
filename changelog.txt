@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.14
-Date: ????
+Date: 2025-03-16
   Changes:
     - If the 'type = "nothing"' effect is removed from a given cargo drops technology, PlanetsLib will no longer enforce that this technology must be researched to perform cargo drops.
 ---------------------------------------------------------------------------------------------------
