@@ -2,7 +2,7 @@ local Public = {}
 
 local warn_color = { r = 255, g = 90, b = 54 }
 
-function Public.tick_10_check_cargo_pods()
+function Public.tick_20_check_cargo_pods()
 	if not storage.planets_lib then
 		storage.planets_lib = {}
 	end
@@ -46,7 +46,7 @@ function Public.tick_10_check_cargo_pods()
 	end
 end
 
-script.on_nth_tick(10, Public.tick_10_check_cargo_pods)
+script.on_nth_tick(20, Public.tick_20_check_cargo_pods)
 
 function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 	for _, pod in pairs(cargo_pods) do

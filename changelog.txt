@@ -2,6 +2,7 @@
 Version: 1.2.15
 Date: 2025-03-16
   Changes:
+    - Performance improvement to the cargo pod restriction technology feature.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.14
 Date: 2025-03-16
