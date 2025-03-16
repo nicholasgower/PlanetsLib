@@ -26,9 +26,19 @@ function Public.tick_10_check_cargo_pods()
 					local cargo_drops_tech = force.technologies["planetslib-" .. planet_name .. "-cargo-drops"]
 
 					if cargo_drops_tech and not cargo_drops_tech.researched then
-						local cargo_pods = platform.surface.find_entities_filtered({ type = "cargo-pod" })
+						local has_nothing_effect = false
+						for _, effect in pairs(cargo_drops_tech.prototype.effects) do
+							if effect.type == "nothing" then
+								has_nothing_effect = true
+								break
+							end
+						end
 
-						Public.examine_cargo_pods(platform, cargo_pods, planet_name)
+						if has_nothing_effect then
+							local cargo_pods = platform.surface.find_entities_filtered({ type = "cargo-pod" })
+
+							Public.examine_cargo_pods(platform, cargo_pods, planet_name)
+						end
 					end
 				end
 			end
