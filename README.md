@@ -25,7 +25,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 
 PlanetsLib provides an API to define planets and space locations.
 
-The reasons one may choose to use it over a plain `data:extend` are that you can specify positions with respect to a parent body. If the parent body is moved by another mod your planet will move with it. A sprite for the orbit can also be supplied.
+The reasons one may choose to use it over a plain `data:extend` are that: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite for the orbit can also be supplied; and various other mods are sensitive to the orbit tree.
 
 * `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Should not be called in `data-final-fixes`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
@@ -51,6 +51,7 @@ The library provides automatic functionality to restrict cargo drops on your pla
     * PlanetsLib detects this technology by name. Players will be unable to drop cargo (excluding players and construction robots) to planets with that name before researching the technology.
     * Only the fields `type`, `name`, `localised_name`, `localised_description`, `effects`, `icons` will be defined, so you will need to add `unit` (or `research_trigger`) and prerequisites.
     * A locale entry for this technology is automatically generated, but you are free to override it.
+* Note that players can use [this mod](https://mods.factorio.com/mod/disable-cargo-drops-techs) to disable the effect of this restriction.
 
 ## Surface conditions
 
@@ -62,7 +63,7 @@ PlanetsLib includes a variety of surface conditions, all of which are either hid
 
 #### Restricting and relaxing conditions
 
-Typically, when planet mods want to add a surface condition, what they are trying to do is restrict or relax the range of values for which that recipe or entity is allowed.
+Typically, when planet mods want to modify a surface condition, what they are trying to do is restrict or relax the range of values for which that recipe or entity is allowed.
 
 For example, Space Age recyclers have a maximum magnetic field of 99. If mod A wants to allow recyclers to be built up to 120, whilst mod B wants to allow them up to 150, compatibility issues can arise if mod A acts last and overrides mod B's change (which it ought to have been perfectly happy with). Instead mod A should modify existing surface conditions only if necessary.
 
@@ -93,10 +94,10 @@ By default, PlanetsLib sets this field to `true` on the promethium science pack 
 
 ## Subgroups
 
-Subgroups are rows in Factoriopedia. It is anticipated that dependents of PlanetsLib may treat space locations differently based on their subgroup, so we are careful about adding more.
+Subgroups are rows in Factoriopedia.
 
 * `satellites` — A new Factoriopedia row for satellites (below the planets row).
-    * Affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections) and [Cosmic Social Distancing](https://mods.factorio.com/mod/Cosmic-Social-Distancing).
+    * Note that being in this subgroup affects [Redrawn Space Connections](https://mods.factorio.com/mod/Redrawn-Space-Connections) and [Cosmic Social Distancing](https://mods.factorio.com/mod/Cosmic-Social-Distancing).
 
 ## Assorted helpers
 
