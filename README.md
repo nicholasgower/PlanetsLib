@@ -7,7 +7,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 ## Contributors
 
 * [thesixthroc](https://mods.factorio.com/user/thesixthroc)
-* [MidnightTigger](https://mods.factorio.com/user/Midnighttigger)
+* [Midnighttigger](https://mods.factorio.com/user/Midnighttigger)
 * [Tserup](https://mods.factorio.com/user/Tserup)
 * [notnotmelon](https://mods.factorio.com/user/notnotmelon)
 * [MeteorSwarm](https://mods.factorio.com/user/MeteorSwarm)
