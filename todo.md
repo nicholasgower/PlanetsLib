@@ -8,6 +8,7 @@ To avoid duplication of effort, please post in [Discord](https://discord.gg/nFVq
 - User settings for the science packs required by promethium science: (all science packs) / (vanilla science packs only) / (don't touch it at all). We should also add hidden booleans so that mod authors can force it to be one of these values.
 - Layer orbit sprites behind the sprites of the parent body. We previously claimed that this happened, but it never got implemented. For the feature to work, PlanetsLib will probably need to control all the images on the starmap. Currently, planets without sprite_only have their starmap icons drawn by the game engine so are not layered by the orbit structure.
 - Implement player-facing setting to recenter the starmap each time you open it?
+- Support elliptical orbits (presumably via another option on the Python script).
 
 ## Minor
 
