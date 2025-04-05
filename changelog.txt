@@ -2,7 +2,7 @@
 Version: 1.2.17
 Date: ????
   Changes:
-    - Modified PlanetsLib.borrow_music() to allow the copying of music from "space-platform" using the syntax 'PlanetsLib.borrow_music("space-platform", [target_planet]).'
+    - Modified PlanetsLib.borrow_music() to allow the copying of music to/from "space-platform."
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.16
 Date: 2025-03-18
