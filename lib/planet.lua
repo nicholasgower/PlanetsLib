@@ -36,6 +36,12 @@ function Public.is_space_location(planet)
 	return planet.type == "planet" or planet.type == "space-location"
 end
 
+function Public.is_space_location_or_space_platform(planet)
+	if not planet then
+		return false
+	end
+	return planet == "space-platform" or planet.type == "planet" or planet.type == "space-location"
+end
 -- TODO: Add checks to ensure the structure of orbit is correct.
 function Public.verify_extend_fields(config)
 	if not Public.is_space_location(config) then
@@ -122,20 +128,28 @@ function Public.verify_update_fields(config)
 	end
 end
 
+
+
 --- Clones music tracks from source_planet to target_planet.
 --- Does not overwrite existing music for target_planet.
 function Public.borrow_music(source_planet, target_planet)
 	assert(
-		Public.is_space_location(source_planet),
-		"PlanetsLib.borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-location` or `planet` prototype."
+		Public.is_space_location_or_space_platform(source_planet),
+		"PlanetsLib.borrow_music() - Invalid parameter 'source_planet'. Field is required to be either `space-platform` or a `space-location` or `planet` prototype."
 	)
 	assert(
-		Public.is_space_location(target_planet),
-		"PlanetsLib.borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-location` or `planet` prototype."
+		Public.is_space_location_or_space_platform(target_planet),
+		"PlanetsLib.borrow_music() - Invalid parameter 'target_planet'. Field is required to be either `space-platform` or a `space-location` or `planet` prototype."
 	)
 
+	local source_name = source_planet.name or source_planet
+
+	if source_name == "space-platform" then
+		source_name = nil
+	end
+
 	for _, music in pairs(util.table.deepcopy(data.raw["ambient-sound"])) do
-		if music.planet == source_planet.name then
+		if music.planet == source_name then
 			music.name = music.name .. "-" .. target_planet.name
 			music.planet = target_planet.name
 			data:extend({ music })
