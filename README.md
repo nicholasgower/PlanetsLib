@@ -104,7 +104,7 @@ Subgroups are rows in Factoriopedia.
 * `PlanetsLib.technology_icon_moon` — Creates a moon discovery technology icon.
 * `PlanetsLib.technology_icon_planet` — Creates a planet discovery technology icon.
 * `PlanetsLib.set_default_import_location(item_name, planet_name)` — Sets the default import location for an item on a planet.
-* `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` prototype to `target_planet` prototype. Does not overwrite existing music for `target_planet`.
+* `PlanetsLib.borrow_music(source_planet, target_planet)` — Clones music tracks from `source_planet` prototype to `target_planet` prototype. Does not overwrite existing music for `target_planet`. To clone music from or to space platforms, set the respective parameter to "space-platform." Otherwise, use the relevant planet object.
 
 #### Assorted graphics
 
