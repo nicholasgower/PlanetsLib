@@ -2,6 +2,7 @@
 Version: 1.2.20
 Date: ????
   Changes:
+    - The Cargo drop technology effect icon now matches the icon of the planet.
 ---------------------------------------------------------------------------------------------------
 Version: 1.2.19
 Date: 2025-04-14

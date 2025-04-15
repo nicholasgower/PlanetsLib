@@ -16,12 +16,20 @@ function Public.cargo_drops_technology_base(planet, planet_technology_icon, plan
 		name = "planetslib-" .. planet .. "-cargo-drops",
 		localised_name = { "", { "technology-name.cargo-drops", { "space-location-name." .. planet } } },
 		localised_description = { "technology-description.cargo-drops", { "space-location-name." .. planet } },
-		effects = Public.technology_effect_cargo_drops(planet),
+		-- TODO: Switch to the iconized planet and show a constant symbol in front?
+		effects = Public.technology_effect_cargo_drops(planet, {
+			{
+				icon = planet_technology_icon,
+				icon_size = planet_technology_icon_size,
+				scale = 0.65 * (256 / planet_technology_icon_size),
+				draw_background = true,
+			},
+		}),
 		icons = Public.technology_icons_planet_cargo_drops(planet_technology_icon, planet_technology_icon_size),
 	}
 end
 
-function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
+function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size, mini)
 	icon_size = icon_size or 256
 	return {
 		{
@@ -35,7 +43,7 @@ function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
 			icon = planet_icon,
 			icon_size = icon_size,
 			scale = 0.65 * (256 / icon_size),
-			shift = { -17, 55 },
+			shift = mini and { 0, 0 } or { -17, 55 },
 			draw_background = true,
 		},
 		{
@@ -56,10 +64,11 @@ function Public.technology_icons_planet_cargo_drops(planet_icon, icon_size)
 	}
 end
 
-function Public.technology_effect_cargo_drops(planet_name)
+function Public.technology_effect_cargo_drops(planet_name, icons)
 	return {
 		{
 			type = "nothing",
+			icons = icons,
 			effect_description = { "planetslib.cargo-drops-tech-description", "[space-location=" .. planet_name .. "]" },
 		},
 	}
