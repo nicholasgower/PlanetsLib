@@ -17,8 +17,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 
 * In your pull requests, please list your changes in changelog.txt to be included in the next release. Please also update `README.md` to add sections for your new functionality (even with only 'Documentation pending') and add yourself to the contributors list.
 * Contributions MUST be tested before a PR is made, ideally with multiple planets installed.
-* We aim to avoid any breaking changes.
-    * If an API is removed from the documentation, that does not mean it is no longer supported.
+* We aim to never make any breaking changes. Sometimes APIs are removed from the documentation, that does not mean they are no longer supported.
 * Feel free to use the file `todo.md`.
 
 ## Planet definitions
