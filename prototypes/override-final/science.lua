@@ -44,7 +44,9 @@ if data.raw["lab"]["lab"] then
 				end
 			end
 			new_lab.inputs = science_sorted_by_order_or_name(new_lab.inputs)
-		elseif new_lab["sort_sciences"] == true then
+		elseif
+			new_lab["planetslib_sort_sciences"] == true or new_lab["sort_sciences"] == true -- support for legacy field
+		then
 			local local_inputs = new_lab.inputs
 			new_lab.inputs = science_sorted_by_order_or_name(local_inputs)
 		end
@@ -53,15 +55,21 @@ if data.raw["lab"]["lab"] then
 	--== Setting science packs in endgame technologies
 
 	if data.raw["technology"]["promethium-science-pack"] then
-		data.raw["technology"]["promethium-science-pack"]["ensure_all_packs_from_vanilla_lab"] = true
+		data.raw["technology"]["promethium-science-pack"]["planetslib_ensure_all_packs_from_vanilla_lab"] = true
 	end
 
 	if data.raw["technology"]["research-productivity"] then
-		data.raw["technology"]["research-productivity"]["ensure_all_packs_from_vanilla_lab"] = true
+		data.raw["technology"]["research-productivity"]["planetslib_ensure_all_packs_from_vanilla_lab"] = true
 	end
 
 	for _, value in pairs(data.raw["technology"]) do
-		if value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true then
+		if
+			(
+				value["planetslib_ensure_all_packs_from_vanilla_lab"]
+				and value["planetslib_ensure_all_packs_from_vanilla_lab"] == true
+			)
+			or (value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true) -- support for legacy field
+		then
 			tech.set_science_packs_from_lab(value, vanilla_lab)
 		end
 	end

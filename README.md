@@ -73,10 +73,6 @@ Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided,
 
 NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
 
-#### Per-planet restrictions
-
-* `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)` — Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
-
 ## Science & Technologies
 
 #### Tech tree adjustments
@@ -86,13 +82,11 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 
 #### Labs
 
-Unlike in Factoriopedia, science packs in labs aren't ordered by the `order` field. PlanetsLib orders the science packs in the vanilla labs in `data-final-fixes` for tidiness. Modded labs can set `sort_sciences` to `true` on their prototype to have PlanetsLib sort them too.
-
-You can also have PlanetsLib add all sciences from the vanilla lab to your own modded lab in `data-final-fixes` by setting the field `include_all_base_lab_science` to `true` on your lab's prototype.
+Unlike in Factoriopedia, science packs in labs aren't ordered by the `order` field. PlanetsLib orders the science packs in the vanilla labs in `data-final-fixes` for tidiness. Modded labs can set `planetslib_sort_sciences` to `true` on their prototype to have PlanetsLib sort them too.
 
 #### Defining endgame technologies
 
-Setting `ensure_all_packs_from_vanilla_lab` on any technology to true will ensure the technology contains all science packs present in the base lab. This is useful for defining new endgame technologies.
+Setting `planetslib_ensure_all_packs_from_vanilla_lab` on any technology to true will ensure the technology contains all science packs present in the base lab. This is useful for defining new endgame technologies.
 
 By default, PlanetsLib sets this field to `true` on the promethium science pack technology. This is currently the only game-related change made by the library itself, and means that players complete each vanilla planet before proceeding to the endgame. If you disagree with this change, please comment in Discord.
 
