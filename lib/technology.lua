@@ -74,6 +74,56 @@ function Public.technology_effect_cargo_drops(planet_name, icons)
 	}
 end
 
+function Public.excise_tech_from_tech_tree(tech_name)
+	log("PlanetsLib: Excising technology " .. tech_name .. " from tech tree")
+
+	local tech = data.raw.technology[tech_name]
+	if not tech then
+		return
+	end
+
+	for _, other_tech in pairs(data.raw.technology) do
+		if other_tech.prerequisites then
+			local affected = false
+			for i = #other_tech.prerequisites, 1, -1 do
+				if other_tech.prerequisites[i] == tech_name then
+					affected = true
+					table.remove(other_tech.prerequisites, i)
+				end
+			end
+
+			if affected then
+				for _, prereq in pairs(tech.prerequisites or {}) do
+					table.insert(other_tech.prerequisites, prereq)
+				end
+			end
+		end
+	end
+
+	data.raw.technology[tech_name].hidden = true
+end
+
+function Public.excise_recipe_from_tech_tree(name)
+	log("PlanetsLib: Excising recipe " .. name .. " from tech tree")
+
+	for _, tech in pairs(data.raw.technology) do
+		if tech.effects and #tech.effects > 0 then
+			local new_effects = {}
+			for _, effect in ipairs(tech.effects) do
+				if not (effect.type == "unlock-recipe" and effect.recipe == name) then
+					table.insert(new_effects, effect)
+				else
+				end
+			end
+			tech.effects = new_effects
+
+			if #tech.effects == 0 then
+				Public.excise_tech_from_tech_tree(tech.name)
+			end
+		end
+	end
+end
+
 function Public.technology_icon_moon(moon_icon, icon_size)
 	icon_size = icon_size or 256
 	local icons = util.technology_icon_constant_planet(moon_icon)

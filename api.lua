@@ -46,6 +46,9 @@ PlanetsLib.surface_conditions = surface_conditions
 
 PlanetsLib.set_default_import_location = planet.set_default_import_location
 
+PlanetsLib.excise_tech_from_tech_tree = technology.excise_tech_from_tech_tree
+PlanetsLib.excise_recipe_from_tech_tree = technology.excise_recipe_from_tech_tree
+
 --== Undocumented APIs ==--
 
 -- Although these APIs are undocumented we should still support them, as mods may be using them.

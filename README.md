@@ -78,7 +78,12 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 
 * `PlanetsLib.restrict_to_planet(entity_or_recipe, planet)` — Restricts the entity or recipe prototype to a given planet by adding a special surface condition unique to that planet. This surface condition is almost invisible in the UI, with the exception of messages like "X can't be crafted on this surface. The  is too low". The planet can be passed as a name or object.
 
-## Science adjustments
+## Science & Technologies
+
+#### Tech tree adjustments
+
+* `PlanetsLib.excise_tech_from_tech_tree(tech_name)` — Seamlessly removes a technology from the tech tree by making all its dependencies depend instead on the technology's prerequisites. In addition, `hidden = true` is set on the technology.
+* `PlanetsLib.excise_recipe_from_tech_tree(recipe_name)` — Removes this recipe from all technologies, and if this would cause any technology to have zero effects, the technology is excised using `PlanetsLib.excise_tech_from_tech_tree`.
 
 #### Labs
 
@@ -86,11 +91,11 @@ Unlike in Factoriopedia, science packs in labs aren't ordered by the `order` fie
 
 You can also have PlanetsLib add all sciences from the vanilla lab to your own modded lab in `data-final-fixes` by setting the field `include_all_base_lab_science` to `true` on your lab's prototype.
 
-#### Technologies
+#### Defining endgame technologies
 
 Setting `ensure_all_packs_from_vanilla_lab` on any technology to true will ensure the technology contains all science packs present in the base lab. This is useful for defining new endgame technologies.
 
-By default, PlanetsLib sets this field to `true` on the promethium science pack technology.
+By default, PlanetsLib sets this field to `true` on the promethium science pack technology. This is currently the only game-related change made by the library itself, and means that players complete each vanilla planet before proceeding to the endgame. If you disagree with this change, please comment in Discord.
 
 ## Subgroups
 
