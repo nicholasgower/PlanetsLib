@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.1
-Date: ????
+Date: 2025-04-21
   Changes:
     - Renamed all the 'magic' fields supported on prototypes to start with 'planetslib_' to make them less cryptic. (The previous names are still supported.)
     - Removed unique planet surface conditions from the documentation for now as their error message is suboptimal.
