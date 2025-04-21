@@ -23,9 +23,9 @@ Code, graphics and conventions to help modders creating planets, moons and other
 
 ## Planet definitions
 
-PlanetsLib provides an API to define planets and space locations.
+PlanetsLib provides an API to define planets and space locations. It is a simple wrapper for data:extend.
 
-The reasons one may choose to use it over a plain `data:extend` are that: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite for the orbit can also be supplied; and various other mods are sensitive to the orbit tree.
+The reasons one may choose to use it over a plain `data:extend` are some additional features: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite for the orbit can also be supplied; and various other mods are sensitive to the orbit tree.
 
 * `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Should not be called in `data-final-fixes`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
