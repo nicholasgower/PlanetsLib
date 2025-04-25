@@ -112,7 +112,48 @@ function Public.excise_recipe_from_tech_tree(name)
 			for _, effect in ipairs(tech.effects) do
 				if not (effect.type == "unlock-recipe" and effect.recipe == name) then
 					table.insert(new_effects, effect)
+				end
+			end
+			tech.effects = new_effects
+
+			if #tech.effects == 0 then
+				Public.excise_tech_from_tech_tree(tech.name)
+			end
+		end
+	end
+end
+
+function Public.excise_effect_from_tech_tree(effect)
+	log("PlanetsLib: Excising effect " .. serpent.block(effect) .. " from tech tree")
+
+	for _, tech in pairs(data.raw.technology) do
+		if tech.effects and #tech.effects > 0 then
+			local new_effects = {}
+			for _, current_effect in ipairs(tech.effects) do
+				local should_keep = true
+
+				local effect_count, current_count = 0, 0
+				for _ in pairs(effect) do
+					effect_count = effect_count + 1
+				end
+				for _ in pairs(current_effect) do
+					current_count = current_count + 1
+				end
+
+				if effect_count == current_count then
+					should_keep = false
+					for k, v in pairs(effect) do
+						if not (current_effect[k] and current_effect[k] == v) then
+							should_keep = true
+							break
+						end
+					end
 				else
+					should_keep = true
+				end
+
+				if should_keep then
+					table.insert(new_effects, current_effect)
 				end
 			end
 			tech.effects = new_effects
