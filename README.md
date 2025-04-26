@@ -73,6 +73,11 @@ Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided,
 
 NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
 
+#### Removing surface conditions
+
+* `remove_surface_condition(recipe_or_entity, "magnetic-field")` — Removes all `magnetic-field` surface conditions.
+* `remove_surface_condition(recipe_or_entity, {property = "magnetic-field", max = 120})` — Removes all `magnetic-field` surface conditions that exactly match the provided condition.
+
 ## Science & Technologies
 
 #### Tech tree adjustments

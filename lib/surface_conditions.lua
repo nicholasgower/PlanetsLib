@@ -65,6 +65,33 @@ function Public.relax_surface_conditions(recipe_or_entity, condition)
 	recipe_or_entity.surface_conditions = surface_conditions
 end
 
+function Public.remove_surface_condition(recipe_or_entity, condition)
+	if recipe_or_entity.surface_conditions then
+		local conditions = table.deepcopy(recipe_or_entity.surface_conditions)
+		local changed = false
+		for i = #conditions, 1, -1 do
+			local c = conditions[i]
+			if type(condition) == "string" then
+				if c.property == condition then
+					table.remove(conditions, i)
+					changed = true
+				end
+			elseif
+				(c.property and condition.property and c.property == condition.property)
+				and (not (condition.min or c.min) or (condition.min and c.min and c.min == condition.min))
+				and (not (condition.max or c.max) or (condition.max and c.max and c.max == condition.max))
+			then
+				table.remove(conditions, i)
+				changed = true
+			end
+		end
+
+		if changed then
+			recipe_or_entity.surface_conditions = conditions
+		end
+	end
+end
+
 function Public.restrict_to_planet(recipe_or_entity, planet)
 	local surface_conditions = recipe_or_entity.surface_conditions
 			and util.table.deepcopy(recipe_or_entity.surface_conditions)
