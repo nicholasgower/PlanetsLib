@@ -38,6 +38,7 @@ PlanetsLib.borrow_music = planet.borrow_music
 
 PlanetsLib.restrict_surface_conditions = surface_conditions.restrict_surface_conditions
 PlanetsLib.relax_surface_conditions = surface_conditions.relax_surface_conditions
+PlanetsLib.remove_surface_condition = surface_conditions.remove_surface_condition
 
 PlanetsLib.set_default_import_location = planet.set_default_import_location
 
