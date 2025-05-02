@@ -67,7 +67,7 @@ end
 
 function Public.remove_surface_condition(recipe_or_entity, condition)
 	if recipe_or_entity.surface_conditions then
-		local conditions = table.deepcopy(recipe_or_entity.surface_conditions)
+		local conditions = util.table.deepcopy(recipe_or_entity.surface_conditions)
 		local changed = false
 		for i = #conditions, 1, -1 do
 			local c = conditions[i]
