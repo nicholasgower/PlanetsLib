@@ -94,7 +94,16 @@ function Public.excise_tech_from_tech_tree(tech_name)
 
 			if affected then
 				for _, prereq in pairs(tech.prerequisites or {}) do
-					table.insert(other_tech.prerequisites, prereq)
+					local already_present = false
+					for _, existing in pairs(other_tech.prerequisites) do
+						if existing == prereq then
+							already_present = true
+							break
+						end
+					end
+					if not already_present then
+						table.insert(other_tech.prerequisites, prereq)
+					end
 				end
 			end
 		end

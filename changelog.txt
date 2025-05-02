@@ -2,6 +2,7 @@
 Version: 1.3.6
 Date: ????
   Changes:
+    - Fixed a crash in excise_tech_from_tech_tree.
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.5
 Date: 2025-05-02
