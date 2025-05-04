@@ -1,3 +1,5 @@
+local util = require("util")
+
 local Public = {}
 
 --== Factorio-specific functions ==--
@@ -89,4 +91,3 @@ function Public.sort(arr, compare_fn)
 end
 
 return Public
-

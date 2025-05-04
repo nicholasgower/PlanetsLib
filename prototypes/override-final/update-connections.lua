@@ -1,3 +1,5 @@
+local util = require("util")
+
 for name, connection in pairs(data.raw["space-connection"]) do
 	if not (name:match("%-to%-parent$") or name:match("%-from%-parent$")) then
 		local source_name = connection.from

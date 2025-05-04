@@ -1,3 +1,5 @@
+local util = require("util")
+
 local Public = {}
 
 -- Restricts the surface conditions of an existing recipe or entity. If the new condition is more restrictive in any way than the existing conditions, those restrictions will be applied.

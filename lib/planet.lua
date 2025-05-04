@@ -1,3 +1,4 @@
+local util = require("util")
 local orbits = require("lib.orbits")
 
 local Public = {}
@@ -128,8 +129,6 @@ function Public.verify_update_fields(config)
 	end
 end
 
-
-
 --- Clones music tracks from source_planet to target_planet.
 --- Does not overwrite existing music for target_planet.
 function Public.borrow_music(source_planet, target_planet)
@@ -150,7 +149,7 @@ function Public.borrow_music(source_planet, target_planet)
 	end
 
 	if target_name == "space-platform" then
-		target_name  = nil
+		target_name = nil
 	end
 
 	for _, music in pairs(util.table.deepcopy(data.raw["ambient-sound"])) do

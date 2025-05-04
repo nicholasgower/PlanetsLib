@@ -2,6 +2,7 @@
 Version: 1.3.7
 Date: ????
   Changes:
+    - Fixed a crash caused presumably by another mod shadowing the 'util' namespace.
 ---------------------------------------------------------------------------------------------------
 Version: 1.3.6
 Date: 2025-05-02
