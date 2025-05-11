@@ -1,5 +1,105 @@
 local Public = {}
 
+function Public.excise_tech_from_tech_tree(tech_name)
+	log("PlanetsLib: Excising technology " .. tech_name .. " from tech tree")
+
+	local tech = data.raw.technology[tech_name]
+	if not tech then
+		return
+	end
+
+	for _, other_tech in pairs(data.raw.technology) do
+		if other_tech.prerequisites then
+			local affected = false
+			for i = #other_tech.prerequisites, 1, -1 do
+				if other_tech.prerequisites[i] == tech_name then
+					affected = true
+					table.remove(other_tech.prerequisites, i)
+				end
+			end
+
+			if affected then
+				for _, prereq in pairs(tech.prerequisites or {}) do
+					local already_present = false
+					for _, existing in pairs(other_tech.prerequisites) do
+						if existing == prereq then
+							already_present = true
+							break
+						end
+					end
+					if not already_present then
+						table.insert(other_tech.prerequisites, prereq)
+					end
+				end
+			end
+		end
+	end
+
+	data.raw.technology[tech_name].hidden = true
+end
+
+function Public.excise_recipe_from_tech_tree(name)
+	log("PlanetsLib: Excising recipe " .. name .. " from tech tree")
+
+	for _, tech in pairs(data.raw.technology) do
+		if tech.effects and #tech.effects > 0 then
+			local new_effects = {}
+			for _, effect in ipairs(tech.effects) do
+				if not (effect.type == "unlock-recipe" and effect.recipe == name) then
+					table.insert(new_effects, effect)
+				end
+			end
+			tech.effects = new_effects
+
+			if #new_effects == 0 then
+				Public.excise_tech_from_tech_tree(tech.name)
+			end
+		end
+	end
+end
+
+function Public.excise_effect_from_tech_tree(effect)
+	log("PlanetsLib: Excising effect " .. serpent.block(effect) .. " from tech tree")
+
+	for _, tech in pairs(data.raw.technology) do
+		if tech.effects and #tech.effects > 0 then
+			local new_effects = {}
+			for _, current_effect in ipairs(tech.effects) do
+				local should_keep = true
+
+				local effect_count, current_count = 0, 0
+				for _ in pairs(effect) do
+					effect_count = effect_count + 1
+				end
+				for _ in pairs(current_effect) do
+					current_count = current_count + 1
+				end
+
+				if effect_count == current_count then
+					should_keep = false
+					for k, v in pairs(effect) do
+						if not (current_effect[k] and current_effect[k] == v) then
+							should_keep = true
+							break
+						end
+					end
+				else
+					should_keep = true
+				end
+
+				if should_keep then
+					table.insert(new_effects, current_effect)
+				end
+			end
+			tech.effects = new_effects
+
+			if #new_effects == 0 then
+				Public.excise_tech_from_tech_tree(tech.name)
+			end
+		end
+	end
+end
+
 function Public.cargo_drops_technology_base(planet, planet_technology_icon, planet_technology_icon_size)
 	if not planet then
 		error("PlanetsLib:cargo_drops_technology() - planet is required")
@@ -72,106 +172,6 @@ function Public.technology_effect_cargo_drops(planet_name, icons)
 			effect_description = { "planetslib.cargo-drops-tech-description", "[space-location=" .. planet_name .. "]" },
 		},
 	}
-end
-
-function Public.excise_tech_from_tech_tree(tech_name)
-	log("PlanetsLib: Excising technology " .. tech_name .. " from tech tree")
-
-	local tech = data.raw.technology[tech_name]
-	if not tech then
-		return
-	end
-
-	for _, other_tech in pairs(data.raw.technology) do
-		if other_tech.prerequisites then
-			local affected = false
-			for i = #other_tech.prerequisites, 1, -1 do
-				if other_tech.prerequisites[i] == tech_name then
-					affected = true
-					table.remove(other_tech.prerequisites, i)
-				end
-			end
-
-			if affected then
-				for _, prereq in pairs(tech.prerequisites or {}) do
-					local already_present = false
-					for _, existing in pairs(other_tech.prerequisites) do
-						if existing == prereq then
-							already_present = true
-							break
-						end
-					end
-					if not already_present then
-						table.insert(other_tech.prerequisites, prereq)
-					end
-				end
-			end
-		end
-	end
-
-	data.raw.technology[tech_name].hidden = true
-end
-
-function Public.excise_recipe_from_tech_tree(name)
-	log("PlanetsLib: Excising recipe " .. name .. " from tech tree")
-
-	for _, tech in pairs(data.raw.technology) do
-		if tech.effects and #tech.effects > 0 then
-			local new_effects = {}
-			for _, effect in ipairs(tech.effects) do
-				if not (effect.type == "unlock-recipe" and effect.recipe == name) then
-					table.insert(new_effects, effect)
-				end
-			end
-			tech.effects = new_effects
-
-			if #tech.effects == 0 then
-				Public.excise_tech_from_tech_tree(tech.name)
-			end
-		end
-	end
-end
-
-function Public.excise_effect_from_tech_tree(effect)
-	log("PlanetsLib: Excising effect " .. serpent.block(effect) .. " from tech tree")
-
-	for _, tech in pairs(data.raw.technology) do
-		if tech.effects and #tech.effects > 0 then
-			local new_effects = {}
-			for _, current_effect in ipairs(tech.effects) do
-				local should_keep = true
-
-				local effect_count, current_count = 0, 0
-				for _ in pairs(effect) do
-					effect_count = effect_count + 1
-				end
-				for _ in pairs(current_effect) do
-					current_count = current_count + 1
-				end
-
-				if effect_count == current_count then
-					should_keep = false
-					for k, v in pairs(effect) do
-						if not (current_effect[k] and current_effect[k] == v) then
-							should_keep = true
-							break
-						end
-					end
-				else
-					should_keep = true
-				end
-
-				if should_keep then
-					table.insert(new_effects, current_effect)
-				end
-			end
-			tech.effects = new_effects
-
-			if #tech.effects == 0 then
-				Public.excise_tech_from_tech_tree(tech.name)
-			end
-		end
-	end
 end
 
 function Public.technology_icon_moon(moon_icon, icon_size)
