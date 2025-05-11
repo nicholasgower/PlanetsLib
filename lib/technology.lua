@@ -1,5 +1,20 @@
 local Public = {}
 
+function Public.get_child_technologies(tech_name)
+	local children = {}
+	for _, tech in pairs(data.raw.technology) do
+		if tech.prerequisites then
+			for _, prereq in ipairs(tech.prerequisites) do
+				if prereq == tech_name then
+					table.insert(children, tech.name)
+					break
+				end
+			end
+		end
+	end
+	return children
+end
+
 function Public.excise_tech_from_tech_tree(tech_name)
 	log("PlanetsLib: Excising technology " .. tech_name .. " from tech tree")
 

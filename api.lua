@@ -30,6 +30,10 @@ function PlanetsLib:update(configOrConfigs)
 	end
 end
 
+PlanetsLib.get_child_technologies = technology.get_child_technologies
+PlanetsLib.excise_tech_from_tech_tree = technology.excise_tech_from_tech_tree
+PlanetsLib.excise_recipe_from_tech_tree = technology.excise_recipe_from_tech_tree
+PlanetsLib.excise_effect_from_tech_tree = technology.excise_effect_from_tech_tree
 PlanetsLib.technology_icon_moon = technology.technology_icon_moon
 PlanetsLib.technology_icon_planet = technology.technology_icon_planet
 PlanetsLib.cargo_drops_technology_base = technology.cargo_drops_technology_base
@@ -41,10 +45,6 @@ PlanetsLib.relax_surface_conditions = surface_conditions.relax_surface_condition
 PlanetsLib.remove_surface_condition = surface_conditions.remove_surface_condition
 
 PlanetsLib.set_default_import_location = planet.set_default_import_location
-
-PlanetsLib.excise_tech_from_tech_tree = technology.excise_tech_from_tech_tree
-PlanetsLib.excise_recipe_from_tech_tree = technology.excise_recipe_from_tech_tree
-PlanetsLib.excise_effect_from_tech_tree = technology.excise_effect_from_tech_tree
 
 --== Undocumented APIs ==--
 -- Though these APIs are undocumented we should still support them, as mods may be using them.

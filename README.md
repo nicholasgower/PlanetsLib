@@ -24,7 +24,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 
 PlanetsLib provides an API to define planets and space locations. It is a simple wrapper for data:extend.
 
-The reasons one may choose to use it over a plain `data:extend` are some additional features: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite for the orbit can also be supplied; and various other mods are sensitive to the orbit tree.
+The reasons one may choose to use it over a plain `data:extend` are some additional features: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite depicting the orbit can be supplied; and various other mods are sensitive to the orbit tree.
 
 * `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Should not be called in `data-final-fixes`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
@@ -68,17 +68,19 @@ For example, Space Age recyclers have a maximum magnetic field of 99. If mod A w
 
 Hence `relax_surface_conditions` and `restrict_surface_conditions` are provided, used like so:
 
-* `relax_surface_conditions(data.raw.recipe["recycler"], {property = "magnetic-field", max = 120})`
-* `restrict_surface_conditions(data.raw.recipe["boiler"], {property = "pressure", min = 10})`
+* `PlanetsLib.relax_surface_conditions(data.raw.recipe["recycler"], {property = "magnetic-field", max = 120})`
+* `PlanetsLib.restrict_surface_conditions(data.raw.recipe["boiler"], {property = "pressure", min = 10})`
 
 NOTE: Calling `relax_surface_conditions` without a `min` field will not remove any existing `min` conditions for that property (and similarly for `max`).
 
 #### Removing surface conditions
 
-* `remove_surface_condition(recipe_or_entity, "magnetic-field")` — Removes all `magnetic-field` surface conditions.
-* `remove_surface_condition(recipe_or_entity, {property = "magnetic-field", max = 120})` — Removes all `magnetic-field` surface conditions that exactly match the provided condition.
+* `PlanetsLib.remove_surface_condition(recipe_or_entity, "magnetic-field")` — Removes all `magnetic-field` surface conditions.
+* `PlanetsLib.remove_surface_condition(recipe_or_entity, {property = "magnetic-field", max = 120})` — Removes all surface conditions that exactly match the provided condition.
 
 ## Science & Technologies
+
+* `PlanetsLib.get_child_technologies(tech_name)` — Returns a list of the names of all technologies that have `tech_name` as a prerequisite.
 
 #### Tech tree adjustments
 
@@ -116,11 +118,7 @@ Subgroups are rows in Factoriopedia.
 
 #### Python helper scripts
 
-* `lib/orbit_graphic_generator.py` — contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible, even on 4K displays.
-
-#### Description templates
-
-Documentation pending.
+* `lib/orbit_graphic_generator.py` — contains a Python script that generates orbit sprites. `generate_orbit(distance, output_file, mod_name)`, `distance` being the same as your orbital distance. After generating your sprite, the script will print a block of lua code that imports your sprite with proper scaling. Orbit sprites should be scaled at 0.25 to ensure that no pixels are visible on 4K monitors.
 
 ---
 
