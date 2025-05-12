@@ -2,18 +2,27 @@ local Public = {}
 
 local warn_color = { r = 255, g = 90, b = 54 }
 
-function Public.tick_20_check_cargo_pods()
-	if not storage.planets_lib then
-		storage.planets_lib = {}
-	end
+local function init_storage()
+	storage.planets_lib = storage.planets_lib or {}
 
-	if not storage.planets_lib.cargo_pods_seen_on_platforms then
-		storage.planets_lib.cargo_pods_seen_on_platforms = {}
-	end
-	if not storage.planets_lib.cargo_pod_canceled_whisper_ticks then
-		storage.planets_lib.cargo_pod_canceled_whisper_ticks = {}
-	end
+	storage.planets_lib.cargo_pods_seen_on_platforms = storage.planets_lib.cargo_pods_seen_on_platforms or {}
+	storage.planets_lib.cargo_pod_canceled_whisper_ticks = storage.planets_lib.cargo_pod_canceled_whisper_ticks or {}
 
+	storage.planets_lib.whitelisted_names_all_planets = storage.planets_lib.whitelisted_names_all_planets or {}
+	storage.planets_lib.whitelisted_types_all_planets = storage.planets_lib.whitelisted_types_all_planets or {}
+
+	storage.planets_lib.whitelisted_names = storage.planets_lib.whitelisted_names or {}
+	storage.planets_lib.whitelisted_types = storage.planets_lib.whitelisted_types or {}
+end
+
+script.on_init(function()
+	init_storage()
+end)
+script.on_configuration_changed(function()
+	init_storage()
+end)
+
+script.on_nth_tick(20, function()
 	for _, force in pairs(game.forces) do
 		for _, platform in pairs(force.platforms) do
 			if platform and platform.valid and platform.surface and platform.surface.valid then
@@ -44,11 +53,14 @@ function Public.tick_20_check_cargo_pods()
 			end
 		end
 	end
-end
-
-script.on_nth_tick(20, Public.tick_20_check_cargo_pods)
+end)
 
 function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
+	local whitelisted_names_all_planets = storage.planets_lib.whitelisted_names_all_planets
+	local whitelisted_names = storage.planets_lib.whitelisted_names
+	local whitelisted_types_all_planets = storage.planets_lib.whitelisted_types_all_planets
+	local whitelisted_types = storage.planets_lib.whitelisted_types
+
 	for _, pod in pairs(cargo_pods) do
 		if pod and pod.valid and not storage.planets_lib.cargo_pods_seen_on_platforms[pod.unit_number] then
 			local pod_contents = pod.get_inventory(defines.inventory.cargo_unit).get_contents()
@@ -56,10 +68,22 @@ function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 			local only_construction_robots_or_players = true
 
 			for _, item in pairs(pod_contents) do
-				local entity = prototypes.entity[item.name]
-
-				if (not entity) or (entity and entity.type ~= "construction-robot") then
+				if
+					not whitelisted_names_all_planets[item.name]
+					and not (whitelisted_names[planet_name] and whitelisted_names[planet_name][item.name])
+					and not (
+						prototypes.entity[item.name]
+						and (
+							whitelisted_types_all_planets[prototypes.entity[item.name].type]
+							or (
+								whitelisted_types[planet_name]
+								and whitelisted_types[planet_name][prototypes.entity[item.name].type]
+							)
+						)
+					)
+				then
 					only_construction_robots_or_players = false
+					break
 				end
 			end
 
@@ -126,5 +150,49 @@ function Public.destroy_pod_on_platform(pod, platform, planet_name)
 
 	storage.planets_lib.cargo_pods_seen_on_platforms[pod_unit_number] = nil
 end
+
+remote.add_interface("planetslib", {
+	add_to_cargo_drop_item_name_whitelist = function(name, planet_name)
+		if type(name) ~= "string" then
+			error("name must be a string")
+		end
+
+		if planet_name then
+			storage.planets_lib.whitelisted_names[planet_name][name] = true
+		else
+			storage.planets_lib.whitelisted_names_all_planets[name] = true
+		end
+	end,
+	remove_from_cargo_drop_item_name_whitelist = function(name, planet_name)
+		if type(name) ~= "string" then
+			error("name must be a string")
+		end
+		if planet_name then
+			storage.planets_lib.whitelisted_names[planet_name][name] = nil
+		else
+			storage.planets_lib.whitelisted_names_all_planets[name] = nil
+		end
+	end,
+	add_to_cargo_drop_item_type_whitelist = function(type_name, planet_name)
+		if type(type_name) ~= "string" then
+			error("type_name must be a string")
+		end
+		if planet_name then
+			storage.planets_lib.whitelisted_types[planet_name][type_name] = true
+		else
+			storage.planets_lib.whitelisted_types_all_planets[type_name] = true
+		end
+	end,
+	remove_from_cargo_drop_item_type_whitelist = function(type_name, planet_name)
+		if type(type_name) ~= "string" then
+			error("type_name must be a string")
+		end
+		if planet_name then
+			storage.planets_lib.whitelisted_types[planet_name][type_name] = nil
+		else
+			storage.planets_lib.whitelisted_types_all_planets[type_name] = nil
+		end
+	end,
+})
 
 return Public

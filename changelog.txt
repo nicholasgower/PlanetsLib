@@ -2,6 +2,8 @@
 Version: 1.4.1
 Date: ????
   Changes:
+    - Construction robots are no longer whitelisted for cargo drops by default.
+    - Remote interface provided for mods to whitelist cargo drop items.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.0
 Date: 2025-05-12
