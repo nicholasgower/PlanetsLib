@@ -1,1 +1,3 @@
-require("scripts.cargo-pods")
+if script.active_mods["space-age"] then
+	require("scripts.cargo-pods")
+end
