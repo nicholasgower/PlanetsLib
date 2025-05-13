@@ -1,6 +1,10 @@
 local Public = {}
 
+---Technology name goes in. Out comes an array of technology names that currently list that tech as a prerequisite. Throws an error if an invalid prototype name is passed.
+---@param tech_name string
+---@return string[] children
 function Public.get_child_technologies(tech_name)
+	assert(data.raw.technology[tech_name], "Invalid technology name: " .. tech_name)
 	local children = {}
 	for _, tech in pairs(data.raw.technology) do
 		if tech.prerequisites then

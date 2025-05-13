@@ -2,6 +2,7 @@
 Version: 1.4.2
 Date: ????
   Changes:
+    - Added a safety assertion in get_child_technologies.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.1
 Date: 2025-05-12

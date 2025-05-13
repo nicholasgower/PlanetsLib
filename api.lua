@@ -4,6 +4,8 @@ local planet = require("lib.planet")
 local planet_str = require("lib.planet-str")
 local surface_conditions = require("lib.surface_conditions")
 
+-- The API documentation lives in README.md.
+
 --== APIs ==--
 
 function PlanetsLib:extend(configOrConfigs)
