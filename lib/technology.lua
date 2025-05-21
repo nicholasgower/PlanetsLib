@@ -1,3 +1,6 @@
+local util = require("util")
+local lib = require("lib.lib")
+
 local Public = {}
 
 ---Technology name goes in. Out comes an array of technology names that currently list that tech as a prerequisite. Throws an error if an invalid prototype name is passed.
@@ -244,9 +247,17 @@ end
 -- This function makes the technology use all sciences in the base lab.
 -- Compatibility for technologies after prometheum science.
 function Public.set_science_packs_from_lab(technology, lab)
-	if not (technology and technology.unit and lab and lab.inputs) then
-		return
-	end
+	assert(technology, "PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - technology is required")
+	assert(
+		technology.unit,
+		"PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - technology.unit is required"
+	)
+	assert(
+		technology.unit.ingredients,
+		"PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - technology.unit.ingredients is required"
+	)
+	assert(lab, "PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - lab is required")
+	assert(lab.inputs, "PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - lab.inputs is required")
 
 	technology.unit.ingredients = technology.unit.ingredients or {}
 
@@ -273,6 +284,37 @@ function Public.set_science_packs_from_lab(technology, lab)
 			end
 		end
 	end
+end
+
+function Public.add_science_packs_from_vanilla_lab_to_technology(technology)
+	assert(
+		data.raw["lab"]["lab"],
+		"PlanetsLib:add_science_packs_from_vanilla_lab_to_technology() - data.raw['lab']['lab'] is required"
+	)
+	Public.set_science_packs_from_lab(technology, data.raw["lab"]["lab"])
+end
+
+function Public.sort_science_pack_names(science_pack_names_table)
+	science_pack_names_table = util.table.deepcopy(science_pack_names_table)
+
+	lib.sort(science_pack_names_table, function(left, right)
+		if not (data.raw["tool"] and data.raw["tool"][left] and data.raw["tool"][right]) then
+			return true
+		end
+
+		local left_order = data.raw["tool"][left].order
+		local right_order = data.raw["tool"][right].order
+
+		if left_order == nil then
+			left_order = data.raw["tool"][left].name
+		end
+		if right_order == nil then
+			right_order = data.raw["tool"][right].name
+		end
+
+		return left_order < right_order
+	end)
+	return science_pack_names_table
 end
 
 return Public

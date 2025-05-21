@@ -1,7 +1,9 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.4.4
+Version: 1.5.0
 Date: ????
   Changes:
+    - Deprecated the implicit APIs planetslib_sort_sciences and planetslib_ensure_all_packs_from_vanilla_lab in favor of PlanetsLib.sort_science_pack_names and PlanetsLib.add_science_packs_from_vanilla_lab_to_technology.
+    - PlanetsLib no longer modifies the promethium-science-pack and research-productivity technologies to add packs from vanilla labs to them.
 ---------------------------------------------------------------------------------------------------
 Version: 1.4.3
 Date: 2025-05-15

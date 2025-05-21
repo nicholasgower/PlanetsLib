@@ -32,6 +32,9 @@ function PlanetsLib:update(configOrConfigs)
 	end
 end
 
+PlanetsLib.add_science_packs_from_vanilla_lab_to_technology =
+	technology.add_science_packs_from_vanilla_lab_to_technology
+PlanetsLib.sort_science_pack_names = technology.sort_science_pack_names
 PlanetsLib.get_child_technologies = technology.get_child_technologies
 PlanetsLib.excise_tech_from_tech_tree = technology.excise_tech_from_tech_tree
 PlanetsLib.excise_recipe_from_tech_tree = technology.excise_recipe_from_tech_tree

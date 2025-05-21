@@ -2,35 +2,24 @@ local util = require("util")
 local lib = require("lib.lib")
 local tech = require("lib.technology")
 
-local function science_sorted_by_order_or_name(table)
-	table = util.table.deepcopy(table)
-
-	lib.sort(table, function(left, right)
-		if not (data.raw["tool"] and data.raw["tool"][left] and data.raw["tool"][right]) then
-			return true
-		end
-
-		local left_order = data.raw["tool"][left].order
-		local right_order = data.raw["tool"][right].order
-
-		if left_order == nil then
-			left_order = data.raw["tool"][left].name
-		end
-		if right_order == nil then
-			right_order = data.raw["tool"][right].name
-		end
-
-		return left_order < right_order
-	end)
-	return table
-end
-
 if data.raw["lab"]["lab"] then
 	local vanilla_lab = data.raw["lab"]["lab"]
 
-	--== Ordering science packs in labs ==--
+	--== Legacy APIs:
 
-	local vanilla_lab_inputs = science_sorted_by_order_or_name(vanilla_lab.inputs)
+	for _, value in pairs(data.raw["technology"]) do
+		if
+			(
+				value["planetslib_ensure_all_packs_from_vanilla_lab"]
+				and value["planetslib_ensure_all_packs_from_vanilla_lab"] == true
+			)
+			or (value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true) -- support for legacy field
+		then
+			tech.set_science_packs_from_lab(value, vanilla_lab)
+		end
+	end
+
+	local vanilla_lab_inputs = tech.sort_science_pack_names(vanilla_lab.inputs)
 	vanilla_lab.inputs = vanilla_lab_inputs
 
 	if data.raw["lab"]["biolab"] then
@@ -44,34 +33,12 @@ if data.raw["lab"]["lab"] then
 					table.insert(new_lab.inputs, input)
 				end
 			end
-			new_lab.inputs = science_sorted_by_order_or_name(new_lab.inputs)
+			new_lab.inputs = tech.sort_science_pack_names(new_lab.inputs)
 		elseif
 			new_lab["planetslib_sort_sciences"] == true or new_lab["sort_sciences"] == true -- support for legacy field
 		then
 			local local_inputs = new_lab.inputs
-			new_lab.inputs = science_sorted_by_order_or_name(local_inputs)
-		end
-	end
-
-	--== Setting science packs in endgame technologies
-
-	if data.raw["technology"]["promethium-science-pack"] then
-		data.raw["technology"]["promethium-science-pack"]["planetslib_ensure_all_packs_from_vanilla_lab"] = true
-	end
-
-	if data.raw["technology"]["research-productivity"] then
-		data.raw["technology"]["research-productivity"]["planetslib_ensure_all_packs_from_vanilla_lab"] = true
-	end
-
-	for _, value in pairs(data.raw["technology"]) do
-		if
-			(
-				value["planetslib_ensure_all_packs_from_vanilla_lab"]
-				and value["planetslib_ensure_all_packs_from_vanilla_lab"] == true
-			)
-			or (value["ensure_all_packs_from_vanilla_lab"] and value["ensure_all_packs_from_vanilla_lab"] == true) -- support for legacy field
-		then
-			tech.set_science_packs_from_lab(value, vanilla_lab)
+			new_lab.inputs = tech.sort_science_pack_names(local_inputs)
 		end
 	end
 end
