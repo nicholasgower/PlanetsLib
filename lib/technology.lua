@@ -196,9 +196,13 @@ function Public.technology_effect_cargo_drops(planet_name, icons)
 	}
 end
 
-function Public.technology_icon_moon(moon_icon, icon_size)
+---Create a moon discovery technology icon by adding a little moon icon on your technology icon, like in vanilla, but for moon type planets.
+---@param tech_icon string The technology icon to add the moon icon
+---@param icon_size integer Your icon size
+---@return data.IconData[]
+function Public.technology_icon_moon(tech_icon, icon_size)
 	icon_size = icon_size or 256
-	local icons = util.technology_icon_constant_planet(moon_icon)
+	local icons = util.technology_icon_constant_planet(tech_icon)
 	icons[1].icon_size = icon_size
 	icons[2].icon = "__PlanetsLib__/graphics/icons/moon-technology-symbol.png"
 	-- End result is an icons object ressembling the following, as of 2.0.37. Future API changes might change this code,
@@ -219,10 +223,13 @@ function Public.technology_icon_moon(moon_icon, icon_size)
 	return icons
 end
 
--- The same as util.technology_icon_constant_planet from the vanilla library, but allows any icon size.
-function Public.technology_icon_planet(planet_icon, icon_size)
+---Create a planet discovery technology icon by adding a little planet icon on your technology icon, like in vanilla.
+---@param tech_icon string The technology icon to add the planet icon
+---@param icon_size integer Your icon size
+---@return data.IconData[]
+function Public.technology_icon_planet(tech_icon, icon_size)
 	icon_size = icon_size or 256
-	local icons = util.technology_icon_constant_planet(planet_icon)
+	local icons = util.technology_icon_constant_planet(tech_icon)
 	icons[1].icon_size = icon_size
 	-- End result is an icons object ressembling the following, as of 2.0.37. Future API changes might change this code,
 	-- which is why this function is written to reference the base function instead of copying it by hand.
