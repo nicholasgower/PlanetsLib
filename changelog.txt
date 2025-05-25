@@ -2,6 +2,7 @@
 Version: 1.5.1
 Date: ????
   Changes:
+    - Corrected the locale entries for cargo drops to remove the reference to construction robots.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.0
 Date: 2025-05-21
