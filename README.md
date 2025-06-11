@@ -43,9 +43,9 @@ The `distance` and `orientation` fields on the prototype will be generated autom
 
 ## Planet tiers
 
-PlanetsLib maintains a [number for each modded planet](https://github.com/danielmartin0/PlanetsLib/blob/main/default-tiers.lua) called the 'tier'. It has no functionality by itself, but is supposed to indicate where the planet fits in a vanilla-style game of Space Age, for use in mods like [Organized Solar System](https://mods.factorio.com/mod/Tiered-Solar-System).
+PlanetsLib [maintains a number](https://github.com/danielmartin0/PlanetsLib/blob/main/tiers.lua) for each modded planet called the 'tier'. It has no functionality by itself, but is supposed to indicate where the planet fits in a vanilla-style game of Space Age, for use in mods like [Organized Solar System](https://mods.factorio.com/mod/Tiered-Solar-System).
 
-Players are welcome to make a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) to update or introduce a tier value.
+Players are welcome to edit the [tiers file on Github](https://github.com/danielmartin0/PlanetsLib/blob/main/tiers.lua) to update or introduce a tier value.
 
 ## Planet Cargo Drops technology
 
