@@ -90,4 +90,11 @@ function Public.sort(arr, compare_fn)
 	return arr
 end
 
+function Public.wrap_single_config(config_or_configs)
+	if not config_or_configs[1] then
+		return { config_or_configs }
+	end
+	return config_or_configs
+end
+
 return Public

@@ -1,36 +1,13 @@
 local util = require("util")
+local lib = require("lib.lib")
 local technology = require("lib.technology")
 local planet = require("lib.planet")
 local planet_str = require("lib.planet-str")
 local surface_conditions = require("lib.surface_conditions")
-
--- The API documentation lives in README.md.
+local tiers = require("tiers")
 
 --== APIs ==--
-
-function PlanetsLib:extend(configOrConfigs)
-	local configs = util.table.deepcopy(configOrConfigs)
-
-	if not configs[1] then
-		configs = { configs }
-	end
-
-	for _, config in ipairs(configs) do
-		planet.extend(config)
-	end
-end
-
-function PlanetsLib:update(configOrConfigs)
-	local configs = util.table.deepcopy(configOrConfigs)
-
-	if not configs[1] then
-		configs = { configs }
-	end
-
-	for _, config in ipairs(configs) do
-		planet.update(config)
-	end
-end
+-- API documentation lives in README.md (or on the mod portal.)
 
 PlanetsLib.add_science_packs_from_vanilla_lab_to_technology =
 	technology.add_science_packs_from_vanilla_lab_to_technology
@@ -43,13 +20,30 @@ PlanetsLib.technology_icon_moon = technology.technology_icon_moon
 PlanetsLib.technology_icon_planet = technology.technology_icon_planet
 PlanetsLib.cargo_drops_technology_base = technology.cargo_drops_technology_base
 
-PlanetsLib.borrow_music = planet.borrow_music
+PlanetsLib.get_planet_tier = tiers.get_planet_tier
+PlanetsLib.get_space_location_tier = tiers.get_space_location_tier
 
 PlanetsLib.restrict_surface_conditions = surface_conditions.restrict_surface_conditions
 PlanetsLib.relax_surface_conditions = surface_conditions.relax_surface_conditions
 PlanetsLib.remove_surface_condition = surface_conditions.remove_surface_condition
 
 PlanetsLib.set_default_import_location = planet.set_default_import_location
+PlanetsLib.borrow_music = planet.borrow_music
+
+function PlanetsLib:extend(configOrConfigs)
+	local configs = lib.wrap_single_config(util.table.deepcopy(configOrConfigs))
+
+	for _, config in ipairs(configs) do
+		planet.extend(config)
+	end
+end
+function PlanetsLib:update(configOrConfigs)
+	local configs = lib.wrap_single_config(util.table.deepcopy(configOrConfigs))
+
+	for _, config in ipairs(configs) do
+		planet.update(config)
+	end
+end
 
 --== Undocumented APIs ==--
 -- Though these APIs are undocumented we should still support them, as mods may be using them.

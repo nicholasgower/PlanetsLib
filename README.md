@@ -20,7 +20,7 @@ Code, graphics and conventions to help modders creating planets, moons and other
 * We aim to never make any breaking changes. Sometimes APIs are removed from the documentation, that does not mean they are no longer supported.
 * Feel free to use the file `todo.md`.
 
-## Planet definitions
+## Defining planets
 
 PlanetsLib provides an API to define planets and space locations. It is a simple wrapper for data:extend.
 
@@ -41,9 +41,15 @@ The reasons one may choose to use it over a plain `data:extend` are some additio
 
 The `distance` and `orientation` fields on the prototype will be generated automatically. These are actually still treated as authoritative by PlanetsLib, and will determine its final location. The exception is if PlanetsLib sees the `distance`/`orientation` of one of your planet's parents has been moved relative to its `orbit` specification. In that case it will treat whatever mod intercepted the positions as intending to move all of that planet's children too, so PlanetsLib will update their locations appropriately.
 
+## Planet tiers
+
+PlanetsLib maintains a [number for each modded planet](https://github.com/danielmartin0/PlanetsLib/blob/main/default-tiers.lua) called the 'tier'. It has no functionality by itself, but is supposed to indicate where the planet fits in a vanilla-style game of Space Age, for use in mods like [Organized Solar System](https://mods.factorio.com/mod/Tiered-Solar-System).
+
+Players are welcome to make a [pull request](https://github.com/danielmartin0/PlanetsLib/pulls) to update or introduce a tier value.
+
 ## Planet Cargo Drops technology
 
-The library provides automatic functionality to restrict cargo drops on your planet until a technology is researched. To implement:
+You can use the library to restrict cargo drops on your planet until a certain technology is researched. To implement:
 
 * Use the helper function `PlanetsLib.cargo_drops_technology_base(planet, planet_technology_icon, planet_technology_icon_size)` to create a base technology prototype.
     * This will create a technology with name pattern: `planetslib-[planet-name]-cargo-drops`
