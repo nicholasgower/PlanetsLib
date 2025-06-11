@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
-Date: ????
+Date: 2025-06-11
   Changes:
     - Moved the 'tier' property to PlanetsLib from Organized Solar System, allowing other authors to make use of it. The tier is a number assigned to each planet to indicate where it likely appears in Space Age gameplay progression.
     - Rubia tier set to 4.5.
