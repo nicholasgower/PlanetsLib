@@ -2,6 +2,7 @@
 Version: 1.6.1
 Date: ????
   Changes:
+    - Tiers for Jahtra and Paracelsin added.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.0
 Date: 2025-06-11
@@ -12,7 +13,7 @@ Date: 2025-06-11
 Version: 1.5.2
 Date: 2025-06-02
   Changes:
-    - Russian trplanslation updated.
+    - Russian translation updated.
 ---------------------------------------------------------------------------------------------------
 Version: 1.5.1
 Date: 2025-05-25
