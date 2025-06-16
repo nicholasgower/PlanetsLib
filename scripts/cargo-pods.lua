@@ -65,7 +65,7 @@ function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 		if pod and pod.valid and not storage.planets_lib.cargo_pods_seen_on_platforms[pod.unit_number] then
 			local pod_contents = pod.get_inventory(defines.inventory.cargo_unit).get_contents()
 
-			local only_construction_robots_or_players = true
+			local has_only_allowed_cargo = true
 
 			for _, item in pairs(pod_contents) do
 				if
@@ -82,7 +82,7 @@ function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 						)
 					)
 				then
-					only_construction_robots_or_players = false
+					has_only_allowed_cargo = false
 					break
 				end
 			end
@@ -101,7 +101,7 @@ function Public.examine_cargo_pods(platform, cargo_pods, planet_name)
 				platform_index = platform.index,
 			}
 
-			if launched_from_platform and not only_construction_robots_or_players then
+			if launched_from_platform and not has_only_allowed_cargo then
 				Public.destroy_pod_on_platform(pod, platform, planet_name)
 			end
 		end
@@ -158,6 +158,9 @@ remote.add_interface("planetslib", {
 		end
 
 		if planet_name then
+			if not storage.planets_lib.whitelisted_names[planet_name] then
+				storage.planets_lib.whitelisted_names[planet_name] = {}
+			end
 			storage.planets_lib.whitelisted_names[planet_name][name] = true
 		else
 			storage.planets_lib.whitelisted_names_all_planets[name] = true
@@ -168,6 +171,9 @@ remote.add_interface("planetslib", {
 			error("name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_names[planet_name] then
+				storage.planets_lib.whitelisted_names[planet_name] = {}
+			end
 			storage.planets_lib.whitelisted_names[planet_name][name] = nil
 		else
 			storage.planets_lib.whitelisted_names_all_planets[name] = nil
@@ -178,6 +184,9 @@ remote.add_interface("planetslib", {
 			error("type_name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_types[planet_name] then
+				storage.planets_lib.whitelisted_types[planet_name] = {}
+			end
 			storage.planets_lib.whitelisted_types[planet_name][type_name] = true
 		else
 			storage.planets_lib.whitelisted_types_all_planets[type_name] = true
@@ -188,6 +197,9 @@ remote.add_interface("planetslib", {
 			error("type_name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_types[planet_name] then
+				storage.planets_lib.whitelisted_types[planet_name] = {}
+			end
 			storage.planets_lib.whitelisted_types[planet_name][type_name] = nil
 		else
 			storage.planets_lib.whitelisted_types_all_planets[type_name] = nil

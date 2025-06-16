@@ -2,6 +2,7 @@
 Version: 1.6.2
 Date: ????
   Changes:
+    - Fixed a crash when adding an item to the cargo drops whitelist for a specific planet.
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.1
 Date: 2025-06-12
