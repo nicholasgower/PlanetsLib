@@ -59,7 +59,7 @@ Public.modded_tiers = {
 	["space-location"] = {
 		["slp-solar-system-sun"] = 0.2,
 		["slp-solar-system-sun2"] = 0.2,
-		["calidus-senestella-gate-calidus"] = 3.2,
+		["calidus-senestella-gate-calidus"] = 4.0,
 		secretas = 5.65,
 	},
 }

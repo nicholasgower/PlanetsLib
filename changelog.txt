@@ -2,6 +2,7 @@
 Version: 1.6.3
 Date: ????
   Changes:
+    - Tiers: Stargate from Metal and Stars to tier 4
 ---------------------------------------------------------------------------------------------------
 Version: 1.6.2
 Date: 2025-06-16
