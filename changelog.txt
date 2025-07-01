@@ -4,6 +4,11 @@ Date: ????
   Changes:
     - Added unified interface allowing planets to define rocket silo recipes on a per-surface basis.
 ---------------------------------------------------------------------------------------------------
+Version: 1.6.3
+Date: 2025-06-29
+  Changes:
+    - Tiers: Stargate from Metal and Stars to tier 4
+---------------------------------------------------------------------------------------------------
 Version: 1.6.2
 Date: 2025-06-16
   Changes:
