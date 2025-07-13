@@ -162,11 +162,19 @@ remote.add_interface("planetslib", {
 		end
 
 		if planet_name then
+			if not storage.planets_lib.whitelisted_names then
+				storage.planets_lib.whitelisted_names = {}
+			end
+
 			if not storage.planets_lib.whitelisted_names[planet_name] then
 				storage.planets_lib.whitelisted_names[planet_name] = {}
 			end
 			storage.planets_lib.whitelisted_names[planet_name][name] = true
 		else
+			if not storage.planets_lib.whitelisted_names_all_planets then
+				storage.planets_lib.whitelisted_names_all_planets = {}
+			end
+
 			storage.planets_lib.whitelisted_names_all_planets[name] = true
 		end
 	end,
@@ -175,11 +183,18 @@ remote.add_interface("planetslib", {
 			error("name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_names then
+				storage.planets_lib.whitelisted_names = {}
+			end
+
 			if not storage.planets_lib.whitelisted_names[planet_name] then
 				storage.planets_lib.whitelisted_names[planet_name] = {}
 			end
 			storage.planets_lib.whitelisted_names[planet_name][name] = nil
 		else
+			if not storage.planets_lib.whitelisted_names_all_planets then
+				storage.planets_lib.whitelisted_names_all_planets = {}
+			end
 			storage.planets_lib.whitelisted_names_all_planets[name] = nil
 		end
 	end,
@@ -188,11 +203,18 @@ remote.add_interface("planetslib", {
 			error("type_name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_types then
+				storage.planets_lib.whitelisted_types = {}
+			end
+
 			if not storage.planets_lib.whitelisted_types[planet_name] then
 				storage.planets_lib.whitelisted_types[planet_name] = {}
 			end
 			storage.planets_lib.whitelisted_types[planet_name][type_name] = true
 		else
+			if not storage.planets_lib.whitelisted_types_all_planets then
+				storage.planets_lib.whitelisted_types_all_planets = {}
+			end
 			storage.planets_lib.whitelisted_types_all_planets[type_name] = true
 		end
 	end,
@@ -201,11 +223,18 @@ remote.add_interface("planetslib", {
 			error("type_name must be a string")
 		end
 		if planet_name then
+			if not storage.planets_lib.whitelisted_types then
+				storage.planets_lib.whitelisted_types = {}
+			end
+
 			if not storage.planets_lib.whitelisted_types[planet_name] then
 				storage.planets_lib.whitelisted_types[planet_name] = {}
 			end
 			storage.planets_lib.whitelisted_types[planet_name][type_name] = nil
 		else
+			if not storage.planets_lib.whitelisted_types_all_planets then
+				storage.planets_lib.whitelisted_types_all_planets = {}
+			end
 			storage.planets_lib.whitelisted_types_all_planets[type_name] = nil
 		end
 	end,

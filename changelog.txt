@@ -4,6 +4,15 @@ Date: ????
   Changes:
     - Added unified interface allowing planets to define rocket silo recipes on a per-surface basis.
 ---------------------------------------------------------------------------------------------------
+Version: 1.6.4
+Date: 2025-07-10
+  Bugfixes:
+    - Fixed a possible crash in the cargo pod remote interface.
+  Locale:
+    - Added German translation.
+  Changes:
+    - Update to the orbit generator script to support valid sprites for larger orbit radii.
+---------------------------------------------------------------------------------------------------
 Version: 1.6.3
 Date: 2025-06-29
   Changes:
