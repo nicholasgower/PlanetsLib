@@ -20,6 +20,8 @@ Code, graphics and conventions to help modders creating planets, moons and other
 * We aim to never make any breaking changes. Sometimes APIs are removed from the documentation, that does not mean they are no longer supported.
 * Feel free to use the file `todo.md`.
 
+# Documentation
+
 ## Defining planets
 
 PlanetsLib provides an API to define planets and space locations. It is a simple wrapper for data:extend.
@@ -35,7 +37,7 @@ The reasons one may choose to use it over a plain `data:extend` are some additio
         * `sprite` — Object (optional) — Sprite for the planet’s orbit. This will be centered on the parent's location.
     * `sprite_only` — Boolean (optional) — If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
-    * Other valid `planet` or `space-location` prototype fields.
+    * Any other valid `planet` or `space-location` prototype fields.
     * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
 * `PlanetsLib:update(configs)` — A simple helper that can be used to update the positions of pre-existing space locations, as identified by the passed `type` and `name` fields. Any other fields passed will be updated on the prototype, and if the `orbit` field is passed the `distance` and `orientation` fields on the prototype will also be updated. Any fields not passed will be left unchanged. Should not be called in `data-final-fixes`.
 
@@ -43,7 +45,7 @@ The `distance` and `orientation` fields on the prototype will be generated autom
 
 ## Planet tiers
 
-PlanetsLib [maintains a number](https://github.com/danielmartin0/PlanetsLib/blob/main/tiers.lua) for each modded planet called the 'tier'. It has no functionality by itself, but is supposed to indicate where the planet fits in a vanilla-style game of Space Age, for use in mods like [Organized Solar System](https://mods.factorio.com/mod/Tiered-Solar-System).
+PlanetsLib [maintains a number](https://github.com/danielmartin0/PlanetsLib/blob/main/tiers.lua) for each modded planet called the 'tier'. It has no functionality by itself, but is a rough indicator where the planet fits in a vanilla-style game of Space Age for other mods that wish to use this information.
 
 Players are welcome to submit edits to the [tiers file on Github](https://github.com/danielmartin0/PlanetsLib/blob/main/tiers.lua).
 
