@@ -2,6 +2,7 @@
 Version: 1.7.2
 Date: ????
   Changes:
+    - Fixed the dependency name of PlanetsLib: Tiers.
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.1
 Date: 2025-07-20
