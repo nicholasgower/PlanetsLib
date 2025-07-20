@@ -4,7 +4,6 @@ local technology = require("lib.technology")
 local planet = require("lib.planet")
 local planet_str = require("lib.planet-str")
 local surface_conditions = require("lib.surface_conditions")
-local tiers = require("tiers")
 local mod_data = require("lib.mod-data")
 
 --== APIs ==--
@@ -22,9 +21,6 @@ PlanetsLib.technology_icon_planet = technology.technology_icon_planet
 PlanetsLib.cargo_drops_technology_base = technology.cargo_drops_technology_base
 
 PlanetsLib.assign_rocket_part_recipe = mod_data.assign_rocket_part_recipe
-
-PlanetsLib.get_planet_tier = tiers.get_planet_tier
-PlanetsLib.get_space_location_tier = tiers.get_space_location_tier
 
 PlanetsLib.restrict_surface_conditions = surface_conditions.restrict_surface_conditions
 PlanetsLib.relax_surface_conditions = surface_conditions.relax_surface_conditions
@@ -58,3 +54,14 @@ PlanetsLib.technology_effect_cargo_drops = technology.technology_effect_cargo_dr
 PlanetsLib.surface_conditions = surface_conditions
 PlanetsLib.restrict_to_planet = surface_conditions.restrict_to_planet
 PlanetsLib.planet_str = planet_str
+
+-- For backwards compatibility (mod-data was not always a thing):
+PlanetsLib.get_planet_tier = function(planet_name)
+	return data.raw["mod-data"]["PlanetsLib-tierlist"].data.planet[planet_name]
+		or data.raw["mod-data"]["PlanetsLib-tierlist"].data.default
+end
+
+PlanetsLib.get_space_location_tier = function(space_location_name)
+	return data.raw["mod-data"]["PlanetsLib-tierlist"].data["space-location"][space_location_name]
+		or data.raw["mod-data"]["PlanetsLib-tierlist"].data.default
+end
