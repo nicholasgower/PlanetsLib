@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.7.1
-Date: ????
+Date: 2025-07-20
   Changes:
     - Migrated the planet tiers to the new mod 'PlanetsLib: Tiers' and to mod-data prototypes. You can now access their values using `local tier = data.raw["mod-data"]["PlanetsLib-tierlist"].data[type][name] or data.raw["mod-data"]["PlanetsLib-tierlist"].data.default`.
     - The APIs get_planet_tier and get_space_location_tier are now undocumented, but maintained for backwards compatibility.
