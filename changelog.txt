@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.0
-Date: ????
+Date: 2025-07-20
   Changes:
     - Our first player-facing settings: 'Warn on hidden prerequisites' and 'Unlink hidden prerequisites'. These prevent unresearchable technologies from arising due to compatibility issues.
 ---------------------------------------------------------------------------------------------------
