@@ -32,22 +32,26 @@ function Public.warn_unreachable_techs()
 
 	if #warnings > 0 then
 		local all_warnings = table.concat(warnings, ", ")
-		game.print(
-			"[PlanetsLib]: Warning, suspected unresearchable technologies: "
-				.. all_warnings
-				.. ". The PlanetsLib mod settings let you unlink the prerequisites or disable this warning.",
-			{ color = WARN_COLOR }
-		)
+		game.print({
+			"",
+			{ "planetslib.planetslib-print" },
+			{ "planetslib.warn-unreachable-techs", all_warnings },
+		}, { color = WARN_COLOR })
 	end
 end
 
 function Public.warn_unlinked_prerequisites()
-	local warnings = {}
+	local prerequisites = {}
 	for _, prerequisite in pairs(prototypes.mod_data["Planetslib"].data.unlinked_prerequisites) do
-		table.insert(warnings, "[technology=" .. prerequisite .. "]")
+		table.insert(prerequisites, prerequisite)
 	end
-	local all_warnings = table.concat(warnings, ", ")
-	game.print("[PlanetsLib]: Unlinked prerequisites: " .. all_warnings, { color = WARN_COLOR })
+	local all_warnings = table.concat(prerequisites, ", ")
+
+	game.print({
+		"",
+		{ "planetslib.planetslib-print" },
+		{ "planetslib.notify-unlinked-prerequisites", all_warnings },
+	}, { color = WARN_COLOR })
 end
 
 return Public
