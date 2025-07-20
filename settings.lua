@@ -2,6 +2,23 @@ data:extend({
 	{
 		type = "bool-setting",
 		setting_type = "startup",
+		name = "PlanetsLib-warn-on-hidden-prerequisites",
+		default_value = true,
+		order = "a",
+	},
+	{
+		type = "bool-setting",
+		setting_type = "startup",
+		name = "PlanetsLib-unlink-hidden-prerequisites",
+		default_value = false,
+		order = "b",
+	},
+})
+
+data:extend({
+	{
+		type = "bool-setting",
+		setting_type = "startup",
 		name = "PlanetsLib-enable-temperature",
 		forced_value = false,
 		default_value = false,

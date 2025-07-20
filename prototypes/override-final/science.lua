@@ -1,6 +1,30 @@
-local util = require("util")
 local lib = require("lib.lib")
 local tech = require("lib.technology")
+
+--== Prevent hidden prerequisites ==--
+
+if settings.startup["PlanetsLib-unlink-hidden-prerequisites"].value then
+	for _, technology in pairs(data.raw.technology) do
+		if technology and technology.prerequisites then
+			local valid_prereqs = {}
+			for _, prereq_name in ipairs(technology.prerequisites) do
+				local prereq_tech = data.raw.technology[prereq_name]
+				if prereq_tech then
+					if prereq_tech.hidden then
+						if
+							not lib.find(data.raw["mod-data"]["Planetslib"].data.unlinked_prerequisites, prereq_name)
+						then
+							table.insert(data.raw["mod-data"]["Planetslib"].data.unlinked_prerequisites, prereq_name)
+						end
+					else
+						table.insert(valid_prereqs, prereq_name)
+					end
+				end
+			end
+			technology.prerequisites = valid_prereqs
+		end
+	end
+end
 
 if data.raw["lab"]["lab"] then
 	local vanilla_lab = data.raw["lab"]["lab"]
