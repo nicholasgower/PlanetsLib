@@ -45,11 +45,11 @@ The `distance` and `orientation` fields on the prototype will be generated autom
 
 ## Planet tiers
 
-The companion mod [PlanetsLib: Tiers](https://mods.factorio.com/mod/PlanetsLib-Tiers) defines 'tier values' for planets and space locations. Tiers have no functionality by themselves, but are a rough indicator where the planet fits in a vanilla-style game of Space Age for the purposes of other mods that wish to use this information.
+The companion mod [PlanetsLib: Tiers](https://mods.factorio.com/mod/PlanetsLibTiers) defines 'tier values' for planets and space locations. Tiers have no functionality by themselves, but are a rough indicator where the planet fits in a vanilla-style game of Space Age for the purposes of other mods that wish to use this information.
 
 With PlanetsLib: Tiers installed, tiers can be accessed with `local tier = data.raw["mod-data"]["PlanetsLib-tierlist"].data[type][name] or data.raw["mod-data"]["PlanetsLib-tierlist"].data.default`
 
-The tier listing is [here on GitHub.](https://github.com/danielmartin0/factorio-PlanetsLib-Tiers/blob/main/tiers.lua). Players are encouraged to submit edits to keep it up-to-date.
+The tier listing is [here on GitHub.](https://github.com/danielmartin0/factorio-PlanetsLib-Tiers/blob/main/data.lua). Players are encouraged to submit edits to keep it up-to-date.
 
 ## Planet Cargo Drops technology
 

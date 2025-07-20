@@ -55,7 +55,7 @@ PlanetsLib.surface_conditions = surface_conditions
 PlanetsLib.restrict_to_planet = surface_conditions.restrict_to_planet
 PlanetsLib.planet_str = planet_str
 
--- For backwards compatibility (mod-data was not always a thing):
+-- For backwards compatibility (mod-data was not always a thing). NOTE: These functions return numbers, other mods may change the tier prototypes after you call this.
 PlanetsLib.get_planet_tier = function(planet_name)
 	return data.raw["mod-data"]["PlanetsLib-tierlist"].data.planet[planet_name]
 		or data.raw["mod-data"]["PlanetsLib-tierlist"].data.default
