@@ -21,6 +21,7 @@ PlanetsLib.technology_icon_moon = technology.technology_icon_moon
 PlanetsLib.technology_icon_planet = technology.technology_icon_planet
 PlanetsLib.cargo_drops_technology_base = technology.cargo_drops_technology_base
 
+
 PlanetsLib.assign_rocket_part_recipe = mod_data.assign_rocket_part_recipe
 
 PlanetsLib.restrict_surface_conditions = surface_conditions.restrict_surface_conditions
@@ -48,7 +49,7 @@ end
 --== Undocumented APIs ==--
 -- Though these APIs are undocumented we should still support them, as mods may be using them.
 
-
+PlanetsLib.process_technology_recipe_productivity_effects = technology.process_technology_recipe_productivity_effects
 PlanetsLib.technology_icons_moon = technology.technology_icon_moon
 PlanetsLib.technology_icon_constant_planet = technology.technology_icon_planet
 PlanetsLib.technology_icons_planet_cargo_drops = technology.technology_icons_planet_cargo_drops
