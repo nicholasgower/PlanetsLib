@@ -124,7 +124,7 @@ PlanetsLib adds a new field named `PlanetsLib_recipe_productivity_effects` to te
 *   `use_icon_overlay_constant` (optional)
 
 #### New [`BaseModifier`](https://lua-api.factorio.com/latest/types/BaseModifier.html) field: `PlanetsLib_force_include`
-*  Makes this modifier immune to purge_other_effects.
+*  Makes this modifier immune to `purge_other_effects`.
 
 #### New ['RecipePrototype'](https://lua-api.factorio.com/latest/prototypes/RecipePrototype.html) field: `PlanetsLib_blacklist_technology_updates`
 *  Stops PlanetsLib from targeting this recipe in technology updates.
