@@ -359,7 +359,8 @@ local function xor(a,b)
     return (a or b) and (not(a and b))
 end
 
-function Public.process_technology_recipe_productivity_effects(tech) --Undocumented. Placed here to simplify testing
+---@param tech table (TechnologyPrototype)
+function Public.process_technology_recipe_productivity_effects(tech) 
     if tech.PlanetsLib_recipe_productivity_effects then
         
         local new_effects = {}
