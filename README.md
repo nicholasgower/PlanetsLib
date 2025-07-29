@@ -107,8 +107,8 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 PlanetsLib adds a new field named `PlanetsLib_recipe_productivity_effects` to technologies, used by recipe productivity technologies. During `data-final-fixes,` technologies with this field will have their effects list appended or replaced with recipes matching either an output name or recipe category.
 
 #### [`TechnologyPrototype`](https://lua-api.factorio.com/latest/prototypes/TechnologyPrototype.html) field: `PlanetsLib_recipe_productivity_effects` Properties:
-*   effects: `array[ChangeResultProductivityModifier]`
-*   purge_other_effects: boolean. Default: false. Before adding effects added by `PlanetsLib_recipe_productivity_effects`, remove all effects not flagged with `PlanetsLib_force_include`.
+*   `effects`: `array[ChangeResultProductivityModifier]`
+*   `purge_other_effects`: boolean. Default: false. Before adding effects added by `PlanetsLib_recipe_productivity_effects`, remove all effects not flagged with `PlanetsLib_force_include`.
 
 #### `ChangeResultProductivityModifier` Properties:
 *   `allow_multiple_results`: boolean. Default: false. When false, only recipes with one result are added to the technology's effect list.
