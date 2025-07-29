@@ -6,6 +6,7 @@ local planet_str = require("lib.planet-str")
 local surface_conditions = require("lib.surface_conditions")
 local mod_data = require("lib.mod-data")
 
+
 --== APIs ==--
 -- API documentation lives in README.md (or on the mod portal.)
 
@@ -46,6 +47,7 @@ end
 
 --== Undocumented APIs ==--
 -- Though these APIs are undocumented we should still support them, as mods may be using them.
+
 
 PlanetsLib.technology_icons_moon = technology.technology_icon_moon
 PlanetsLib.technology_icon_constant_planet = technology.technology_icon_planet
