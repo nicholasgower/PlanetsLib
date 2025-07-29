@@ -102,20 +102,21 @@ NOTE: Calling `relax_surface_conditions` without a `min` field will not remove a
 * `PlanetsLib.sort_science_pack_names(science_pack_names_table)` — Sorts the given list of science pack names (strings expected) by the `order` fields of the corresponding prototypes, or by their names if an `order` field does not exist.
     * This is useful for defining the inputs of labs because (unlike in Factoriopedia) science packs displayed in labs aren't ordered by the `order` field.
 
-### Recipe productivity technology helper fields
+### Recipe productivity technology helper field
 
 PlanetsLib adds a new field named `PlanetsLib_recipe_productivity_effects` to technologies, used by recipe productivity technologies. During `data-final-fixes,` technologies with this field will have their effects list appended or replaced with recipes matching either an output name or recipe category.
 
 #### [`TechnologyPrototype`](https://lua-api.factorio.com/latest/prototypes/TechnologyPrototype.html) field: `PlanetsLib_recipe_productivity_effects` Properties:
 *   `effects`: `array[ChangeResultProductivityModifier]`
-*   `purge_other_effects`: boolean. Default: false. Before adding effects added by `PlanetsLib_recipe_productivity_effects`, remove all effects not flagged with `PlanetsLib_force_include`.
+*   `category_blacklist` - `array[`[`RecipeCategoryID`](https://lua-api.factorio.com/latest/types/RecipeCategoryID.html)`]`
+*   `purge_other_effects`- boolean. Default: false. Before adding effects added by `PlanetsLib_recipe_productivity_effects`, remove all effects not flagged with `PlanetsLib_force_include`.
 
 #### `ChangeResultProductivityModifier` Properties:
 *   `allow_multiple_results`: boolean. Default: false. When false, only recipes with one result are added to the technology's effect list.
-*   `category` (optional) Either `(name and type) or category` required.
+*   `category` (optional) - [`RecipeCategoryID`](https://lua-api.factorio.com/latest/types/RecipeCategoryID.html)  Either `(name and type) or category` required. Forbidden when `category_blacklist ~= nil`.
+*   `type` (optional) - [`ProductPrototype`](https://lua-api.factorio.com/latest/types/ProductPrototype.html)
+*   `name` (optional) - [`ItemID`](https://lua-api.factorio.com/latest/types/ItemID.html)
 ##### Inherited from [`ChangeRecipeProductivityModifier`](https://lua-api.factorio.com/latest/types/ChangeRecipeProductivityModifier.html)
-*   `type` (optional)
-*   `name` (optional)
 *   `change`
 *   `icons` (optional)
 *   `icon` (optional)
