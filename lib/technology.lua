@@ -1,3 +1,7 @@
+--- Technology-related functions.
+-- @module lib.technology.lua
+-- dependencies: util, lib.lib, lib.remove-replace-object
+
 local util = require("util")
 local lib = require("lib.lib")
 local rro = require("lib.remove-replace-object")
