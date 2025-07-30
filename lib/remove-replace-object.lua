@@ -1,7 +1,11 @@
---By MeteorSwarm
---Designed to simplify table manipulation, with preventing crashes when applying functions en masse the first priority.
---These functions should remain undocumented in PlanetsLib.
---This library has been bundled with PlanetsLib to make it easier to port features from MeteorSwarm's mods to PlanetsLib.
+--- remove-replace-object
+-- Usually imported as "rro".
+-- Designed to simplify table manipulation, with preventing crashes when applying functions en masse the first priority.
+-- These functions should remain undocumented in PlanetsLib.
+-- This library has been bundled with PlanetsLib to make it easier to port features from MeteorSwarm's mods to PlanetsLib.
+-- @author MeteorSwarm
+-- @module lib.remove-replace-object
+-- @pragma nostrip
 
 
 local Public = {}

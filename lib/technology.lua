@@ -1,6 +1,7 @@
 --- Technology-related functions.
+--- Dependencies: util, lib.lib, lib.remove-replace-object
 -- @module lib.technology.lua
--- dependencies: util, lib.lib, lib.remove-replace-object
+
 
 local util = require("util")
 local lib = require("lib.lib")
@@ -364,6 +365,7 @@ local function xor(a,b)
 end
 
 ---@param tech table (TechnologyPrototype)
+---@author Nicholas Gower(MeteorSwarm)
 function Public.process_technology_recipe_productivity_effects(tech) 
     if tech.PlanetsLib_recipe_productivity_effects then
         
