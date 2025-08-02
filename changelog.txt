@@ -1,7 +1,10 @@
 ---------------------------------------------------------------------------------------------------
-Version: 1.8.4
+Version: 1.9.0
 Date: ????
+  Bugfixes:
+    - Fixed a bug in PlanetsLib:update() in which the positions of the given planet's children were not appropriately updated.
   Changes:
+    - PlanetsLib:update() no longer supports taking an array of configs, unless the array has length 1.
 ---------------------------------------------------------------------------------------------------
 Version: 1.8.3
 Date: 2025-07-28
