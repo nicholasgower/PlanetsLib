@@ -38,10 +38,10 @@ function PlanetsLib:extend(configOrConfigs)
 		planet.extend(config)
 	end
 end
-function PlanetsLib:update(configOrConfigs)
-	local configs = lib.wrap_single_config(util.table.deepcopy(configOrConfigs))
-
-	for _, config in ipairs(configs) do
+function PlanetsLib:update(config)
+	if #config == 1 then
+		planet.update(config[1])
+	else
 		planet.update(config)
 	end
 end

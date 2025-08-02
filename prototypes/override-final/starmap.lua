@@ -10,7 +10,7 @@ function Public.update_starmap_layers(planet)
 	if planet.sprite_only and (planet.starmap_icon or planet.starmap_icons) then
 		local magnitude = planet.magnitude or 1
 
-		local x, y = orbits.get_rectangular_position(planet.distance * 32, planet.orientation)
+		local x, y = orbits.get_rectangular_position_from_polar(planet.distance * 32, planet.orientation)
 
 		if planet.starmap_icons then
 			for _, sprite in pairs(planet.starmap_icons) do
@@ -48,17 +48,10 @@ function Public.draw_orbit_of_planet(planet)
 		"Parent types other than planet or space-location are not yet supported"
 	)
 
-	local distance_from_orbit = orbits.get_absolute_polar_position_from_orbit(orbit)
-
-	if distance_from_orbit ~= planet.distance then
-		-- Another mod has intercepted, so let's not risk drawing any orbit sprite.
-
-		return { should_disable_default_orbit_sprite = true }
-	end
-
 	local parent_data = data.raw[parent.type][parent.name]
 
-	local parent_x, parent_y = orbits.get_rectangular_position(parent_data.distance * 32, parent_data.orientation)
+	local parent_x, parent_y =
+		orbits.get_rectangular_position_from_polar(parent_data.distance * 32, parent_data.orientation)
 
 	if orbit.sprite.layers then
 		for _, layer in pairs(orbit.sprite.layers) do
@@ -113,7 +106,7 @@ for _, type in pairs({ "space-location", "planet" }) do
 	end
 end
 
-local ordered_locations = orbits.location_ordered_by_orbit(locations)
+local ordered_locations = orbits.locations_ordered_by_orbits(locations)
 
 for _, location in pairs(ordered_locations) do
 	local result = Public.update_starmap_layers(location)

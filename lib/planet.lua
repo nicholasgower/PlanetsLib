@@ -81,14 +81,61 @@ end
 function Public.update(config)
 	Public.verify_update_fields(config)
 
+	orbits.ensure_all_locations_have_orbits()
+
 	for k, v in pairs(config) do
-		data.raw[config.type][config.name][k] = v
-
 		if k == "orbit" then
-			local distance, orientation = orbits.get_absolute_polar_position_from_orbit(v)
+			log("--------------------------------")
 
-			data.raw[config.type][config.name].distance = distance
-			data.raw[config.type][config.name].orientation = orientation
+			log(
+				"PlanetsLib:update called on "
+					.. config.name
+					.. ", changing orbit from "
+					.. serpent.line(data.raw[config.type][config.name].orbit)
+					.. " to "
+					.. serpent.line(config.orbit)
+					.. " and updating the positions of children appropriately:"
+			)
+
+			data.raw[config.type][config.name].orbit = v
+
+			local current_x, current_y = orbits.get_rectangular_position_from_polar(
+				data.raw[config.type][config.name].distance,
+				data.raw[config.type][config.name].orientation
+			)
+
+			local parent_prototype = data.raw[v.parent.type][v.parent.name]
+
+			local parent_x, parent_y =
+				orbits.get_rectangular_position_from_polar(parent_prototype.distance, parent_prototype.orientation)
+
+			local orbit_x, orbit_y = orbits.get_rectangular_position_from_polar(v.distance, v.orientation)
+
+			local new_x, new_y = parent_x + orbit_x, parent_y + orbit_y
+
+			log(
+				"PlanetsLib: updating "
+					.. config.name
+					.. " from x="
+					.. current_x
+					.. ", y="
+					.. current_y
+					.. " to x="
+					.. new_x
+					.. ", y="
+					.. new_y
+			)
+
+			local new_distance, new_orientation = orbits.get_polar_position_from_rectangular(new_x, new_y)
+
+			data.raw[config.type][config.name].distance = new_distance
+			data.raw[config.type][config.name].orientation = new_orientation
+
+			orbits.update_positions_of_all_children_via_orbits(data.raw[config.type][config.name])
+
+			log("--------------------------------")
+		else
+			data.raw[config.type][config.name][k] = v
 		end
 	end
 end

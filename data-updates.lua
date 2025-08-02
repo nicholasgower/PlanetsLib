@@ -1,4 +1,6 @@
+local orbits = require("lib.orbits")
+
 if mods["space-age"] then
-	require("prototypes.override.add-missing-orbit-fields")
+	orbits.ensure_all_locations_have_orbits()
 	require("prototypes.override.rocket-silos")
 end

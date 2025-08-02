@@ -28,7 +28,7 @@ PlanetsLib provides an API to define planets and space locations. It is a simple
 
 The reasons one may choose to use it over a plain `data:extend` are some additional features: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite depicting the orbit can be supplied; and various other mods are sensitive to the orbit tree.
 
-* `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Should not be called in `data-final-fixes`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
+* `PlanetsLib:extend(configs)` — A wrapper/replacement for `data:extend`. Throws an error if passed `distance` or `orientation`. Each config instead takes the fields listed below.
     * `type` — `"planet"` or `"space-location"`
     * `orbit` — Object containing orbital parameters:
         * `parent` — Object containing `name` and `type` fields, corresponding to a parent at `data.raw[type][name]`. Planets in the original solar system should have an orbit with `type = "space-location"` and `name = "star"`.
@@ -38,10 +38,13 @@ The reasons one may choose to use it over a plain `data:extend` are some additio
     * `sprite_only` — Boolean (optional) — If true, this prototype will be removed in `data-final-fixes` and replaced by its sprites on the starmap (unless it has no sprites, in which case nothing will show).
         * This is useful for constructing stars and other locations that should not have a space platform 'docking ring'.
     * Any other valid `planet` or `space-location` prototype fields.
+    * The `distance` and `orientation` fields on the prototype will be generated automatically.
     * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) or [here](https://github.com/danielmartin0/PlanetsLib/issues/12#issuecomment-2585484116) for usage examples.
-* `PlanetsLib:update(configs)` — A simple helper that can be used to update the positions of pre-existing space locations, as identified by the passed `type` and `name` fields. Any other fields passed will be updated on the prototype, and if the `orbit` field is passed the `distance` and `orientation` fields on the prototype will also be updated. Any fields not passed will be left unchanged. Should not be called in `data-final-fixes`.
+* `PlanetsLib:update(config)` — Updates the position of a pre-existing space location, as identified by the passed `type` and `name` fields. Any other fields passed will be updated on the prototype, and if the `orbit` field is passed the `distance` and `orientation` fields on the prototype will also be updated, along with the `distance` and `orientation` of its children and grandchildren. Any fields not passed will be left unchanged.
 
-The `distance` and `orientation` fields on the prototype will be generated automatically. These are actually still treated as authoritative by PlanetsLib, and will determine its final location. The exception is if PlanetsLib sees the `distance`/`orientation` of one of your planet's parents has been moved relative to its `orbit` specification. In that case it will treat whatever mod intercepted the positions as intending to move all of that planet's children too, so PlanetsLib will update their locations appropriately.
+PlanetsLib has some extra compatibility code in `data-final-fixes` in which if a planet has noticed to have a `position` and `orientation` different from that implied by its orbit fields, those values will be treated as authoritative, its `orbit` field will be updated, and a simulated `PlanetsLib:update` call will be made to update the `position` and `orientation` of its children. However, using `PlanetsLib:update` over this method is recommended for compatibility.
+
+Neither `PlanetsLib:extend` nor `PlanetsLib:update` should be called in `data-final-fixes`.
 
 ## Planet tiers
 

@@ -1,7 +1,7 @@
 require("prototypes.override-final.science")
 require("prototypes.override-final.technology-updates")
 if mods["space-age"] then
-	require("prototypes.override-final.update-positions")
+	require("prototypes.override-final.check-unexpected-positions")
 	require("prototypes.override-final.update-connections")
 	local ps = require("lib.planet-str")
 
