@@ -98,7 +98,7 @@
 <p>The reasons one may choose to use it over a plain <code>data:extend</code> are some additional features: you can specify positions with respect to a parent body; if the parent body is moved by another mod your planet will move with it; a sprite depicting the orbit can be supplied; and various other mods are sensitive to the orbit tree.</p>
 
 <ul>
-    <li><code>PlanetsLib:extend(configs)</code> — A wrapper/replacement for <code>data:extend</code>. Should not be called in <code>data-final-fixes</code>. Throws an error if passed <code>distance</code> or <code>orientation</code>. Each config instead takes the fields listed below.
+    <li><code>PlanetsLib:extend(configs)</code> — A wrapper/replacement for <code>data:extend</code>. Throws an error if passed <code>distance</code> or <code>orientation</code>. Each config instead takes the fields listed below.
 
 <pre>
 * <span class="backtick"><a href="https://www.lua.org/manual/5.1/manual.html#pdf-type">type</a></span> — <span class="backtick"><code>&quot;planet&quot;</code></span> <span class="keyword">or</span> <span class="backtick"><code>&quot;space-location&quot;</code></span>
@@ -110,13 +110,16 @@
 * <span class="backtick"><code>sprite_only</code></span> — <span class="function-name">Boolean</span> (optional) — If <span class="keyword">true</span>, this prototype will be removed <span class="keyword">in</span> <span class="backtick"><code>data-final-fixes</code></span> <span class="keyword">and</span> replaced by its sprites on the <span class="function-name">starmap</span> (unless it has no sprites, <span class="keyword">in</span> which case nothing will show).
     * This is useful <span class="keyword">for</span> constructing stars <span class="keyword">and</span> other locations that should <span class="keyword">not</span> have a space <span class="function-name">platform</span> <span class="string">'docking ring'</span>.
 * Any other valid <span class="backtick"><code>planet</code></span> <span class="keyword">or</span> <span class="backtick"><code>space-location</code></span> prototype fields.
+* The <span class="backtick"><code>distance</code></span> <span class="keyword">and</span> <span class="backtick"><code>orientation</code></span> fields on the prototype will be generated automatically.
 * See [here](https://github.com/danielmartin0/Cerys-Moon-of-Fulgora/blob/main/prototypes/planet/planet.lua) <span class="keyword">or</span> [here](https://github.com/danielmartin0/PlanetsLib/issues/<span class="number">12</span>#issuecomment-<span class="number">2585484116</span>) <span class="keyword">for</span> usage examples.
 </pre>
 </li>
-    <li><code>PlanetsLib:update(configs)</code> — A simple helper that can be used to update the positions of pre-existing space locations, as identified by the passed <a href="https://www.lua.org/manual/5.1/manual.html#pdf-type">type</a> and <code>name</code> fields. Any other fields passed will be updated on the prototype, and if the <code>orbit</code> field is passed the <code>distance</code> and <code>orientation</code> fields on the prototype will also be updated. Any fields not passed will be left unchanged. Should not be called in <code>data-final-fixes</code>.</li>
+    <li><code>PlanetsLib:update(config)</code> — Updates the position of a pre-existing space location, as identified by the passed <a href="https://www.lua.org/manual/5.1/manual.html#pdf-type">type</a> and <code>name</code> fields. Any other fields passed will be updated on the prototype, and if the <code>orbit</code> field is passed the <code>distance</code> and <code>orientation</code> fields on the prototype will also be updated, along with the <code>distance</code> and <code>orientation</code> of its children and grandchildren. Any fields not passed will be left unchanged.</li>
 </ul>
 
-<p>The <code>distance</code> and <code>orientation</code> fields on the prototype will be generated automatically. These are actually still treated as authoritative by PlanetsLib, and will determine its final location. The exception is if PlanetsLib sees the <code>distance</code>/<code>orientation</code> of one of your planet's parents has been moved relative to its <code>orbit</code> specification. In that case it will treat whatever mod intercepted the positions as intending to move all of that planet's children too, so PlanetsLib will update their locations appropriately.</p>
+<p>PlanetsLib has some extra compatibility code in <code>data-final-fixes</code> in which if a planet has noticed to have a <code>position</code> and <code>orientation</code> different from that implied by its orbit fields, those values will be treated as authoritative, its <code>orbit</code> field will be updated, and a simulated <code>PlanetsLib:update</code> call will be made to update the <code>position</code> and <code>orientation</code> of its children. However, using <code>PlanetsLib:update</code> over this method is recommended for compatibility.</p>
+
+<p>Neither <code>PlanetsLib:extend</code> nor <code>PlanetsLib:update</code> should be called in <code>data-final-fixes</code>.</p>
 
 <p><a name="Planet_tiers"></a></p>
 <h2>Planet tiers</h2>
