@@ -5,7 +5,7 @@
 
 local util = require("util")
 local lib = require("lib.lib")
-local rro = require("lib.remove-replace-object")
+local rro = require("lib.objects")
 
 local Public = {}
 
@@ -365,7 +365,7 @@ local function xor(a,b)
 end
 
 ---@param tech table (TechnologyPrototype)
----@author Nicholas Gower(MeteorSwarm)
+---@author MeteorSwarm
 function Public.process_technology_recipe_productivity_effects(tech) 
     if tech.PlanetsLib_recipe_productivity_effects then
         
