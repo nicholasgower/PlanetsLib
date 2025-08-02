@@ -101,7 +101,7 @@ function Public.soft_insert(list,objectToAdd)
 end
 
 ---Adds fields of `new` to `old`, replacing overlapping fields.
--- Special argument "_nil", when added to "new", deletes the equivalent field in "old" without replacing it with anything.
+-- Special argument "_nil"(or "nil"), when added to "new", deletes the equivalent field in "old" without replacing it with anything.
 -- @param old table
 -- @param new table
 -- @return old table
@@ -109,7 +109,7 @@ function Public.merge(old, new)
     old = util.table.deepcopy(old)
 
     for k, v in pairs(new) do
-        if v == "nil" then
+        if v == "nil" or v == "_nil" then
             old[k] = nil
         else
             old[k] = v

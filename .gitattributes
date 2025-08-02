@@ -10,7 +10,6 @@ README_images export-ignore
 .gitignore export-ignore
 .gitattributes export-ignore
 graphics/mipgenerator export-ignore
-graphics/generate_circles.py export-ignore
 *.xcf export-ignore
 *.gif export-ignore
 graphics/research-center export-ignore
